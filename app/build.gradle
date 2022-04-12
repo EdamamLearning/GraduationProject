@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -35,6 +36,38 @@ android {
 }
 
 dependencies {
+
+    //Dagger
+    implementation Dagger.dagger_d
+    kapt Dagger.dagger_k
+
+    //Room
+    implementation Room.room_runtime
+    kapt Room.room_compiler
+    implementation Room.room_ktx
+
+    // Retrofit
+    implementation Retrofit.retrofit
+    implementation Retrofit.retrofit_converter_gson
+
+    //okHttp
+    implementation OkHttpDeps.ok_http
+    implementation OkHttpDeps.ok_http_logging_interceptor
+
+    //Glide
+    implementation Glide.glide
+
+    //Jetpack navigation
+    implementation JetpackNavigation.navigation_fragment
+    implementation JetpackNavigation.navigation_ui
+
+    //Coroutines
+    implementation Coroutines.coroutines_core
+    implementation Coroutines.coroutines_android
+
+    //LifecycleComponents
+    implementation LifecycleComponents.runtime_ktx
+    implementation LifecycleComponents.viewmodel_ktx
 
     //Kotlin
     implementation Kotlin.kotlin_cote_ktx
