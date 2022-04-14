@@ -1,29 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.startfragment.StartFragment">
 
-    <EditText
-        android:id="@+id/sf_et"
+    <LinearLayout
+        android:id="@+id/home_custom_toolbar"
         android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginStart="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/custom_toolbar_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/food_facts"
+            android:textColor="@color/power_green"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_chips"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/sf_rv"/>
+        android:layout_below="@id/home_custom_toolbar"
+        android:fadingEdgeLength="24dp"
+        android:requiresFadingEdge="horizontal"
+        android:scrollbars="none">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/types_chip_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:checkedChip="@id/all_types_chip"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/all_types_chip"
+                style="@style/CustomChipStyle"
+                android:text="@string/all_types" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/CustomChipStyle"
+                android:text="@string/meat" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/CustomChipStyle"
+                android:text="vegan" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/CustomChipStyle"
+                android:text="fat" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/CustomChipStyle"
+                android:text="milk" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/CustomChipStyle"
+                android:text="fish" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/CustomChipStyle"
+                android:text="chicken" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/CustomChipStyle"
+                android:text="spicy" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/CustomChipStyle"
+                android:text="flour" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/CustomChipStyle"
+                android:text="sweet" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sf_rv"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/horizontal_chips"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="68dp"
+        android:clipToPadding="false"
+        android:fadingEdgeLength="64dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:requiresFadingEdge="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_fs_rv"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sf_et" />
+        tools:ignore="MissingConstraints"
+        tools:listitem="@layout/item_fs_rv" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/no_internet_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="72dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/no_connection_imageview"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:src="@drawable/no_internet_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/check_internet_connection"
+            android:textColor="@color/title_color"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
