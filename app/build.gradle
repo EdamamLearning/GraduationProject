@@ -39,6 +39,7 @@ dependencies {
 
     //Dagger
     implementation Dagger.dagger_d
+    implementation Dagger.dagger_s
     kapt Dagger.dagger_k
 
     //Room

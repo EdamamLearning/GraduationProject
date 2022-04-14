@@ -130,6 +130,9 @@ object Design {
 
 object Dagger {
     const val dagger_d = "com.google.dagger:dagger:${Versions.dagger}"
+    const val dagger_a = "com.google.dagger:dagger-android:${Versions.dagger}"
+    const val dagger_s = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+    const val dagger_p = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
     const val dagger_k = "com.google.dagger:dagger-compiler:${Versions.dagger}"
 }
 
