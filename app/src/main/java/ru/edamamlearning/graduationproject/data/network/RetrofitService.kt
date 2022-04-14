@@ -14,4 +14,6 @@ interface RetrofitService {
         @Query("ingr") ingr: String,
         @Query("nutrition-type") nutritionType: String,
     ): NetworkModel
+
+
 }
