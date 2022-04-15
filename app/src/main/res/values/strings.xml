@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GraduationProject</string>
+    <string name="home">HomeScreen</string>
+    <string name="favorites">Favorite</string>
+    <string name="search">Search</string>
+    <string name="food_facts">Food Facts</string>
+    <string name="all_types">all_types</string>
+    <string name="meat">meat</string>
+    <string name="check_internet_connection">check internet connection</string>
 </resources>
