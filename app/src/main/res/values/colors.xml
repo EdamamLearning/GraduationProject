@@ -21,4 +21,5 @@
     <color name="selector_checked">#5F5F5F</color>
     <color name="bottom_nav_background">#FFFFFF</color>
     <color name="power_green">#89FD03</color>
+    <color name="power_orange">#F37F04</color>
 </resources>

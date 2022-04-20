@@ -49,7 +49,7 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.sfRv.adapter = adapter
-        binding.sfEt.doAfterTextChanged {
+        binding.allTypesChip.doAfterTextChanged {
             if (it.toString().isNotEmpty()) {
                 lifecycleScope.launchWhenStarted {
                     viewModel.getList(it.toString())

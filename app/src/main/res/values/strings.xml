@@ -7,4 +7,5 @@
     <string name="all_types">all_types</string>
     <string name="meat">meat</string>
     <string name="check_internet_connection">check internet connection</string>
+    <string name="ingredients">ingredients:</string>
 </resources>

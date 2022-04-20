@@ -29,7 +29,7 @@ class StartFragmentAdapter :
         RecyclerView.ViewHolder(vb.root) {
 
         fun show(model: DomainModel) {
-            vb.itemFsRvTx.text = model.text
+            vb.foodName.text = model.text
         }
     }
 
