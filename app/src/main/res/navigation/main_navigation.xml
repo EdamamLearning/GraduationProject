@@ -9,5 +9,32 @@
         android:id="@+id/homeFragment"
         android:name="ru.edamamlearning.graduationproject.ui.startfragment.StartFragment"
         android:label="fragment_start"
-        tools:layout="@layout/fragment_start" />
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_homeFragment_to_infoFragment2"
+            app:destination="@id/infoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="ru.edamamlearning.graduationproject.ui.infofragment.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="ru.edamamlearning.graduationproject.ui.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment2"
+        android:name="ru.edamamlearning.graduationproject.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment2_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
 </navigation>
