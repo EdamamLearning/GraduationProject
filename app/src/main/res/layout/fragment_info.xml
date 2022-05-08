@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/ingredients"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/ingredient_text_size"
+                        android:textSize="@dimen/standart_text_size"
                         android:textStyle="bold" />
 
                     <TextView
@@ -65,7 +65,7 @@
                         android:lines="1"
                         android:text="1 cup sugar"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/ingredient_text_size" />
+                        android:textSize="@dimen/standart_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
                         android:lines="1"
                         android:text="6 egg yolks"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/ingredient_text_size" />
+                        android:textSize="@dimen/standart_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
                         android:lines="1"
                         android:text="3 cups milk"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/ingredient_text_size" />
+                        android:textSize="@dimen/standart_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
                         android:lines="1"
                         android:text="1 cup heavy cream"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/ingredient_text_size" />
+                        android:textSize="@dimen/standart_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
                         android:lines="1"
                         android:text="oil olive"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/ingredient_text_size" />
+                        android:textSize="@dimen/standart_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -105,7 +105,7 @@
                         android:lines="1"
                         android:text="1 pound pasta"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/ingredient_text_size" />
+                        android:textSize="@dimen/standart_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
                         android:lines="1"
                         android:text="1 clove of garlic"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/ingredient_text_size" />
+                        android:textSize="@dimen/standart_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -121,7 +121,7 @@
                         android:lines="1"
                         android:text="1/2 cup mushrooms"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/ingredient_text_size" />
+                        android:textSize="@dimen/standart_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -129,7 +129,7 @@
                         android:lines="1"
                         android:text="1/2 cup asparagus"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/ingredient_text_size" />
+                        android:textSize="@dimen/standart_text_size" />
 
                 </LinearLayout>
             </LinearLayout>

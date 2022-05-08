@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/favorites"
-            android:textColor="@color/title_color"
+            android:textColor="@color/power_green"
             android:textSize="@dimen/title_text_size"
             android:textStyle="bold" />
     </LinearLayout>
@@ -51,8 +51,8 @@
 
         <ImageView
             android:id="@+id/favorites_imageview"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="@dimen/widthIV"
+            android:layout_height="@dimen/heightIV"
             android:layout_gravity="center"
             android:src="@drawable/favorite_border" />
 
@@ -64,7 +64,7 @@
             android:gravity="center"
             android:text="@string/favorites_textview_message"
             android:textColor="@color/title_color"
-            android:textSize="20sp" />
+            android:textSize="@dimen/info_text_size" />
 
     </LinearLayout>
 </RelativeLayout>
