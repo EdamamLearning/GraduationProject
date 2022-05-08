@@ -2,24 +2,41 @@ package ru.edamamlearning.graduationproject.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.edamamlearning.graduationproject.R
-import ru.edamamlearning.graduationproject.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-    private var binding: ActivityMainBinding? = null
-    private lateinit var viewBinding: ActivityMainBinding
+    private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(viewBinding.root)
+        configureNavigation()
+        supportFragmentManager.beginTransaction()
+    }
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-        viewBinding.bottomNavigationView.setupWithNavController(navController)
+    private fun configureNavigation() {
+        val host: NavHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
+        navController = host.navController
+        bottomNavigationView = findViewById(R.id.bottom_navigation_view)
+        bottomNavigationView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.homeFragment -> showBottomNav()
+                R.id.searchFragment -> showBottomNav()
+                R.id.favoritesFragment -> showBottomNav()
+            }
+        }
+    }
+
+    private fun showBottomNav() {
+        bottomNavigationView.visibility = View.VISIBLE
     }
 }
