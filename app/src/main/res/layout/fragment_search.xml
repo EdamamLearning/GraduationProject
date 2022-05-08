@@ -9,7 +9,6 @@
         android:id="@+id/search_custom_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginStart="16dp"
         android:gravity="center">
 
         <TextView
@@ -17,7 +16,7 @@
             android:layout_height="match_parent"
             android:text="@string/search"
             android:textColor="@color/power_green"
-            android:textSize="36sp"
+            android:textSize="@dimen/title_text_size"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -26,8 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/search_custom_toolbar"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
+        android:layout_margin="@dimen/layout_margin"
         android:background="@drawable/rounded_border_search_bar">
 
         <EditText
@@ -39,14 +37,14 @@
             android:autofillHints=""
             android:background="@null"
             android:drawableStart="@drawable/search_icon_small"
-            android:drawablePadding="8dp"
+            android:drawablePadding="@dimen/padding"
             android:hint="@string/search_pokemon"
             android:imeOptions="actionSearch"
             android:inputType="textNoSuggestions"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="12dp"
+            android:paddingHorizontal="@dimen/paddingSearch"
+            android:paddingVertical="@dimen/paddingSearch"
             android:textColor="@color/title_color"
-            android:textSize="16sp"
+            android:textSize="@dimen/standart_text_size"
             tools:ignore="TouchTargetSizeCheck" />
 
         <ImageView
@@ -57,8 +55,8 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_gravity="end|center_vertical"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="8dp"
+            android:paddingHorizontal="@dimen/padding"
+            android:paddingVertical="@dimen/padding"
             android:src="@drawable/cancel_icon_small"
             android:visibility="gone" />
     </RelativeLayout>
@@ -68,12 +66,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/search_bar_linear_layout"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginHorizontal="@dimen/horizontal_margin"
+        android:layout_marginBottom="@dimen/margin_bottom"
         android:clipToPadding="false"
-        android:fadingEdgeLength="64dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:fadingEdgeLength="@dimen/fadingEdgeLength"
+        android:paddingTop="@dimen/padding"
+        android:paddingBottom="@dimen/padding"
         android:requiresFadingEdge="vertical"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -84,11 +82,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="@dimen/marginBottomRV"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="24dp"
+        android:padding="@dimen/paddingRV"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
@@ -101,12 +98,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/top_margin"
             android:gravity="center"
             android:text="@string/search_textview_default_message"
             android:textColor="@color/title_color"
-            android:textSize="20sp" />
+            android:textSize="@dimen/info_text_size" />
     </LinearLayout>
 
     <LinearLayout
@@ -116,27 +113,27 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="@dimen/marginBottomRV"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="24dp"
+        android:padding="@dimen/paddingRV"
         android:visibility="gone">
 
         <ImageView
             android:id="@+id/no_results_imageview"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="@dimen/widthIV"
+            android:layout_height="@dimen/heightIV"
             android:layout_gravity="center"
             android:src="@drawable/search_not_found_icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/top_margin"
             android:gravity="center"
             android:text="@string/search_textview_error_message"
             android:textColor="@color/title_color"
-            android:textSize="20sp" />
+            android:textSize="@dimen/info_text_size" />
     </LinearLayout>
 </RelativeLayout>

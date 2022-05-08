@@ -9,16 +9,15 @@
         android:id="@+id/favorites_custom_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginStart="16dp"
         android:gravity="center_vertical|start">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/favorites"
             android:textColor="@color/title_color"
-            android:textSize="36sp"
+            android:textSize="@dimen/title_text_size"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -27,12 +26,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/favorites_custom_toolbar"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginHorizontal="@dimen/margin_horizontal"
+        android:layout_marginBottom="@dimen/margin_bottom"
         android:clipToPadding="false"
-        android:fadingEdgeLength="64dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:elevation="@dimen/elevation"
+        android:fadingEdgeLength="@dimen/fadingEdgeLength"
+        android:paddingTop="@dimen/padding"
+        android:paddingBottom="@dimen/padding"
         android:requiresFadingEdge="vertical"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -43,10 +43,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="@dimen/marginBottomRV"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="24dp"
+        android:padding="@dimen/paddingRV"
         android:visibility="visible">
 
         <ImageView
@@ -59,8 +59,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="@dimen/margin_horizontal"
+            android:layout_marginTop="@dimen/top_margin"
             android:gravity="center"
             android:text="@string/favorites_textview_message"
             android:textColor="@color/title_color"
