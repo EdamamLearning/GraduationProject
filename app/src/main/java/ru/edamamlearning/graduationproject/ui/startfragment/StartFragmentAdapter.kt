@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.databinding.ItemFsRvBinding
 import ru.edamamlearning.graduationproject.domain.model.DomainModel
 
@@ -29,7 +30,8 @@ class StartFragmentAdapter :
         RecyclerView.ViewHolder(vb.root) {
 
         fun show(model: DomainModel) {
-            vb.foodName.text = model.text
+            vb.infoType.text = model.text
+            vb.foodImage.setImageResource(R.drawable.food)
         }
     }
 
@@ -41,6 +43,5 @@ class StartFragmentAdapter :
         override fun areContentsTheSame(oldItem: DomainModel, newItem: DomainModel): Boolean {
             return oldItem == newItem
         }
-
     }
 }

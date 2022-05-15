@@ -2,7 +2,6 @@ package ru.edamamlearning.graduationproject.ui.startfragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import ru.edamamlearning.graduationproject.application.App
 import ru.edamamlearning.graduationproject.databinding.FragmentStartBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
@@ -48,14 +48,19 @@ class StartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.sfRv.adapter = adapter
-        binding.allTypesChip.doAfterTextChanged {
+        initViews()
+    }
+
+    private fun initViews() {
+        binding.sfRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.sfRecyclerView.adapter = adapter
+        binding.allTypesChip.doAfterTextChanged { it ->
             if (it.toString().isNotEmpty()) {
                 lifecycleScope.launchWhenStarted {
                     viewModel.getList(it.toString())
                         .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                        .collect {
-                            Log.d("ResponseDomainModel", "text = ${it.text}")
+                        .collect { domainModel ->
+                            adapter.submitList(listOf(domainModel))
                         }
                 }
             }

@@ -50,38 +50,47 @@
                 android:text="@string/all_types" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/meat"
                 style="@style/CustomChipStyle"
                 android:text="@string/meat" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/vegan"
                 style="@style/CustomChipStyle"
                 android:text="vegan" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/fat"
                 style="@style/CustomChipStyle"
                 android:text="fat" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/milk"
                 style="@style/CustomChipStyle"
                 android:text="milk" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/fish"
                 style="@style/CustomChipStyle"
                 android:text="fish" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chicken"
                 style="@style/CustomChipStyle"
                 android:text="chicken" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/spicy"
                 style="@style/CustomChipStyle"
                 android:text="spicy" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/flour"
                 style="@style/CustomChipStyle"
                 android:text="flour" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/sweet"
                 style="@style/CustomChipStyle"
                 android:text="sweet" />
 
@@ -91,7 +100,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sf_rv"
+        android:id="@+id/sfRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/horizontal_chips"
