@@ -91,6 +91,9 @@ dependencies {
     implementation Design.material
     implementation Design.constraint_layout
 
+    // https://github.com/kirich1409/ViewBindingPropertyDelegate/releases
+    implementation Ui.view_binding
+
     //Test
     testImplementation TestImpl.junit
     androidTestImplementation TestImpl.ext_junit

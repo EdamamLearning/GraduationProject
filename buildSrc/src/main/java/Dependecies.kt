@@ -1,3 +1,4 @@
+import Versions.viewBindingKirich
 import org.gradle.api.JavaVersion
 
 object Modules {
@@ -5,6 +6,7 @@ object Modules {
 }
 
 object Config {
+
     const val application_id = "ru.edamamlearning.graduationproject"
     const val compile_sdk = 32
     const val min_sdk = 27
@@ -14,6 +16,7 @@ object Config {
 }
 
 object Releases {
+
     const val version_code = 1
     const val version_name = "1.0"
 }
@@ -62,6 +65,9 @@ object Versions {
     //Dagger
     const val dagger = "2.41"
 
+    //Ui
+    const val viewBindingKirich = "1.4.7"
+
     //Test
     const val jUnit = "4.13.2"
     const val extjUnit = "1.1.3"
@@ -72,21 +78,25 @@ object Versions {
 }
 
 object Glide {
+
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 }
 
 object Room {
+
     const val room_runtime = "androidx.room:room-runtime:${Versions.room}"
     const val room_compiler = "androidx.room:room-compiler:${Versions.room}"
     const val room_ktx = "androidx.room:room-ktx:${Versions.room}"
 }
 
 object JetpackNavigation {
+
     const val navigation_fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.jetNav}"
     const val navigation_ui = "androidx.navigation:navigation-ui-ktx:${Versions.jetNav}"
 }
 
 object Coroutines {
+
     const val coroutines_core =
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutinesCore}"
     const val coroutines_android =
@@ -94,17 +104,20 @@ object Coroutines {
 }
 
 object RxJava {
+
     const val rx_android = "io.reactivex.rxjava3:rxandroid:${Versions.rxJava}"
     const val rx_java = "io.reactivex.rxjava3:rxjava:${Versions.rxJava}"
 }
 
 object LifecycleComponents {
+
     const val viewmodel_ktx =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleViewModel}"
     const val runtime_ktx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleRunTime}"
 }
 
 object Retrofit {
+
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofit_converter_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val retrofit_adapter_rx =
@@ -112,16 +125,19 @@ object Retrofit {
 }
 
 object OkHttpDeps {
+
     const val ok_http = "com.squareup.okhttp3:okhttp:${Versions.okHttpVer}"
     const val ok_http_logging_interceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.okHttpVer}"
 }
 
 object Kotlin {
+
     const val kotlin_cote_ktx = "androidx.core:core-ktx:${Versions.kotlinCoreKtx}"
 }
 
 object Design {
+
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val material = "com.google.android.material:material:${Versions.material}"
     const val constraint_layout =
@@ -129,11 +145,18 @@ object Design {
 }
 
 object Dagger {
+
     const val dagger_d = "com.google.dagger:dagger:${Versions.dagger}"
     const val dagger_k = "com.google.dagger:dagger-compiler:${Versions.dagger}"
 }
 
+object Ui {
+
+    const val view_binding = "com.github.kirich1409:viewbindingpropertydelegate:${viewBindingKirich}"
+}
+
 object TestImpl {
+
     const val junit = "junit:junit:${Versions.jUnit}"
 
     const val ext_junit = "androidx.test.ext:junit:${Versions.extjUnit}"
