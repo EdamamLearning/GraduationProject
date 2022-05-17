@@ -1,14 +1,14 @@
 package ru.edamamlearning.graduationproject.data.network
 
 import ru.edamamlearning.graduationproject.data.NetworkRepository
-import ru.edamamlearning.graduationproject.data.network.model.NetworkModel
+import ru.edamamlearning.graduationproject.data.network.model.FoodApiDTO
 import ru.edamamlearning.graduationproject.data.network.model.NetworkNutritionAnalysisModel
 
 class NetworkRepositoryImpl(
     private val retrofitService: RetrofitService
 ) : NetworkRepository {
 
-    override suspend fun get(text: String): NetworkModel {
+    override suspend fun get(text: String): FoodApiDTO {
         return retrofitService.getNetworkData(
             ingr = text,
             nutritionType = "cooking"

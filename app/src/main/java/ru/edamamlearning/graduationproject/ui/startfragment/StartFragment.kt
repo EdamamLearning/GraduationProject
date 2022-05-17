@@ -2,13 +2,10 @@ package ru.edamamlearning.graduationproject.ui.startfragment
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.core.widget.doAfterTextChanged
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.collectLatest
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.application.App
 import ru.edamamlearning.graduationproject.core.BaseFragment
@@ -38,16 +35,12 @@ class StartFragment : BaseFragment(R.layout.fragment_start) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.sfRv.adapter = adapter
-        binding.allTypesChip.doAfterTextChanged {
-            if (it.toString().isNotEmpty()) {
-                lifecycleScope.launchWhenStarted {
-                    viewModel.getList(it.toString())
-                        .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                        .collect {
-                            Log.d("ResponseDomainModel", "text = ${it.text}")
-                        }
+        viewModel.getFood("egg")
+        lifecycleScope.launchWhenCreated {
+            viewModel.food
+                .collectLatest {
+
                 }
-            }
         }
     }
 }

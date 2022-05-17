@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.edamamlearning.graduationproject.databinding.ItemFsRvBinding
-import ru.edamamlearning.graduationproject.domain.model.DomainModel
+import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 
 class StartFragmentAdapter :
-    ListAdapter<DomainModel, StartFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
+    ListAdapter<FoodDomainModel, StartFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StartFragmentViewHolder {
         return StartFragmentViewHolder(
@@ -28,17 +28,17 @@ class StartFragmentAdapter :
     inner class StartFragmentViewHolder(private val vb: ItemFsRvBinding) :
         RecyclerView.ViewHolder(vb.root) {
 
-        fun show(model: DomainModel) {
-            vb.foodName.text = model.text
+        fun show(model: FoodDomainModel) {
+            vb.foodName.text = model.hints.first().food.label
         }
     }
 
-    companion object ItemFsRvCallback : DiffUtil.ItemCallback<DomainModel>() {
-        override fun areItemsTheSame(oldItem: DomainModel, newItem: DomainModel): Boolean {
+    companion object ItemFsRvCallback : DiffUtil.ItemCallback<FoodDomainModel>() {
+        override fun areItemsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: DomainModel, newItem: DomainModel): Boolean {
+        override fun areContentsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
             return oldItem == newItem
         }
 

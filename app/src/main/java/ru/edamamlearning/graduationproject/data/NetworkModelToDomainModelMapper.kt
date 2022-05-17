@@ -1,117 +1,40 @@
 package ru.edamamlearning.graduationproject.data
 
-import ru.edamamlearning.graduationproject.data.network.model.NetworkModel
-import ru.edamamlearning.graduationproject.data.network.model.networkmodelinnerclasses.*
-import ru.edamamlearning.graduationproject.domain.model.DomainModel
-import ru.edamamlearning.graduationproject.domain.model.domainmodelinnerclasses.*
+import ru.edamamlearning.graduationproject.data.network.model.FoodApiDTO
+import ru.edamamlearning.graduationproject.data.network.model.foodapidtoinnerclasses.FoodDTO
+import ru.edamamlearning.graduationproject.data.network.model.foodapidtoinnerclasses.HintDTO
+import ru.edamamlearning.graduationproject.data.network.model.foodapidtoinnerclasses.NutrientsDTO
+import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
+import ru.edamamlearning.graduationproject.domain.model.fooddomainmodelinnerclasses.DomainFood
+import ru.edamamlearning.graduationproject.domain.model.fooddomainmodelinnerclasses.DomainHint
+import ru.edamamlearning.graduationproject.domain.model.fooddomainmodelinnerclasses.DomainNutrients
 
-fun NetworkModel.toDomainModel() = DomainModel(
-    text = this.text.toString(),
-    parsed = this.parsed?.toListDomainParsed() ?: emptyList(),
-    links = this.links?.toDomainLinks() ?: DomainLinks(),
-    hints = this.hints?.toListDomainHint() ?: emptyList()
+fun FoodApiDTO.toFoodDomainModel() = FoodDomainModel(
+    hints = this.hints.toDomainHints()
 )
 
-//List<NetworkHint>.toListDomainHint()
-fun List<NetworkHint>.toListDomainHint() = this.map {
-    it.toDomainHint()
+fun List<HintDTO>.toDomainHints() = this.map {
+    DomainHint(
+        food = it.food.toDomainFood()
+    )
 }
 
-fun NetworkHint.toDomainHint() = DomainHint(
-    measures = this.measures?.toListDomainMeasure() ?: emptyList(),
-    food = this.food?.toDomainFood() ?: DomainFood()
+fun FoodDTO.toDomainFood() = DomainFood(
+    category = this.category,
+    categoryLabel = this.categoryLabel,
+    foodId = this.foodId,
+    label = this.label,
+    nutrients = this.nutrients.toDomainNutrients(),
+    image = this.image.orEmpty(),
+    foodContentsLabel = this.foodContentsLabel.orEmpty(),
+    brand = this.brand.orEmpty(),
+    servingsPerContainer = this.servingsPerContainer.orEmpty(),
 )
 
-fun NetworkFood.toDomainFood() = DomainFood(
-    brand = this.brand.toString(),
-    category = this.category.toString(),
-    categoryLabel = this.categoryLabel.toString(),
-    foodContentsLabel = this.foodContentsLabel.toString(),
-    foodId = this.foodId.toString(),
-    image = this.image.toString(),
-    label = this.label.toString(),
-    nutrients = this.nutrients?.toDomainNutrients() ?: DomainNutrients(),
-    servingSizes = this.servingSizes?.toListDomainServingSize() ?: emptyList(),
-    servingsPerContainer = this.servingsPerContainer.toString(),
-)
-
-fun NetworkNutrients.toDomainNutrients() = DomainNutrients(
-    carbohydrate = this.carbohydrate.toString(),
-    energyKCal = this.energyKCal.toString(),
-    fat = this.fat.toString(),
-    fiber = this.fiber.toString(),
-    protein = this.protein.toString(),
-)
-
-fun List<NetworkServingSize>.toListDomainServingSize() = this.map {
-    it.toDomainServingSize()
-}
-
-fun NetworkServingSize.toDomainServingSize() = DomainServingSize(
-    label = this.label.toString(),
-    quantity = this.quantity.toString(),
-    uri = this.uri.toString(),
-)
-
-fun List<NetworkMeasure>.toListDomainMeasure() = this.map {
-    it.toDomainMeasure()
-}
-
-fun NetworkMeasure.toDomainMeasure() = DomainMeasure(
-    label = this.label.toString(),
-    uri = this.uri.toString(),
-    qualified = this.qualified?.toListDomainQualified() ?: emptyList()
-)
-
-fun List<NetworkQualified>.toListDomainQualified() = this.map {
-    it.toListDomainQualified()
-}
-
-fun NetworkQualified.toListDomainQualified() = DomainQualified(
-    qualifiers = this.qualifiers?.toListDomainQualifier() ?: emptyList()
-)
-
-fun List<NetworkQualifier>.toListDomainQualifier() = this.map {
-    it.toDomainQualifier()
-}
-
-fun NetworkQualifier.toDomainQualifier() = DomainQualifier(
-    label = this.label.toString(),
-    uri = this.uri.toString(),
-)
-
-//NetworkLinks.toDomainLinks()
-fun NetworkLinks.toDomainLinks() = DomainLinks(
-    next = this.next?.toDomainNext() ?: DomainNext()
-)
-
-fun NetworkNext.toDomainNext() = DomainNext(
-    href = this.href.toString(),
-    title = this.title.toString(),
-)
-
-// List<NetworkParsed>.toListDomainParsed()
-fun List<NetworkParsed>.toListDomainParsed() = this.map {
-    it.toDomainParsed()
-}
-
-fun NetworkParsed.toDomainParsed() = DomainParsed(
-    food = this.food?.toDomainFoodX() ?: DomainFoodX()
-)
-
-fun NetworkFoodX.toDomainFoodX() = DomainFoodX(
-    category = this.category.toString(),
-    categoryLabel = this.categoryLabel.toString(),
-    foodId = this.foodId.toString(),
-    image = this.image.toString(),
-    label = this.label.toString(),
-    nutrients = this.nutrients?.toDomainNutrientsX() ?: DomainNutrientsX(),
-)
-
-fun NetworkNutrientsX.toDomainNutrientsX() = DomainNutrientsX(
-    carbohydrate = this.carbohydrate.toString(),
-    energyKCal = this.energyKCal.toString(),
-    fat = this.fat.toString(),
-    fiber = this.fiber.toString(),
-    protein = this.protein.toString(),
+fun NutrientsDTO.toDomainNutrients() = DomainNutrients(
+    carbohydrate = this.carbohydrate.orEmpty(),
+    energyKCal = this.energyKCal.orEmpty(),
+    fat = this.fat.orEmpty(),
+    fiber = this.fiber.orEmpty(),
+    protein = this.protein.orEmpty(),
 )
