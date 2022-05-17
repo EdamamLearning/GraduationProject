@@ -40,6 +40,16 @@ class StartFragment : BaseFragment(R.layout.fragment_start) {
             viewModel.food
                 .collectLatest {
 
+
+                }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.getList("")
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    Log.d("ResponseDomainModel", "text = ${it.text}")
+                    adapter.setData(it)
                 }
         }
     }
