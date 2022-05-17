@@ -41,13 +41,23 @@ class StartFragment : BaseFragment(R.layout.fragment_start) {
         binding.allTypesChip.doAfterTextChanged {
             if (it.toString().isNotEmpty()) {
                 lifecycleScope.launchWhenStarted {
-                    viewModel.getList(it.toString())
+                    viewModel.getList(it.toString()) // Для чипов нужен другой метод в модельке
                         .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                         .collect {
                             Log.d("ResponseDomainModel", "text = ${it.text}")
+                            adapter.setData(it)
                         }
                 }
             }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.getList("")
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {
+                    Log.d("ResponseDomainModel", "text = ${it.text}")
+                    adapter.setData(it)
+                }
         }
     }
 }
