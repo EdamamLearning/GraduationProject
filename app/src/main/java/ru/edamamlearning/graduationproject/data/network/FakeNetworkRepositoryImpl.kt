@@ -1,4 +1,4 @@
-package ru.edamamlearning.graduationproject.data.network.fakerepository
+package ru.edamamlearning.graduationproject.data.network
 
 import ru.edamamlearning.graduationproject.data.NetworkRepository
 import ru.edamamlearning.graduationproject.data.network.model.NetworkModel
@@ -85,7 +85,7 @@ class FakeNetworkRepositoryImpl : NetworkRepository {
                         "Garant",
                         "Generic foods",
                         "food",
-                        "Eggs",
+                        null,
                         "food_bhppgmha1u27voagb8eptbp9g376",
                         "https://www.edamam.com/food-img/bcd/bcd94dde1fcde1475b5bf0540f821c5d.jpg",
                         "Cheese",
@@ -169,7 +169,7 @@ class FakeNetworkRepositoryImpl : NetworkRepository {
                         null,
                         "Generic foods",
                         "food",
-                        "Eggs",
+                        null,
                         "food_bq9prtpbov0mzca37nef3am152os",
                         "https://www.edamam.com/food-img/702/7023ac63ef897bab1f6ea399316748d7.png",
                         "Brick Cheese",
@@ -227,7 +227,7 @@ class FakeNetworkRepositoryImpl : NetworkRepository {
                         null,
                         "Generic foods",
                         "food",
-                        "Eggs",
+                        null,
                         "food_bnuu4nzb68xes2a18874ebnzdata",
                         "https://www.edamam.com/food-img/9e4/9e4ffc57473590221cb97ccf5354e42b.jpg",
                         "Cheese Cheshire",
