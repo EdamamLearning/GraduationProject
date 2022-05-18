@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 R.id.homeFragment -> showBottomNav()
                 R.id.searchFragment -> showBottomNav()
                 R.id.favoritesFragment -> showBottomNav()
+                R.id.dairyFragment -> showBottomNav()
             }
         }
     }

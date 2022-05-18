@@ -16,4 +16,9 @@
         android:icon="@drawable/favorite"
         android:title="@string/favorites" />
 
+    <item
+        android:id="@+id/dairyFragment"
+        android:icon="@drawable/dairy_icon"
+        android:title="@string/favorites" />
+
 </menu>
