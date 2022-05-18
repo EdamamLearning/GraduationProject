@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.databinding.ItemFsRvBinding
-import ru.edamamlearning.graduationproject.domain.model.DomainModel
-import ru.edamamlearning.graduationproject.domain.model.domainmodelinnerclasses.DomainHint
+import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
+import ru.edamamlearning.graduationproject.domain.model.fooddomainmodelinnerclasses.DomainHint
 
 class StartFragmentAdapter :
-    ListAdapter<DomainModel, StartFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
+    ListAdapter<FoodDomainModel, StartFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
 
     private var domainData: List<DomainHint> = listOf()
 
@@ -38,10 +38,11 @@ class StartFragmentAdapter :
         RecyclerView.ViewHolder(vb.root) {
 
         fun show(model: DomainHint) {
-            vb.foodName.text = model.food.label
-            vb.call.text = model.food.nutrients.energyKCal
-            vb.infoTypeView.text = model.food.foodContentsLabel
-            vb.infoType.text = model.food.categoryLabel
+            vb.label.text = model.food.label
+            vb.category.text = model.food.category
+            vb.protein.text = model.food.nutrients.protein
+            vb.fat.text = model.food.nutrients.fat
+            vb.carb.text = model.food.nutrients.carbohydrate
             loadPicture(model.food.image, vb)
         }
     }
@@ -56,17 +57,17 @@ class StartFragmentAdapter :
         }
     }
 
-    fun setData(data: DomainModel) {
+    fun setData(data: FoodDomainModel) {
         domainData = data.hints
         notifyDataSetChanged()
     }
 
-    companion object ItemFsRvCallback : DiffUtil.ItemCallback<DomainModel>() {
-        override fun areItemsTheSame(oldItem: DomainModel, newItem: DomainModel): Boolean {
+    companion object ItemFsRvCallback : DiffUtil.ItemCallback<FoodDomainModel>() {
+        override fun areItemsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: DomainModel, newItem: DomainModel): Boolean {
+        override fun areContentsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
             return oldItem == newItem
         }
     }

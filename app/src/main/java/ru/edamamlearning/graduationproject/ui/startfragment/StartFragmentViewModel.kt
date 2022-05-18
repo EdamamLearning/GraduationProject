@@ -2,22 +2,26 @@ package ru.edamamlearning.graduationproject.ui.startfragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.stateIn
-import ru.edamamlearning.graduationproject.domain.GetUseCase
-import ru.edamamlearning.graduationproject.domain.model.DomainModel
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
+import ru.edamamlearning.graduationproject.domain.GetFoodUseCase
+import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import javax.inject.Inject
 
 class StartFragmentViewModel @Inject constructor(
-    private val getUseCase: GetUseCase
+    private val getFoodUseCase: GetFoodUseCase
 ) : ViewModel() {
 
-    fun getList(text: String): StateFlow<DomainModel> {
-        return getUseCase.execute(text).stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.Eagerly,
-            initialValue = DomainModel()
-        )
+    private val _food = MutableStateFlow<FoodDomainModel>(FoodDomainModel())
+    val food: StateFlow<FoodDomainModel> = _food.asStateFlow()
+
+    fun getFood(food: String){
+        viewModelScope.launch {
+            getFoodUseCase.execute(food)
+                .distinctUntilChanged()
+                .collectLatest {
+                    _food.value = it
+                }
+        }
     }
 }

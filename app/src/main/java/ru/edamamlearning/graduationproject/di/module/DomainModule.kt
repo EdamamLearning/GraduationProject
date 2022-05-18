@@ -5,16 +5,16 @@ import dagger.Provides
 import ru.edamamlearning.graduationproject.data.DomainRepositoryImpl
 import ru.edamamlearning.graduationproject.data.NetworkRepository
 import ru.edamamlearning.graduationproject.domain.DomainRepository
-import ru.edamamlearning.graduationproject.domain.GetUseCase
+import ru.edamamlearning.graduationproject.domain.GetFoodUseCase
 
 @Module
 class DomainModule {
 
     @Provides
-    fun provideGetUseCase(
+    fun provideGetFoodUseCase(
         domainRepository: DomainRepository
-    ): GetUseCase {
-        return GetUseCase(domainRepository)
+    ): GetFoodUseCase {
+        return GetFoodUseCase(domainRepository)
     }
 
     @Provides

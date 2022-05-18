@@ -1,21 +1,16 @@
-package ru.edamamlearning.graduationproject.data.network.model.networkmodelinnerclasses
+package ru.edamamlearning.graduationproject.data.network.model.foodapidtoinnerclasses
 
 import com.google.gson.annotations.SerializedName
 
-data class NetworkNutrientsX(
-
+data class NutrientsDTO(
     @SerializedName("CHOCDF")
     val carbohydrate: String?,
-
     @SerializedName("ENERC_KCAL")
     val energyKCal: String?,
-
     @SerializedName("FAT")
     val fat: String?,
-
     @SerializedName("FIBTG")
     val fiber: String?,
-
     @SerializedName("PROCNT")
     val protein: String?,
 )
