@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.databinding.ItemFsRvBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
+import ru.edamamlearning.graduationproject.domain.model.fooddomainmodelinnerclasses.DomainHint
 
 class StartFragmentAdapter :
     ListAdapter<FoodDomainModel, StartFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
@@ -36,15 +37,33 @@ class StartFragmentAdapter :
     inner class StartFragmentViewHolder(private val vb: ItemFsRvBinding) :
         RecyclerView.ViewHolder(vb.root) {
 
-
-        fun show(model: FoodDomainModel) {
-            vb.foodName.text = model.hints.first().food.label
+        fun show(model: DomainHint) {
+            vb.label.text = model.food.label
+            vb.category.text = model.food.category
+            vb.protein.text = model.food.nutrients.protein
+            vb.fat.text = model.food.nutrients.fat
+            vb.carb.text = model.food.nutrients.carbohydrate
+            loadPicture(model.food.image, vb)
         }
+    }
+
+    private fun loadPicture(image: String?, binding: ItemFsRvBinding) {
+        if (image != null) {
+            Glide.with(binding.root)
+                .load(image)
+                .error(R.drawable.ic_no_picture)
+                .placeholder(R.drawable.default_picture)
+                .into(binding.foodImage)
+        }
+    }
+
+    fun setData(data: FoodDomainModel) {
+        domainData = data.hints
+        notifyDataSetChanged()
     }
 
     companion object ItemFsRvCallback : DiffUtil.ItemCallback<FoodDomainModel>() {
         override fun areItemsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
-
             return oldItem == newItem
         }
 

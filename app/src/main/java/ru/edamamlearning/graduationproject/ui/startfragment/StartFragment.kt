@@ -2,8 +2,11 @@ package ru.edamamlearning.graduationproject.ui.startfragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.collectLatest
 import ru.edamamlearning.graduationproject.R
@@ -45,10 +48,11 @@ class StartFragment : BaseFragment(R.layout.fragment_start) {
         }
 
         lifecycleScope.launchWhenStarted {
-            viewModel.getList("")
+            viewModel.getFood("")
+            viewModel.food
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {
-                    Log.d("ResponseDomainModel", "text = ${it.text}")
+                    Log.d("ResponseDomainModel", "text = ${it.toString()}")
                     adapter.setData(it)
                 }
         }
