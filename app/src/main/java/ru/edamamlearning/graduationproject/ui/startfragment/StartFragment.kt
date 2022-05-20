@@ -38,23 +38,5 @@ class StartFragment : BaseFragment(R.layout.fragment_start) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.sfRv.adapter = adapter
-        viewModel.getFood("egg")
-        lifecycleScope.launchWhenCreated {
-            viewModel.food
-                .collectLatest {
-
-
-                }
-        }
-
-        lifecycleScope.launchWhenStarted {
-            viewModel.getFood("")
-            viewModel.food
-                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                .collect {
-                    Log.d("ResponseDomainModel", "text = ${it.toString()}")
-                    adapter.setData(it)
-                }
-        }
     }
 }
