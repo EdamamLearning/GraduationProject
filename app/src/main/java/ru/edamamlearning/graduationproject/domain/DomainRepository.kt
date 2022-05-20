@@ -1,9 +1,8 @@
 package ru.edamamlearning.graduationproject.domain
 
-import kotlinx.coroutines.flow.Flow
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 
 interface DomainRepository {
 
-    fun get(text: String): Flow<FoodDomainModel>
+    suspend fun get(text: String): List<FoodDomainModel>
 }
