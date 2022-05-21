@@ -8,7 +8,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.flow.collectLatest
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.application.App
 import ru.edamamlearning.graduationproject.core.BaseFragment
@@ -21,8 +20,8 @@ class FoodFragment : BaseFragment(R.layout.fragment_food) {
 
     @Inject
     lateinit var vmFactory: ViewModelFactory
-    private val viewModel: FoodFragmentViewModel by lazy {
-        ViewModelProvider(this, vmFactory)[FoodFragmentViewModel::class.java]
+    private val viewModel: FoodViewModel by lazy {
+        ViewModelProvider(this, vmFactory)[FoodViewModel::class.java]
     }
     private val binding: FragmentFoodBinding by viewBinding()
 
@@ -38,21 +37,21 @@ class FoodFragment : BaseFragment(R.layout.fragment_food) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.sfRv.adapter = adapter
-        viewModel.getFood("egg")
+        /*viewModel.getFood("egg")
         lifecycleScope.launchWhenCreated {
             viewModel.food
                 .collectLatest {
 
 
                 }
-        }
+        }*/
 
         lifecycleScope.launchWhenStarted {
             viewModel.getFood("")
             viewModel.food
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .collect {
-                    Log.d("ResponseDomainModel", "text = ${it.toString()}")
+                    Log.d("ResponseDomainModel", "text = $it")
                     adapter.setData(it)
                 }
         }

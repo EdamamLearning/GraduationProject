@@ -12,11 +12,11 @@ import ru.edamamlearning.graduationproject.domain.GetFoodUseCase
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import javax.inject.Inject
 
-class FoodFragmentViewModel @Inject constructor(
+class FoodViewModel @Inject constructor(
     private val getFoodUseCase: GetFoodUseCase
 ) : ViewModel() {
 
-    private val _food = MutableStateFlow<FoodDomainModel>(FoodDomainModel())
+    private val _food = MutableStateFlow(FoodDomainModel())
     val food: StateFlow<FoodDomainModel> = _food.asStateFlow()
 
     fun getFood(food: String) {

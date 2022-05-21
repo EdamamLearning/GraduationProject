@@ -9,7 +9,7 @@ class DomainRepositoryImpl(
     private val repository: NetworkRepository
 ) : DomainRepository {
 
-    override fun get(text: String): Flow<FoodDomainModel> {
+    override fun getFoodModel(text: String): Flow<FoodDomainModel> {
         return flow {
             emit(repository.get(text).toFoodDomainModel())
         }

@@ -1,4 +1,4 @@
-package ru.edamamlearning.graduationproject.ui.startfragment
+package ru.edamamlearning.graduationproject.ui.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,8 +11,8 @@ import ru.edamamlearning.graduationproject.databinding.ItemFsRvBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.domain.model.fooddomainmodelinnerclasses.DomainHint
 
-class FoodFragmentAdapter :
-    ListAdapter<FoodDomainModel, FoodFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
+class SearchAdapter(
+) : ListAdapter<FoodDomainModel, SearchAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
 
     private var domainData: List<DomainHint> = listOf()
 
@@ -27,23 +27,39 @@ class FoodFragmentAdapter :
     }
 
     override fun onBindViewHolder(holder: StartFragmentViewHolder, position: Int) {
-        holder.show(domainData[position])
+        holder.bind(domainData[position])
     }
 
     override fun getItemCount(): Int {
         return domainData.size
     }
 
-    inner class StartFragmentViewHolder(private val vb: ItemFsRvBinding) :
-        RecyclerView.ViewHolder(vb.root) {
+    fun setData(data: FoodDomainModel) {
+        domainData = data.hints
+        notifyDataSetChanged()
+    }
 
-        fun show(model: DomainHint) {
-            vb.label.text = model.food.label
-            vb.category.text = model.food.category
-            vb.proteinCount.text = model.food.nutrients.protein
-            vb.fatsCount.text = model.food.nutrients.fat
-            vb.carbohydratesCount.text = model.food.nutrients.carbohydrate
-            loadPicture(model.food.image, vb)
+    companion object ItemFsRvCallback : DiffUtil.ItemCallback<FoodDomainModel>() {
+
+        override fun areItemsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    inner class StartFragmentViewHolder(private val binding: ItemFsRvBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(model: DomainHint) {
+            binding.label.text = model.food.label
+            binding.category.text = model.food.category
+            binding.proteinCount.text = model.food.nutrients.protein
+            binding.fatsCount.text = model.food.nutrients.fat
+            binding.carbohydratesCount.text = model.food.nutrients.carbohydrate
+            loadPicture(model.food.image, binding)
         }
     }
 
@@ -54,21 +70,6 @@ class FoodFragmentAdapter :
                 .error(R.drawable.ic_no_picture)
                 .placeholder(R.drawable.food)
                 .into(binding.foodImage)
-        }
-    }
-
-    fun setData(data: FoodDomainModel) {
-        domainData = data.hints
-        notifyDataSetChanged()
-    }
-
-    companion object ItemFsRvCallback : DiffUtil.ItemCallback<FoodDomainModel>() {
-        override fun areItemsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
-            return oldItem == newItem
-        }
-
-        override fun areContentsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
-            return oldItem == newItem
         }
     }
 }

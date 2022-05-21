@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,29 +14,25 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/search"
             android:textColor="@color/primary"
             android:textSize="@dimen/info_text_size" />
     </LinearLayout>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/search_bar_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/search_custom_toolbar"
         android:layout_margin="@dimen/layout_margin"
         android:background="@drawable/rounded_border_search_bar">
 
         <EditText
-            android:id="@+id/search_edittext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:autofillHints=""
             android:background="@null"
-            android:drawableStart="@drawable/search_icon_small"
             android:drawablePadding="@dimen/padding"
             android:hint="@string/search_pokemon"
             android:imeOptions="actionSearch"
@@ -44,21 +41,24 @@
             android:paddingVertical="@dimen/paddingSearch"
             android:textColor="@color/title_color"
             android:textSize="@dimen/standart_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TouchTargetSizeCheck" />
 
-        <ImageView
-            android:id="@+id/cancel_search_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/search_edittext"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="end|center_vertical"
-            android:paddingHorizontal="@dimen/padding"
-            android:paddingVertical="@dimen/padding"
-            android:src="@drawable/cancel_icon_small"
-            android:visibility="gone" />
-    </RelativeLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/link"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -67,6 +67,7 @@
         android:layout_below="@id/search_bar_linear_layout"
         android:layout_marginHorizontal="@dimen/horizontal_margin"
         android:layout_marginBottom="@dimen/margin_bottom"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:clipToPadding="false"
         android:fadingEdgeLength="@dimen/fadingEdgeLength"
         android:paddingTop="@dimen/padding"
@@ -82,6 +83,7 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/marginBottomRV"
+        android:visibility="invisible"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/paddingRV"
@@ -89,10 +91,12 @@
 
         <ImageView
             android:id="@+id/search_imageview"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="center"
-            android:src="@drawable/search" />
+            android:src="@drawable/ic_search"
+            android:visibility="gone"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -102,7 +106,8 @@
             android:gravity="center"
             android:text="@string/search_textview_default_message"
             android:textColor="@color/title_color"
-            android:textSize="@dimen/info_text_size" />
+            android:textSize="18sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -123,7 +128,8 @@
             android:layout_width="@dimen/widthIV"
             android:layout_height="@dimen/heightIV"
             android:layout_gravity="center"
-            android:src="@drawable/search_not_found_icon" />
+            android:src="@drawable/search_not_found_icon"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="wrap_content"

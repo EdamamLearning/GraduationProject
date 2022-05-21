@@ -24,6 +24,10 @@
         <item name="chipStrokeWidth">1dp</item>
     </style>
 
+    <style name="TextViewButtonStyle" parent="BaseTextBody1">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
     <style name="BaseTextBody1" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/black</item>

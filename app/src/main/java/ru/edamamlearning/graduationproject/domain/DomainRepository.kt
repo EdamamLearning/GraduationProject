@@ -5,5 +5,5 @@ import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 
 interface DomainRepository {
 
-    fun get(text: String): Flow<FoodDomainModel>
+    fun getFoodModel(text: String): Flow<FoodDomainModel>
 }
