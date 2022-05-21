@@ -32,9 +32,18 @@
         android:id="@+id/favoritesFragment"
         android:name="ru.edamamlearning.graduationproject.ui.favorite.FavoriteFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorite" >
+        tools:layout="@layout/fragment_favorite">
         <action
             android:id="@+id/action_favoritesFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dairyFragment"
+        android:name="ru.edamamlearning.graduationproject.ui.diary.DiaryFragment"
+        android:label="fragment_dairy"
+        tools:layout="@layout/fragment_dairy">
+        <action
+            android:id="@+id/action_infoFragment_to_fragment_dairy"
             app:destination="@id/infoFragment" />
     </fragment>
 </navigation>

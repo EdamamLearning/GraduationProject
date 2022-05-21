@@ -3,6 +3,7 @@
     <string name="home">HomeScreen</string>
     <string name="favorites">Favorite</string>
     <string name="search">Search</string>
+    <string name="diary">Diary</string>
     <string name="food_facts">Food Facts</string>
     <string name="all_types">all_types</string>
     <string name="meat">meat</string>
@@ -12,6 +13,7 @@
     <string name="search_textview_error_message">Error! Nothing found.</string>
     <string name="search_pokemon">Search eat</string>
     <string name="favorites_textview_message">Click on the heart-shaped icon on a Eat card to add it to your favorites!</string>
+    <string name="day_callories">Количество каллорий в день:</string>
     <string name="protein_text">Белки:</string>
     <string name="fats_text">Жиры:</string>
     <string name="carbohydrates_text">Углеводы:</string>
