@@ -46,6 +46,7 @@ android {
         def appKey = _properties.getProperty("app_key", "")
         it.buildConfigField "String", "APP_KEY", appKey
     }
+
 }
 
 dependencies {
