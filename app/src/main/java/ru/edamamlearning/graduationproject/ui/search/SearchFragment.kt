@@ -7,9 +7,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isInvisible
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.application.App
@@ -47,13 +45,13 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
                 val query = binding.searchEditText.text.toString()
                 if (query.isNotBlank()) {
                     binding.emptySearchLayout.visibility = View.INVISIBLE
-                    viewModel.getFood(query)
                     lifecycleScope.launchWhenStarted {
-                        viewModel.food
-                            .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                            .collect {
-                                adapter.setData(it)
+                        viewModel.getFood(query)
+                        viewModel.food.observe(viewLifecycleOwner) { items ->
+                            items.let {
+                                adapter.submitList(it)
                             }
+                        }
                     }
                     return@OnEditorActionListener true
                 } else {
