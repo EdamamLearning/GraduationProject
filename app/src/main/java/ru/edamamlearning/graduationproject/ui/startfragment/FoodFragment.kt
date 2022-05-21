@@ -13,21 +13,21 @@ import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.application.App
 import ru.edamamlearning.graduationproject.core.BaseFragment
 import ru.edamamlearning.graduationproject.core.viewBinding
-import ru.edamamlearning.graduationproject.databinding.FragmentStartBinding
+import ru.edamamlearning.graduationproject.databinding.FragmentFoodBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import javax.inject.Inject
 
-class StartFragment : BaseFragment(R.layout.fragment_start) {
+class FoodFragment : BaseFragment(R.layout.fragment_food) {
 
     @Inject
     lateinit var vmFactory: ViewModelFactory
-    private val viewModel: StartFragmentViewModel by lazy {
-        ViewModelProvider(this, vmFactory)[StartFragmentViewModel::class.java]
+    private val viewModel: FoodFragmentViewModel by lazy {
+        ViewModelProvider(this, vmFactory)[FoodFragmentViewModel::class.java]
     }
-    private val binding: FragmentStartBinding by viewBinding()
+    private val binding: FragmentFoodBinding by viewBinding()
 
     private val adapter by lazy {
-        StartFragmentAdapter()
+        FoodFragmentAdapter()
     }
 
     override fun onAttach(context: Context) {

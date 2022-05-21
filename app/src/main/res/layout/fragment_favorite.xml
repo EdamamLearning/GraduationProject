@@ -16,9 +16,8 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/favorites"
-            android:textColor="@color/power_green"
-            android:textSize="@dimen/title_text_size"
-            android:textStyle="bold" />
+            android:textColor="@color/primary"
+            android:textSize="@dimen/info_text_size" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

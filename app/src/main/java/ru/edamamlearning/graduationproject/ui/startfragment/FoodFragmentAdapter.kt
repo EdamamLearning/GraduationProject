@@ -11,8 +11,8 @@ import ru.edamamlearning.graduationproject.databinding.ItemFsRvBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.domain.model.fooddomainmodelinnerclasses.DomainHint
 
-class StartFragmentAdapter :
-    ListAdapter<FoodDomainModel, StartFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
+class FoodFragmentAdapter :
+    ListAdapter<FoodDomainModel, FoodFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
 
     private var domainData: List<DomainHint> = listOf()
 
@@ -40,9 +40,9 @@ class StartFragmentAdapter :
         fun show(model: DomainHint) {
             vb.label.text = model.food.label
             vb.category.text = model.food.category
-            vb.protein.text = model.food.nutrients.protein
-            vb.fat.text = model.food.nutrients.fat
-            vb.carb.text = model.food.nutrients.carbohydrate
+            vb.proteinCount.text = model.food.nutrients.protein
+            vb.fatsCount.text = model.food.nutrients.fat
+            vb.carbohydratesCount.text = model.food.nutrients.carbohydrate
             loadPicture(model.food.image, vb)
         }
     }
