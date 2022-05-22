@@ -22,4 +22,6 @@
     <color name="bottom_nav_background">#FFFFFF</color>
     <color name="power_green">#89FD03</color>
     <color name="power_orange">#F37F04</color>
+    <color name="primary">#f26c55</color>
+    <color name="link">#ef553b</color>
 </resources>

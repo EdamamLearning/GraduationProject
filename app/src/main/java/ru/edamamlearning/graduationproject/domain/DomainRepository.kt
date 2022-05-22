@@ -4,5 +4,5 @@ import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 
 interface DomainRepository {
 
-    suspend fun get(text: String): List<FoodDomainModel>
+    suspend fun getFoodModel(text: String): List<FoodDomainModel>
 }

@@ -1,4 +1,4 @@
-package ru.edamamlearning.graduationproject.ui.startfragment
+package ru.edamamlearning.graduationproject.ui.food
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,8 +10,8 @@ import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.databinding.ItemFsRvBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 
-class StartFragmentAdapter :
-    ListAdapter<FoodDomainModel, StartFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
+class FoodFragmentAdapter :
+    ListAdapter<FoodDomainModel, FoodFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
 
     private var domainData: List<FoodDomainModel> = listOf()
 
@@ -39,9 +39,9 @@ class StartFragmentAdapter :
         fun show(model: FoodDomainModel) {
             vb.label.text = model.label
             vb.category.text = model.category
-            vb.protein.text = model.nutrients.protein
-            vb.fat.text = model.nutrients.fat
-            vb.carb.text = model.nutrients.carbohydrate
+            vb.proteinCount.text = model.nutrients.protein
+            vb.fatsCount.text = model.nutrients.fat
+            vb.carbohydratesCount.text = model.nutrients.carbohydrate
             loadPicture(model.image, vb)
         }
     }
@@ -51,7 +51,7 @@ class StartFragmentAdapter :
             Glide.with(binding.root)
                 .load(image)
                 .error(R.drawable.ic_no_picture)
-                .placeholder(R.drawable.default_picture)
+                .placeholder(R.drawable.food)
                 .into(binding.foodImage)
         }
     }
@@ -62,6 +62,7 @@ class StartFragmentAdapter :
     }
 
     companion object ItemFsRvCallback : DiffUtil.ItemCallback<FoodDomainModel>() {
+
         override fun areItemsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
             return oldItem == newItem
         }

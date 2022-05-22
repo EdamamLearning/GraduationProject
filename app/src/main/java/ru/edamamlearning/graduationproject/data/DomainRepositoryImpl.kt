@@ -7,7 +7,7 @@ class DomainRepositoryImpl(
     private val repository: NetworkRepository
 ) : DomainRepository {
 
-    override suspend fun get(text: String): List<FoodDomainModel> {
+    override suspend fun getFoodModel(text: String): List<FoodDomainModel> {
         return repository.get(text).toFoodDomainModel()
     }
 }

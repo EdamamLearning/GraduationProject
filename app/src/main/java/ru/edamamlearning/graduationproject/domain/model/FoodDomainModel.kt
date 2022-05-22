@@ -11,5 +11,5 @@ data class FoodDomainModel(
     val image: String,
     val brand: String,
     val foodContentsLabel: String,
-    val servingsPerContainer: String,
+    val servingsPerContainer: String
 )

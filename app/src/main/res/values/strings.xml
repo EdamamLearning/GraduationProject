@@ -9,10 +9,16 @@
     <string name="meat">meat</string>
     <string name="check_internet_connection">check internet connection</string>
     <string name="ingredients">ingredients:</string>
-    <string name="search_textview_default_message">Write a keyword in the search bar!</string>
+    <string name="search_textview_default_message">Write a keyword in the search bar</string>
     <string name="search_textview_error_message">Error! Nothing found.</string>
     <string name="search_pokemon">Search eat</string>
     <string name="favorites_textview_message">Click on the heart-shaped icon on a Eat card to add it to your favorites!</string>
     <string name="day_callories">Количество каллорий в день:</string>
+    <string name="protein_text">Белки:</string>
+    <string name="fats_text">Жиры:</string>
+    <string name="carbohydrates_text">Углеводы:</string>
+    <string name="ignore">ignore</string>
+    <string name="food">Food</string>
+    <string name="enter_search_word">Введите продукт</string>
 
 </resources>

@@ -3,45 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/searchFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="ru.edamamlearning.graduationproject.ui.startfragment.StartFragment"
-        android:label="fragment_start"
-        tools:layout="@layout/fragment_start" >
+        android:id="@+id/searchFragment"
+        android:name="ru.edamamlearning.graduationproject.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodFragment"
+        android:name="ru.edamamlearning.graduationproject.ui.food.FoodFragment"
+        android:label="fragment_food"
+        tools:layout="@layout/fragment_food">
         <action
             android:id="@+id/action_homeFragment_to_infoFragment2"
             app:destination="@id/infoFragment" />
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
-        android:name="ru.edamamlearning.graduationproject.ui.infofragment.InfoFragment"
+        android:name="ru.edamamlearning.graduationproject.ui.info.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="ru.edamamlearning.graduationproject.ui.favorite.FavoriteFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorite" >
+        tools:layout="@layout/fragment_favorite">
         <action
             android:id="@+id/action_favoritesFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="ru.edamamlearning.graduationproject.ui.search.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
-        <action
-            android:id="@+id/action_searchFragment_to_infoFragment"
             app:destination="@id/infoFragment" />
     </fragment>
     <fragment
         android:id="@+id/dairyFragment"
         android:name="ru.edamamlearning.graduationproject.ui.diary.DiaryFragment"
         android:label="fragment_dairy"
-        tools:layout="@layout/fragment_dairy" >
+        tools:layout="@layout/fragment_dairy">
         <action
             android:id="@+id/action_infoFragment_to_fragment_dairy"
             app:destination="@id/infoFragment" />

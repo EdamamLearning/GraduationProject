@@ -1,8 +1,13 @@
 package ru.edamamlearning.graduationproject.di.component
 
 import dagger.Component
-import ru.edamamlearning.graduationproject.di.module.*
-import ru.edamamlearning.graduationproject.ui.startfragment.StartFragment
+import ru.edamamlearning.graduationproject.di.module.AppModule
+import ru.edamamlearning.graduationproject.di.module.DataModule
+import ru.edamamlearning.graduationproject.di.module.DomainModule
+import ru.edamamlearning.graduationproject.di.module.RetrofitModule
+import ru.edamamlearning.graduationproject.di.module.ViewModelModule
+import ru.edamamlearning.graduationproject.ui.food.FoodFragment
+import ru.edamamlearning.graduationproject.ui.search.SearchFragment
 import javax.inject.Singleton
 
 @Singleton
@@ -17,5 +22,7 @@ import javax.inject.Singleton
 )
 interface AppComponent {
 
-    fun inject(startFragment: StartFragment)
+    fun inject(foodFragment: FoodFragment)
+
+    fun inject(searchFragment: SearchFragment)
 }

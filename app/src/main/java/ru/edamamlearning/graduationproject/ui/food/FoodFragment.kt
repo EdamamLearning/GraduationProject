@@ -1,33 +1,29 @@
-package ru.edamamlearning.graduationproject.ui.startfragment
+package ru.edamamlearning.graduationproject.ui.food
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.flow.collectLatest
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.application.App
 import ru.edamamlearning.graduationproject.core.BaseFragment
 import ru.edamamlearning.graduationproject.core.viewBinding
-import ru.edamamlearning.graduationproject.databinding.FragmentStartBinding
+import ru.edamamlearning.graduationproject.databinding.FragmentFoodBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import javax.inject.Inject
 
-class StartFragment : BaseFragment(R.layout.fragment_start) {
+class FoodFragment : BaseFragment(R.layout.fragment_food) {
 
     @Inject
     lateinit var vmFactory: ViewModelFactory
-    private val viewModel: StartFragmentViewModel by lazy {
-        ViewModelProvider(this, vmFactory)[StartFragmentViewModel::class.java]
+    private val viewModel: FoodViewModel by lazy {
+        ViewModelProvider(this, vmFactory)[FoodViewModel::class.java]
     }
-    private val binding: FragmentStartBinding by viewBinding()
+    private val binding: FragmentFoodBinding by viewBinding()
 
     private val adapter by lazy {
-        StartFragmentAdapter()
+        FoodFragmentAdapter()
     }
 
     override fun onAttach(context: Context) {
@@ -38,5 +34,14 @@ class StartFragment : BaseFragment(R.layout.fragment_start) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.sfRv.adapter = adapter
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.getFood("")
+            viewModel.food.observe(viewLifecycleOwner) { items ->
+                items.let {
+                    adapter.submitList(it)
+                }
+            }
+        }
     }
 }

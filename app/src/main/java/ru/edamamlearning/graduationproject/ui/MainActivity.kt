@@ -1,8 +1,8 @@
 package ru.edamamlearning.graduationproject.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.homeFragment -> showBottomNav()
                 R.id.searchFragment -> showBottomNav()
+                R.id.foodFragment -> showBottomNav()
                 R.id.favoritesFragment -> showBottomNav()
                 R.id.dairyFragment -> showBottomNav()
             }

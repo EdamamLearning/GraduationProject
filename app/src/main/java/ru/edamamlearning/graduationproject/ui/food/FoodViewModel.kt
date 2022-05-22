@@ -1,4 +1,4 @@
-package ru.edamamlearning.graduationproject.ui.search
+package ru.edamamlearning.graduationproject.ui.food
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ import ru.edamamlearning.graduationproject.domain.GetFoodUseCase
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import javax.inject.Inject
 
-class SearchViewModel @Inject constructor(
+class FoodViewModel @Inject constructor(
     private val getFoodUseCase: GetFoodUseCase
 ) : ViewModel() {
 
