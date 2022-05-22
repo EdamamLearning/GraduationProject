@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.application.App
 import ru.edamamlearning.graduationproject.core.BaseFragment
@@ -25,7 +26,12 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         ViewModelProvider(this, vmFactory)[SearchViewModel::class.java]
     }
     private val binding: FragmentSearchBinding by viewBinding()
-    private val adapter by lazy { SearchAdapter() }
+    private val adapter by lazy {
+        SearchAdapter {
+            val action = SearchFragmentDirections.actionSearchFragmentToInfoFragment()
+            this@SearchFragment.findNavController().navigate(action)
+        }
+    }
 
     override fun onAttach(context: Context) {
         App.instance.appComponent.inject(this)
@@ -34,9 +40,9 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setQueryListener()
         setRecyclerView()
         binding.emptySearchLayout.isInvisible = adapter.itemCount != 0
+        setQueryListener()
     }
 
     private fun setQueryListener() {

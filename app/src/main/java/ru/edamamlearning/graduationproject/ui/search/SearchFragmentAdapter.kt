@@ -11,7 +11,9 @@ import ru.edamamlearning.graduationproject.databinding.ItemSearchBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.ui.utils.roundAp
 
-class SearchAdapter : ListAdapter<FoodDomainModel, SearchAdapter.SearchViewHolder>(DiffCallback) {
+class SearchAdapter(
+    private val onItemClicked: (FoodDomainModel) -> Unit
+) : ListAdapter<FoodDomainModel, SearchAdapter.SearchViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder(
@@ -25,6 +27,9 @@ class SearchAdapter : ListAdapter<FoodDomainModel, SearchAdapter.SearchViewHolde
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val item = getItem(position)
+        holder.itemView.setOnClickListener {
+            onItemClicked(item)
+        }
         holder.bind(item)
     }
 

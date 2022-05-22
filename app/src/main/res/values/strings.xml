@@ -20,5 +20,6 @@
     <string name="ignore">ignore</string>
     <string name="food">Food</string>
     <string name="enter_search_word">Введите продукт</string>
+    <string name="info">Info</string>
 
 </resources>

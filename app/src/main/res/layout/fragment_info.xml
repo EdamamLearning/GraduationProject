@@ -6,195 +6,190 @@
     android:layout_height="match_parent"
     tools:context=".ui.info.InfoFragment">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/info"
+        app:titleMarginStart="160dp"
+        app:titleTextAppearance="@style/TextViewToolBar" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:background="@drawable/layout_bg"
+        android:gravity="center"
+        android:textColor="@color/link"
+        android:textSize="@dimen/info_text_size"
+        app:layout_constraintTop_toBottomOf="@id/toolBar"
+        tools:text="Pasta Primavera" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/imageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:background="@drawable/layout_bg"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/food" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/layout_margin_small"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/layout_margin"
-                android:background="@drawable/layout_bg"
-                android:gravity="center"
-                android:textColor="@color/power_green"
-                android:textSize="@dimen/title_text_size"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Pasta Primavera" />
+                android:text="@string/ingredients"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size"
+                android:textStyle="bold" />
 
-
-            <LinearLayout
-                android:id="@+id/imageLayout"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/layout_margin"
-                android:background="@drawable/layout_bg"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView">
+                android:lines="1"
+                android:text="1 cup sugar"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/food" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/layout_margin_small"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ingredients"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/standart_text_size"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:lines="1"
-                        android:text="1 cup sugar"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/standart_text_size" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:lines="1"
-                        android:text="6 egg yolks"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/standart_text_size" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:lines="1"
-                        android:text="3 cups milk"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/standart_text_size" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:lines="1"
-                        android:text="1 cup heavy cream"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/standart_text_size" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:lines="1"
-                        android:text="oil olive"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/standart_text_size" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:lines="1"
-                        android:text="1 pound pasta"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/standart_text_size" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:lines="1"
-                        android:text="1 clove of garlic"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/standart_text_size" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:lines="1"
-                        android:text="1/2 cup mushrooms"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/standart_text_size" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:lines="1"
-                        android:text="1/2 cup asparagus"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/standart_text_size" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/cal_serv_daily_layout"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/layout_margin"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageLayout">
+                android:lines="1"
+                android:text="6 egg yolks"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/layout_margin_small"
-                    android:layout_weight="1"
-                    android:background="@drawable/layout_bg"
-                    android:padding="@dimen/paddingTV"
-                    android:text="513\ncal/serv"
-                    android:textColor="@color/power_green"
-                    android:textSize="@dimen/info_text_size" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/layout_margin_small"
-                    android:layout_weight="1"
-                    android:background="@drawable/layout_bg"
-                    android:padding="@dimen/paddingTV"
-                    android:text="25%\ndaily value"
-                    android:textColor="@color/power_green"
-                    android:textSize="@dimen/info_text_size" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/layout_margin_small"
-                    android:layout_weight="1"
-                    android:background="@drawable/layout_bg"
-                    android:padding="@dimen/paddingTV"
-                    android:text="4\nservings"
-                    android:textColor="@color/power_green"
-                    android:textSize="@dimen/info_text_size" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/layout_margin_small"
-                    android:layout_weight="1.1"
-                    android:src="@drawable/favorite_button_selector" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/infoLayout"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/layout_margin"
-                android:orientation="vertical"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cal_serv_daily_layout"
-                tools:listitem="@layout/item_info_rv">
+                android:lines="1"
+                android:text="3 cups milk"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size" />
 
-            </androidx.recyclerview.widget.RecyclerView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="1 cup heavy cream"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="oil olive"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="1 pound pasta"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="1 clove of garlic"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="1/2 cup mushrooms"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="1/2 cup asparagus"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cal_serv_daily_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageLayout">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/layout_margin_small"
+            android:layout_weight="1"
+            android:background="@drawable/layout_bg"
+            android:padding="@dimen/paddingTV"
+            android:text="513\ncal/serv"
+            android:textColor="@color/power_green"
+            android:textSize="@dimen/info_text_size" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/layout_margin_small"
+            android:layout_weight="1"
+            android:background="@drawable/layout_bg"
+            android:padding="@dimen/paddingTV"
+            android:text="25%\ndaily value"
+            android:textColor="@color/power_green"
+            android:textSize="@dimen/info_text_size" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/layout_margin_small"
+            android:layout_weight="1"
+            android:background="@drawable/layout_bg"
+            android:padding="@dimen/paddingTV"
+            android:text="4\nservings"
+            android:textColor="@color/power_green"
+            android:textSize="@dimen/info_text_size" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/layout_margin_small"
+            android:layout_weight="1.1"
+            android:src="@drawable/favorite_button_selector" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/infoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_margin"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cal_serv_daily_layout"
+        tools:listitem="@layout/item_info_rv">
+
+    </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

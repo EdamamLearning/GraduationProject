@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -91,6 +92,10 @@ dependencies {
     implementation Design.appcompat
     implementation Design.material
     implementation Design.constraint_layout
+
+    // Navigation libraries
+    implementation JetpackNavigation.navigation_fragment
+    implementation JetpackNavigation.navigation_ui
 
     // https://github.com/kirich1409/ViewBindingPropertyDelegate/releases
     implementation Ui.view_binding
