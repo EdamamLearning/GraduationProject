@@ -28,7 +28,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
     private val binding: FragmentSearchBinding by viewBinding()
     private val adapter by lazy {
         SearchAdapter {
-            val action = SearchFragmentDirections.actionSearchFragmentToInfoFragment()
+            val action = SearchFragmentDirections.actionSearchFragmentToInfoFragment(it.foodId)
             this@SearchFragment.findNavController().navigate(action)
         }
     }

@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_searchFragment_to_infoFragment"
             app:destination="@id/infoFragment" />
-        <argument
-            android:name="food_id"
-            app:argType="string" />
     </fragment>
 
     <fragment
@@ -31,7 +28,11 @@
         android:id="@+id/infoFragment"
         android:name="ru.edamamlearning.graduationproject.ui.info.InfoFragment"
         android:label="@string/info"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info">
+        <argument
+            android:name="food_id"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="ru.edamamlearning.graduationproject.ui.favorite.FavoriteFragment"
