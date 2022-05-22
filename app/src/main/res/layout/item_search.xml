@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rootLayout"
+    android:id="@+id/rootLayoutConstraint"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="8dp"
@@ -24,8 +24,10 @@
             android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:text="@string/protein_text"
+            app:layout_constraintBottom_toTopOf="@+id/fats"
             app:layout_constraintEnd_toStartOf="@+id/proteinCount"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -34,8 +36,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/fats_text"
+            app:layout_constraintBottom_toTopOf="@+id/carbohydrates"
             app:layout_constraintEnd_toStartOf="@+id/fatsCount"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintTop_toBottomOf="@+id/protein" />
 
         <TextView
@@ -44,8 +48,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/carbohydrates_text"
+            app:layout_constraintBottom_toBottomOf="@+id/barrier"
             app:layout_constraintEnd_toStartOf="@id/carbohydratesCount"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintTop_toBottomOf="@+id/fats" />
 
         <TextView
@@ -54,62 +60,61 @@
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_border"
             android:gravity="center"
-            android:includeFontPadding="false"
-            android:paddingHorizontal="2dp"
-            android:textColor="@color/text_color"
-            app:autoSizeMaxTextSize="10sp"
-            app:autoSizeMinTextSize="1sp"
-            app:autoSizeStepGranularity="1sp"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintEnd_toStartOf="@+id/food_image"
+            style="@style/BaseTextBody1"
+            app:layout_constraintBottom_toTopOf="@+id/fatsCount"
             app:layout_constraintStart_toEndOf="@+id/protein"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="225г" />
+            app:layout_constraintEnd_toStartOf="@+id/foodImage"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            tools:text="225" />
 
         <TextView
             android:id="@+id/fatsCount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
-            android:alpha="0.9"
             android:background="@drawable/rounded_border"
             android:gravity="center"
-            android:includeFontPadding="false"
-            android:paddingHorizontal="2dp"
-            android:textColor="@color/text_color"
-            app:autoSizeMaxTextSize="10sp"
-            app:autoSizeMinTextSize="1sp"
-            app:autoSizeStepGranularity="1sp"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintEnd_toStartOf="@+id/food_image"
+            style="@style/BaseTextBody1"
+            app:layout_constraintBottom_toTopOf="@+id/carbohydratesCount"
             app:layout_constraintStart_toEndOf="@+id/fats"
             app:layout_constraintTop_toBottomOf="@+id/proteinCount"
-            tools:text="24г" />
+            app:layout_constraintEnd_toStartOf="@+id/foodImage"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            tools:text="24" />
 
         <TextView
             android:id="@+id/carbohydratesCount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:alpha="0.9"
             android:background="@drawable/rounded_border"
             android:gravity="center"
-            android:includeFontPadding="false"
-            android:paddingHorizontal="2dp"
-            android:textColor="@color/text_color"
-            app:autoSizeMaxTextSize="10sp"
-            app:autoSizeMinTextSize="1sp"
-            app:autoSizeStepGranularity="1sp"
-            app:autoSizeTextType="uniform"
-            app:layout_constraintEnd_toStartOf="@+id/food_image"
+            style="@style/BaseTextBody1"
+            app:layout_constraintBottom_toBottomOf="@+id/barrier"
             app:layout_constraintStart_toEndOf="@+id/carbohydrates"
             app:layout_constraintTop_toBottomOf="@+id/fatsCount"
-            tools:text="125г" />
+            app:layout_constraintEnd_toStartOf="@+id/foodImage"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            tools:text="125" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="top"
+            app:constraint_referenced_ids="center" />
 
         <TextView
             android:id="@+id/label"
             style="@style/BaseTextBody1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:maxLines="2"
@@ -117,7 +122,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/category"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/carbohydrates"
+            app:layout_constraintEnd_toStartOf="@+id/foodImage"
+            app:layout_constraintTop_toBottomOf="@id/barrier"
             tools:text="Hard-boiled Eggs" />
 
         <TextView
@@ -146,16 +152,17 @@
             android:paddingBottom="10dp"
             android:textSize="0sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/food_image" />
+            app:layout_constraintEnd_toStartOf="@+id/foodImage" />
 
         <ImageView
-            android:id="@+id/food_image"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:id="@+id/foodImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:contentDescription="@string/ignore"
-            android:paddingHorizontal="16dp"
+            android:paddingHorizontal="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:src="@drawable/food" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

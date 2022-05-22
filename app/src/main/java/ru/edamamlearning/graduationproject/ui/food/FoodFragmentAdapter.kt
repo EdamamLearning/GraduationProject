@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.edamamlearning.graduationproject.R
-import ru.edamamlearning.graduationproject.databinding.ItemFsRvBinding
+import ru.edamamlearning.graduationproject.databinding.ItemSearchBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 
 class FoodFragmentAdapter :
@@ -17,7 +17,7 @@ class FoodFragmentAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StartFragmentViewHolder {
         return StartFragmentViewHolder(
-            ItemFsRvBinding.inflate(
+            ItemSearchBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -33,7 +33,7 @@ class FoodFragmentAdapter :
         return domainData.size
     }
 
-    inner class StartFragmentViewHolder(private val vb: ItemFsRvBinding) :
+    inner class StartFragmentViewHolder(private val vb: ItemSearchBinding) :
         RecyclerView.ViewHolder(vb.root) {
 
         fun show(model: FoodDomainModel) {
@@ -46,11 +46,11 @@ class FoodFragmentAdapter :
         }
     }
 
-    private fun loadPicture(image: String?, binding: ItemFsRvBinding) {
+    private fun loadPicture(image: String?, binding: ItemSearchBinding) {
         if (image != null) {
             Glide.with(binding.root)
                 .load(image)
-                .error(R.drawable.ic_no_picture)
+                .error(R.drawable.food_no_photo)
                 .placeholder(R.drawable.food)
                 .into(binding.foodImage)
         }

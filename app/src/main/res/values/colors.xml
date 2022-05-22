@@ -24,4 +24,15 @@
     <color name="power_orange">#F37F04</color>
     <color name="primary">#f26c55</color>
     <color name="link">#ef553b</color>
+
+    <!-- common base -->
+    <color name="base_01">#ffffff</color>
+    <color name="base_02">#f6f7f8</color>
+    <color name="base_03">#eaecee</color>
+    <color name="base_04">#dddfe0</color>
+    <color name="base_05">#d5d5d5</color>
+    <color name="base_06">#9299a2</color>
+    <color name="base_07">#5c636b</color>
+    <color name="base_08">#333333</color>
+    <color name="base_09">#000000</color>
 </resources>

@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.diary.DiaryFragment">
 
-    <LinearLayout
-        android:id="@+id/empty_dairy_layout"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/diary"
-            android:textColor="@color/primary"
-            android:textSize="@dimen/info_text_size" />
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/diary"
+        app:titleMarginStart="180dp"
+        app:titleTextAppearance="@style/TextViewToolBar" />
 
     <LinearLayout
         android:id="@+id/calendar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/empty_dairy_layout">
+        android:layout_below="@+id/toolBar">
 
         <CalendarView
             android:id="@+id/calendarView"
@@ -65,13 +61,6 @@
             android:paddingBottom="@dimen/padding"
             android:requiresFadingEdge="vertical"
             tools:ignore="SpeakableTextPresentCheck"
-            tools:listitem="@layout/item_dairy"/>
-
-
+            tools:listitem="@layout/item_dairy" />
     </LinearLayout>
-
-
-
-
-
 </RelativeLayout>
