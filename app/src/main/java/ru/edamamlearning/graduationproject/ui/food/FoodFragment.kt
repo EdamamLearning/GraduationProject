@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.application.App
 import ru.edamamlearning.graduationproject.core.BaseFragment
@@ -35,13 +34,13 @@ class FoodFragment : BaseFragment(R.layout.fragment_food) {
         super.onViewCreated(view, savedInstanceState)
         binding.sfRv.adapter = adapter
 
-        lifecycleScope.launchWhenStarted {
+       /* lifecycleScope.launchWhenStarted {
             viewModel.getFood("")
             viewModel.food.observe(viewLifecycleOwner) { items ->
                 items.let {
                     adapter.submitList(it)
                 }
             }
-        }
+        }*/
     }
 }

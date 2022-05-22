@@ -3,28 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.favorite.FavoriteFragment">
 
-    <LinearLayout
-        android:id="@+id/favorites_custom_toolbar"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:gravity="center_vertical|start">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/favorites"
-            android:textColor="@color/primary"
-            android:textSize="@dimen/info_text_size" />
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/favorites"
+        app:titleMarginStart="160dp"
+        app:titleTextAppearance="@style/TextViewToolBar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/favorites_custom_toolbar"
+        android:layout_below="@id/toolBar"
         android:layout_marginHorizontal="@dimen/margin_horizontal"
         android:layout_marginBottom="@dimen/margin_bottom"
         android:clipToPadding="false"

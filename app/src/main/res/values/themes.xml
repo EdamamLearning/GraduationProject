@@ -14,6 +14,16 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="TextViewToolBar">
+        <item name="android:textSize" tools:ignore="SpUsage">20dp</item>
+        <item name="lineHeight">24dp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="firstBaselineToTopHeight">19dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">0.0</item>
+    </style>
+
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

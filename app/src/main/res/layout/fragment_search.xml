@@ -6,33 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".ui.search.SearchFragment">
 
-    <LinearLayout
-        android:id="@+id/search_custom_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/search"
-            android:textColor="@color/primary"
-            android:textSize="@dimen/info_text_size" />
-    </LinearLayout>
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/search_bar_linear_layout"
+        android:id="@+id/rootLayoutConstraint"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/layout_margin"
-        android:background="@drawable/rounded_border_search_bar">
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/search"
+            app:titleMarginStart="160dp"
+            app:titleTextAppearance="@style/TextViewToolBar" />
 
         <EditText
             android:id="@+id/searchEditText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_margin="16dp"
+            android:layout_marginTop="16dp"
             android:autofillHints=""
-            android:background="@null"
+            android:background="@drawable/rounded_border_search_bar"
             android:drawablePadding="@dimen/padding"
             android:hint="@string/search_pokemon"
             android:imeOptions="actionSearch"
@@ -44,7 +39,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolBar"
             tools:ignore="TouchTargetSizeCheck" />
 
         <ProgressBar
@@ -64,15 +59,15 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/search_bar_linear_layout"
+        android:layout_below="@id/rootLayoutConstraint"
         android:layout_marginHorizontal="@dimen/horizontal_margin"
         android:layout_marginBottom="@dimen/margin_bottom"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:clipToPadding="false"
         android:fadingEdgeLength="@dimen/fadingEdgeLength"
         android:paddingTop="@dimen/padding"
         android:paddingBottom="@dimen/padding"
         android:requiresFadingEdge="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <LinearLayout
@@ -83,10 +78,10 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/marginBottomRV"
-        android:visibility="invisible"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/paddingRV"
+        android:visibility="invisible"
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
