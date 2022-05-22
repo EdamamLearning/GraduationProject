@@ -1,4 +1,4 @@
-package ru.edamamlearning.graduationproject.ui.startfragment
+package ru.edamamlearning.graduationproject.ui.food
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -1,4 +1,4 @@
-package ru.edamamlearning.graduationproject.ui.infofragment
+package ru.edamamlearning.graduationproject.ui.info
 
 import android.annotation.SuppressLint
 import android.os.Bundle

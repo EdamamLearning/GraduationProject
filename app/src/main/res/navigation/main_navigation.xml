@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/foodFragment"
-        android:name="ru.edamamlearning.graduationproject.ui.startfragment.FoodFragment"
+        android:name="ru.edamamlearning.graduationproject.ui.food.FoodFragment"
         android:label="fragment_food"
         tools:layout="@layout/fragment_food">
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
-        android:name="ru.edamamlearning.graduationproject.ui.infofragment.InfoFragment"
+        android:name="ru.edamamlearning.graduationproject.ui.info.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
     <fragment
