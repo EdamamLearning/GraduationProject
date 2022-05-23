@@ -68,6 +68,9 @@ object Versions {
     //Ui
     const val viewBindingKirich = "1.4.7"
 
+    //Timber
+    const val timber = "5.0.1"
+
     //Test
     const val jUnit = "4.13.2"
     const val extjUnit = "1.1.3"
@@ -153,6 +156,11 @@ object Dagger {
 object Ui {
 
     const val view_binding = "com.github.kirich1409:viewbindingpropertydelegate:${viewBindingKirich}"
+}
+
+object Timber {
+
+    const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 }
 
 object TestImpl {

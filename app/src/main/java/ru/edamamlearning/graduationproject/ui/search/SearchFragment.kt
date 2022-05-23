@@ -7,6 +7,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -48,12 +49,14 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
     private fun setQueryListener() {
         binding.searchEditText.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                toggleLoader(true)
                 val query = binding.searchEditText.text.toString()
                 if (query.isNotBlank()) {
                     binding.emptySearchLayout.visibility = View.INVISIBLE
                     lifecycleScope.launchWhenStarted {
                         viewModel.getFood(query)
                         viewModel.food.observe(viewLifecycleOwner) { items ->
+                            toggleLoader(false)
                             items.let {
                                 adapter.submitList(it)
                             }
@@ -61,6 +64,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
                     }
                     return@OnEditorActionListener true
                 } else {
+                    toggleLoader(false)
                     Toast.makeText(
                         context,
                         getString(R.string.enter_search_word),
@@ -76,5 +80,9 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
     private fun setRecyclerView() {
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.adapter = adapter
+    }
+
+    private fun toggleLoader(loading: Boolean) {
+        binding.progressBar.isVisible = loading
     }
 }

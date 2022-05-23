@@ -100,6 +100,9 @@ dependencies {
     // https://github.com/kirich1409/ViewBindingPropertyDelegate/releases
     implementation Ui.view_binding
 
+    //Timber
+    implementation Timber.timber
+
     //Test
     testImplementation TestImpl.junit
     androidTestImplementation TestImpl.ext_junit
