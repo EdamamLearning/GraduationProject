@@ -2,6 +2,7 @@ package ru.edamamlearning.graduationproject.di.component
 
 import dagger.Component
 import ru.edamamlearning.graduationproject.di.module.AppModule
+import ru.edamamlearning.graduationproject.di.module.CoreBinder
 import ru.edamamlearning.graduationproject.di.module.DataModule
 import ru.edamamlearning.graduationproject.di.module.DomainModule
 import ru.edamamlearning.graduationproject.di.module.RetrofitModule
@@ -18,6 +19,7 @@ import javax.inject.Singleton
         DomainModule::class,
         DataModule::class,
         RetrofitModule::class,
+        CoreBinder::class
     ]
 )
 interface AppComponent {
