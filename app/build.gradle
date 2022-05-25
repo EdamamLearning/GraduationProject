@@ -38,13 +38,13 @@ android {
         Properties properties = new Properties()
 
         properties.load(project.rootProject.file("local.properties").newDataInputStream())
-        def appId = properties.getProperty("app_id", "")
+        def appId = properties.getProperty("app_id", "\"8faa28b9\"")
         it.buildConfigField "String", "APP_ID", appId
 
         Properties _properties = new Properties()
 
         _properties.load(project.rootProject.file("local.properties").newDataInputStream())
-        def appKey = _properties.getProperty("app_key", "")
+        def appKey = _properties.getProperty("app_key", "\"cd11381bb9e57ccc90b86dece27b5e4e\"")
         it.buildConfigField "String", "APP_KEY", appKey
     }
 
