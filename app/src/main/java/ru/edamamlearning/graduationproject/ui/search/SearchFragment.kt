@@ -1,6 +1,5 @@
 package ru.edamamlearning.graduationproject.ui.search
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -12,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import ru.edamamlearning.graduationproject.R
-import ru.edamamlearning.graduationproject.application.App
 import ru.edamamlearning.graduationproject.core.BaseFragment
 import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentSearchBinding
@@ -32,11 +30,6 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
             val action = SearchFragmentDirections.actionSearchFragmentToInfoFragment(it.foodId)
             this@SearchFragment.findNavController().navigate(action)
         }
-    }
-
-    override fun onAttach(context: Context) {
-        App.instance.appComponent.inject(this)
-        super.onAttach(context)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

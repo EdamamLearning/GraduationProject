@@ -2,14 +2,14 @@ package ru.edamamlearning.graduationproject.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.edamamlearning.graduationproject.R
+import ru.edamamlearning.graduationproject.core.DaggerActivity
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : DaggerActivity(R.layout.activity_main) {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navController: NavController
