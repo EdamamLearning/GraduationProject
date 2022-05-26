@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import ru.edamamlearning.graduationproject.core.BaseViewModel
@@ -19,16 +18,12 @@ class SearchViewModel @Inject constructor(
     private var domainRepository: DomainRepository
 ) : BaseViewModel() {
 
-    private val favoriteFood: StateFlow<List<String>> = domainRepository.getAllFavoriteFoods()
-        .map { list ->
-            list.map { model ->
-                model.foodId
-            }
-        }.stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.Eagerly,
-            initialValue = emptyList()
-        )
+    private val favoriteFood: StateFlow<List<FoodDomainModel>> = domainRepository.getAllFavoriteFoods()
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.Eagerly,
+                initialValue = emptyList()
+            )
 
     private val _food = MutableLiveData<List<FoodDomainModel>>()
     val food: LiveData<List<FoodDomainModel>> = _food
@@ -42,7 +37,7 @@ class SearchViewModel @Inject constructor(
     }
 
     fun isAFoodFavorite(foodDomainModel: FoodDomainModel): Boolean {
-        return favoriteFood.value.contains(foodDomainModel.foodId)
+        return favoriteFood.value.contains(foodDomainModel)
     }
 
     fun favouriteFoodClickHandler(foodDomainModel: FoodDomainModel): Boolean {
