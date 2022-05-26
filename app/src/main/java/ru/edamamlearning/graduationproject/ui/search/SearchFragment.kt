@@ -52,7 +52,6 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
                             toggleLoader(false)
                             items.let {
                                 adapter.submitList(it)
-                                viewModel.saveSearchingHistory(it)
                             }
                         }
                     }

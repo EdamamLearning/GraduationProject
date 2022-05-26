@@ -1,20 +1,15 @@
 package ru.edamamlearning.graduationproject.retrofit
 
+import ru.edamamlearning.graduationproject.data.repository.NetworkRepository
 import ru.edamamlearning.graduationproject.retrofit.model.FoodApiDTO
-import ru.edamamlearning.graduationproject.retrofit.model.NetworkNutritionAnalysisModel
 import ru.edamamlearning.graduationproject.retrofit.model.foodapidtoinnerclasses.FoodDTO
 import ru.edamamlearning.graduationproject.retrofit.model.foodapidtoinnerclasses.HintDTO
 import ru.edamamlearning.graduationproject.retrofit.model.foodapidtoinnerclasses.NutrientsDTO
-import ru.edamamlearning.graduationproject.data.repository.NetworkRepository
 
 class FakeNetworkRepositoryImpl : NetworkRepository {
 
     override suspend fun get(text: String): FoodApiDTO {
         return fakeNetworkModel
-    }
-
-    override suspend fun getNutritionAnalysis(text: String): NetworkNutritionAnalysisModel {
-        return fakeNetworkNutritionAnalysisModel
     }
 
     private val fakeNetworkModel: FoodApiDTO =
@@ -73,11 +68,5 @@ class FakeNetworkRepositoryImpl : NetworkRepository {
                     ),
                 )
             )
-        )
-
-    private val fakeNetworkNutritionAnalysisModel: NetworkNutritionAnalysisModel =
-        NetworkNutritionAnalysisModel(
-            null, null, null, null, null,
-            null, null, null, null
         )
 }

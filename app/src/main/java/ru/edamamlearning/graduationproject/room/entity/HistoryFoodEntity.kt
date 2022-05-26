@@ -4,7 +4,6 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 
 /**
  * unique = true означает, что в БД не будут сохраняться повторяющиеся продукты.

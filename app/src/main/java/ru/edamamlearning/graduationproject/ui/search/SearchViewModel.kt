@@ -22,12 +22,4 @@ class SearchViewModel @Inject constructor(
             Timber.e(throwable.message)
         }.start()
     }
-
-    fun saveSearchingHistory(list: List<FoodDomainModel>) {
-        tryLaunch {
-            domainRepository.saveSearchingHistory(list)
-        }.catch { throwable ->
-            Timber.e(throwable.message)
-        }.start()
-    }
 }
