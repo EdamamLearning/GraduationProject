@@ -4,7 +4,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import ru.edamamlearning.graduationproject.BuildConfig
 import ru.edamamlearning.graduationproject.retrofit.model.FoodApiDTO
-import ru.edamamlearning.graduationproject.retrofit.model.NetworkNutritionAnalysisModel
+
+private const val TYPE_COOKING = "cooking"
 
 interface RetrofitService {
 
@@ -13,14 +14,6 @@ interface RetrofitService {
         @Query("app_id") appId: String = BuildConfig.APP_ID,
         @Query("app_key") appKey: String = BuildConfig.APP_KEY,
         @Query("ingr") ingr: String,
-        @Query("nutrition-type") nutritionType: String,
+        @Query("nutrition-type") nutritionType: String = TYPE_COOKING,
     ): FoodApiDTO
-
-    @GET("api/nutrition-data")
-    suspend fun getNutritionAnalysis(
-        @Query("app_id") appId: String = BuildConfig.APP_ID,
-        @Query("app_key") appKey: String = BuildConfig.APP_KEY,
-        @Query("nutrition-type") nutrition_type: String,
-        @Query("ingr") ingr: String,
-    ): NetworkNutritionAnalysisModel
 }
