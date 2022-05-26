@@ -35,16 +35,24 @@ class FavoriteFragment : BaseFragment(R.layout.fragment_favorite) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.adapter = adapter
-        if (viewModel.isFavoriteFoodsEmpty()) {
-            binding.emptyFavoritesLayout.visibility = View.GONE
-        }
+    }
+
+    override fun onStart() {
+        super.onStart()
         lifecycleScope.launchWhenStarted {
             viewModel.favoriteFood
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .distinctUntilChanged()
                 .collectLatest {
                     adapter.submitList(it)
+                    checkFavorite()
                 }
+        }
+    }
+
+    private fun checkFavorite() {
+        if (!viewModel.isFavoriteFoodsEmpty()) {
+            binding.emptyFavoritesLayout.visibility = View.GONE
         }
     }
 }
