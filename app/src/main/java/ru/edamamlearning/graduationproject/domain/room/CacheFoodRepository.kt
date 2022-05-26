@@ -8,4 +8,5 @@ interface CacheFoodRepository {
      * Вставить список продуктов в таблицу БД
      */
     suspend fun insertListFood(food: List<FoodDomainModel>)
+    suspend fun getSavedFood(): List<FoodEntity>
 }

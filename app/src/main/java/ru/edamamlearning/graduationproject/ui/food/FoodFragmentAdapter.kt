@@ -9,11 +9,12 @@ import com.bumptech.glide.Glide
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.databinding.ItemSearchBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
+import ru.edamamlearning.graduationproject.domain.room.FoodEntity
 
 class FoodFragmentAdapter :
     ListAdapter<FoodDomainModel, FoodFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
 
-    private var domainData: List<FoodDomainModel> = listOf()
+    private var domainData: List<FoodEntity> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StartFragmentViewHolder {
         return StartFragmentViewHolder(
@@ -36,12 +37,12 @@ class FoodFragmentAdapter :
     inner class StartFragmentViewHolder(private val vb: ItemSearchBinding) :
         RecyclerView.ViewHolder(vb.root) {
 
-        fun show(model: FoodDomainModel) {
+        fun show(model: FoodEntity) {
             vb.label.text = model.label
             vb.category.text = model.category
-            vb.proteinCount.text = model.nutrients.protein
-            vb.fatsCount.text = model.nutrients.fat
-            vb.carbohydratesCount.text = model.nutrients.carbohydrate
+//            vb.proteinCount.text = model.nutrients.protein
+//            vb.fatsCount.text = model.nutrients.fat
+//            vb.carbohydratesCount.text = model.nutrients.carbohydrate
             loadPicture(model.image, vb)
         }
     }
@@ -56,7 +57,7 @@ class FoodFragmentAdapter :
         }
     }
 
-    fun setData(data: List<FoodDomainModel>) {
+    fun setData(data: List<FoodEntity>) {
         domainData = data
         notifyDataSetChanged()
     }

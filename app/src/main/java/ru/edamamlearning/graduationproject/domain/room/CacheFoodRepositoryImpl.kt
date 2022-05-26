@@ -14,4 +14,8 @@ class CacheFoodRepositoryImpl @Inject constructor(
         val foodEntity = food.map(FoodEntity.Mapper::map)
         database.foodDao().insertAll(foodEntity)
     }
+
+    override suspend fun getSavedFood(): List<FoodEntity> {
+        return database.foodDao().getAll()
+    }
 }
