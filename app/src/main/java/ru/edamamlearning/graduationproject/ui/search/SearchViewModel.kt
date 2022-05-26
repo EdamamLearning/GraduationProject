@@ -46,12 +46,19 @@ class SearchViewModel @Inject constructor(
                 viewModelScope.launch(Dispatchers.IO) {
                     domainRepository.deleteFavoriteFood(foodDomainModel)
                 }
+                tryLaunch {
+                    domainRepository.deleteFavoriteFood(foodDomainModel)
+                }.catch { throwable ->
+                    Timber.e(throwable.message)
+                }.start()
                 false
             }
             false -> {
-                viewModelScope.launch(Dispatchers.IO) {
+                tryLaunch {
                     domainRepository.saveFavoriteFood(foodDomainModel)
-                }
+                }.catch { throwable ->
+                    Timber.e(throwable.message)
+                }.start()
                 true
             }
         }
