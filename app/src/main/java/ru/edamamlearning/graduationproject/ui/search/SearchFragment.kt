@@ -15,6 +15,7 @@ import ru.edamamlearning.graduationproject.core.BaseFragment
 import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentSearchBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
+import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import javax.inject.Inject
 
 class SearchFragment : BaseFragment(R.layout.fragment_search) {
@@ -26,10 +27,11 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
     }
     private val binding: FragmentSearchBinding by viewBinding()
     private val adapter by lazy {
-        SearchAdapter {
-            val action = SearchFragmentDirections.actionSearchFragmentToInfoFragment(it.foodId)
-            this@SearchFragment.findNavController().navigate(action)
-        }
+        SearchAdapter(
+            onItemClicked = this::navigate,
+            isFavorite = viewModel::isAFoodFavorite,
+            favouriteClickHandler = viewModel::favouriteFoodClickHandler,
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,6 +39,12 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         setRecyclerView()
         binding.emptySearchLayout.isInvisible = adapter.itemCount != 0
         setQueryListener()
+    }
+
+    private fun navigate(foodDomainModel: FoodDomainModel) {
+        val action = SearchFragmentDirections
+            .actionSearchFragmentToInfoFragment(foodDomainModel.foodId)
+        findNavController().navigate(action)
     }
 
     private fun setQueryListener() {

@@ -12,7 +12,9 @@ import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.roundAp
 
 class SearchAdapter(
-    private val onItemClicked: (FoodDomainModel) -> Unit
+    private val onItemClicked: (FoodDomainModel) -> Unit,
+    private val isFavorite: (FoodDomainModel) -> Boolean,
+    private val favouriteClickHandler: (FoodDomainModel) -> Boolean,
 ) : ListAdapter<FoodDomainModel, SearchAdapter.SearchViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
@@ -54,6 +56,10 @@ class SearchAdapter(
             binding.fatsCount.text = roundAp(model.nutrients.fat)
             binding.carbohydratesCount.text = roundAp(model.nutrients.carbohydrate)
             loadPicture(model.image, binding)
+            binding.favoriteButton.isChecked = isFavorite(model)
+            binding.favoriteButton.setOnClickListener{
+                binding.favoriteButton.isChecked = favouriteClickHandler(model)
+            }
         }
     }
 
