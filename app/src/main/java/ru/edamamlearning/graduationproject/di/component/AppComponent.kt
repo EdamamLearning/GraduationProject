@@ -1,30 +1,39 @@
 package ru.edamamlearning.graduationproject.di.component
 
+import android.content.Context
+import dagger.BindsInstance
 import dagger.Component
-import ru.edamamlearning.graduationproject.di.module.AppModule
+import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
+import ru.edamamlearning.graduationproject.application.App
+import ru.edamamlearning.graduationproject.di.module.CacheModule
 import ru.edamamlearning.graduationproject.di.module.CoreBinder
 import ru.edamamlearning.graduationproject.di.module.DataModule
-import ru.edamamlearning.graduationproject.di.module.DomainModule
 import ru.edamamlearning.graduationproject.di.module.RetrofitModule
+import ru.edamamlearning.graduationproject.di.module.UiModule
 import ru.edamamlearning.graduationproject.di.module.ViewModelModule
-import ru.edamamlearning.graduationproject.ui.food.FoodFragment
-import ru.edamamlearning.graduationproject.ui.search.SearchFragment
 import javax.inject.Singleton
 
 @Singleton
 @Component(
     modules = [
-        AppModule::class,
+        AndroidInjectionModule::class,
         ViewModelModule::class,
-        DomainModule::class,
         DataModule::class,
         RetrofitModule::class,
-        CoreBinder::class
+        CoreBinder::class,
+        UiModule::class,
+        CacheModule::class
     ]
 )
-interface AppComponent {
+interface AppComponent : AndroidInjector<App> {
 
-    fun inject(foodFragment: FoodFragment)
+    @Component.Builder
+    interface Builder {
 
-    fun inject(searchFragment: SearchFragment)
+        @BindsInstance
+        fun withContext(context: Context): Builder
+
+        fun build(): AppComponent
+    }
 }

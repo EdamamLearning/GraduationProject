@@ -151,6 +151,10 @@ object Dagger {
 
     const val dagger_d = "com.google.dagger:dagger:${Versions.dagger}"
     const val dagger_k = "com.google.dagger:dagger-compiler:${Versions.dagger}"
+    const val dagger_processor = "com.google.dagger:dagger-android-processor:2.35.1"
+    const val dagger_android = "com.google.dagger:dagger-android:2.37"
+    const val dagger_support = "com.google.dagger:dagger-android-support:2.37"
+    const val dagger_legacy = "androidx.legacy:legacy-support-v4:1.0.0"
 }
 
 object Ui {

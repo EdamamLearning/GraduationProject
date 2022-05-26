@@ -1,12 +1,13 @@
-package ru.edamamlearning.graduationproject.data.network
+package ru.edamamlearning.graduationproject.domain.cloud
 
-import ru.edamamlearning.graduationproject.data.NetworkRepository
+import ru.edamamlearning.graduationproject.data.network.RetrofitService
 import ru.edamamlearning.graduationproject.data.network.model.FoodApiDTO
 import ru.edamamlearning.graduationproject.data.network.model.NetworkNutritionAnalysisModel
+import javax.inject.Inject
 
-class NetworkRepositoryImpl(
+class CloudRepositoryImpl @Inject constructor(
     private val retrofitService: RetrofitService
-) : NetworkRepository {
+) : CloudRepository {
 
     override suspend fun get(text: String): FoodApiDTO {
         return retrofitService.getNetworkData(

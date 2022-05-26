@@ -3,13 +3,13 @@ package ru.edamamlearning.graduationproject.ui.search
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.edamamlearning.graduationproject.core.BaseViewModel
-import ru.edamamlearning.graduationproject.domain.GetFoodUseCase
+import ru.edamamlearning.graduationproject.data.repository.DomainRepository
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import timber.log.Timber
 import javax.inject.Inject
 
 class SearchViewModel @Inject constructor(
-    private val getFoodUseCase: GetFoodUseCase
+    private var foodRepository: DomainRepository
 ) : BaseViewModel() {
 
     private val _food = MutableLiveData<List<FoodDomainModel>>()
@@ -17,7 +17,7 @@ class SearchViewModel @Inject constructor(
 
     fun getFood(food: String) {
         tryLaunch {
-            _food.value = getFoodUseCase.execute(food)
+            _food.value = foodRepository.getFoodModel(food)
         }.catch { throwable ->
             Timber.e(throwable.message)
         }.start()

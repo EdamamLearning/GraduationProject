@@ -1,9 +1,9 @@
-package ru.edamamlearning.graduationproject.data
+package ru.edamamlearning.graduationproject.domain.cloud
 
 import ru.edamamlearning.graduationproject.data.network.model.FoodApiDTO
 import ru.edamamlearning.graduationproject.data.network.model.NetworkNutritionAnalysisModel
 
-interface NetworkRepository {
+interface CloudRepository {
 
     suspend fun get(text: String): FoodApiDTO
 

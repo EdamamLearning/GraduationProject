@@ -12,6 +12,6 @@ interface CoreBinder {
     @Binds
     @Singleton
     fun provideCoroutineContextProvider(
-        impl: CoroutineContextProviderImpl,
+        impl: CoroutineContextProviderImpl
     ): CoroutineContextProvider
 }

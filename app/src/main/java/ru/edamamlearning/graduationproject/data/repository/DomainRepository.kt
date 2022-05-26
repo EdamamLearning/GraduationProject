@@ -1,4 +1,4 @@
-package ru.edamamlearning.graduationproject.domain
+package ru.edamamlearning.graduationproject.data.repository
 
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 

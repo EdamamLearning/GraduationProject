@@ -1,13 +1,13 @@
 package ru.edamamlearning.graduationproject.data.network
 
-import ru.edamamlearning.graduationproject.data.NetworkRepository
 import ru.edamamlearning.graduationproject.data.network.model.FoodApiDTO
 import ru.edamamlearning.graduationproject.data.network.model.NetworkNutritionAnalysisModel
 import ru.edamamlearning.graduationproject.data.network.model.foodapidtoinnerclasses.FoodDTO
 import ru.edamamlearning.graduationproject.data.network.model.foodapidtoinnerclasses.HintDTO
 import ru.edamamlearning.graduationproject.data.network.model.foodapidtoinnerclasses.NutrientsDTO
+import ru.edamamlearning.graduationproject.domain.cloud.CloudRepository
 
-class FakeNetworkRepositoryImpl : NetworkRepository {
+class FakeNetworkRepositoryImpl : CloudRepository {
 
     override suspend fun get(text: String): FoodApiDTO {
         return fakeNetworkModel
