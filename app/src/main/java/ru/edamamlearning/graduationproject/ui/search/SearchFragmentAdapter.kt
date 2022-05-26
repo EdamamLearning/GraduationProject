@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.databinding.ItemSearchBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
-import ru.edamamlearning.graduationproject.ui.utils.roundAp
+import ru.edamamlearning.graduationproject.utils.roundAp
 
 class SearchAdapter(
     private val onItemClicked: (FoodDomainModel) -> Unit

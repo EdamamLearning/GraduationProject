@@ -1,19 +1,23 @@
 package ru.edamamlearning.graduationproject.data.repository
 
-import ru.edamamlearning.graduationproject.data.toFoodDomainModel
-import ru.edamamlearning.graduationproject.domain.cloud.CloudRepository
+import ru.edamamlearning.graduationproject.utils.toFoodDomainModel
+import ru.edamamlearning.graduationproject.domain.DomainRepository
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
-import ru.edamamlearning.graduationproject.domain.room.CacheFoodRepository
+import ru.edamamlearning.graduationproject.utils.toListHistoryFoodEntity
 import javax.inject.Inject
 
 class DomainRepositoryImpl @Inject constructor(
-    private val repository: CloudRepository,
+    private val networkRepository: NetworkRepository,
     private val localRepository: CacheFoodRepository
 ) : DomainRepository {
 
     override suspend fun getFoodModel(text: String): List<FoodDomainModel> {
-        val listFood = repository.get(text).toFoodDomainModel()
-        localRepository.insertListFood(listFood)
+        val listFood = networkRepository.get(text).toFoodDomainModel()
+        localRepository.insertListFood(listFood.toListHistoryFoodEntity())
         return listFood
+    }
+
+    override suspend fun saveSearchingHistory(list: List<FoodDomainModel>) {
+
     }
 }
