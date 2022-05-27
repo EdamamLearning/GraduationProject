@@ -7,11 +7,16 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.BaseFragment
+import ru.edamamlearning.graduationproject.core.NetworkObserver
 import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentSearchBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
@@ -19,6 +24,9 @@ import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import javax.inject.Inject
 
 class SearchFragment : BaseFragment(R.layout.fragment_search) {
+
+    @Inject
+    lateinit var networkObserver: NetworkObserver
 
     @Inject
     lateinit var vmFactory: ViewModelFactory
@@ -39,6 +47,20 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         setRecyclerView()
         binding.emptySearchLayout.isInvisible = adapter.itemCount != 0
         setQueryListener()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        lifecycleScope.launchWhenStarted {
+            networkObserver.networkIsAvailable()
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .distinctUntilChanged()
+                .collectLatest { isConnection ->
+                    if(!isConnection){
+                        findNavController().navigate(R.id.action_searchFragment_to_disconnectDialog)
+                    }
+                }
+        }
     }
 
     private fun navigate(foodDomainModel: FoodDomainModel) {

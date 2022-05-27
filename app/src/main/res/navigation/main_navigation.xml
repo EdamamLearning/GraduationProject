@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_searchFragment_to_infoFragment"
             app:destination="@id/infoFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_disconnectDialog"
+            app:destination="@id/disconnectDialog" />
     </fragment>
 
     <fragment
@@ -51,4 +54,9 @@
             android:id="@+id/action_infoFragment_to_fragment_dairy"
             app:destination="@id/infoFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/disconnectDialog"
+        android:name="ru.edamamlearning.graduationproject.ui.disconnectdialog.DisconnectDialog"
+        android:label="dialog_disconnect"
+        tools:layout="@layout/dialog_disconnect" />
 </navigation>
