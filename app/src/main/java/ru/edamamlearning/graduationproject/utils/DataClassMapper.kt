@@ -1,9 +1,9 @@
 package ru.edamamlearning.graduationproject.utils
 
-import ru.edamamlearning.graduationproject.retrofit.model.FoodApiDTO
-import ru.edamamlearning.graduationproject.retrofit.model.foodapidtoinnerclasses.NutrientsDTO
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.domain.model.fooddomainmodelinnerclasses.DomainNutrients
+import ru.edamamlearning.graduationproject.retrofit.model.FoodApiDTO
+import ru.edamamlearning.graduationproject.retrofit.model.foodapidtoinnerclasses.NutrientsDTO
 import ru.edamamlearning.graduationproject.room.entity.FavoriteFoodEntity
 import ru.edamamlearning.graduationproject.room.entity.HistoryFoodEntity
 
