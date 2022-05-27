@@ -4,13 +4,16 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.BaseFragment
 import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentInfoBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
+import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import javax.inject.Inject
 
 class InfoFragment : BaseFragment(R.layout.fragment_info) {
@@ -32,5 +35,27 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val foodId = navigationArgs.foodId
+        val observer = Observer<FoodDomainModel> {
+            it?.let { renderData(it) }
+        }
+        viewModel.food.observe(viewLifecycleOwner, observer)
+        viewModel.getFood(foodId)
+    }
+
+    private fun renderData(food: FoodDomainModel) {
+        binding.apply {
+                loadPicture(food.image)
+                textView.text = food.label
+        }
+    }
+
+    private fun loadPicture(image: String?) {
+        if (image != null) {
+            Glide.with(binding.root)
+                .load(image)
+                .error(R.drawable.food_no_photo)
+                .placeholder(R.drawable.food)
+                .into(binding.foodImage)
+        }
     }
 }
