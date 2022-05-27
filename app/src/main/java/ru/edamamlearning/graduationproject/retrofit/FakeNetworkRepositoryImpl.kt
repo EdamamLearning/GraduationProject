@@ -1,12 +1,12 @@
 package ru.edamamlearning.graduationproject.retrofit
 
-import ru.edamamlearning.graduationproject.data.repository.NetworkRepository
+import ru.edamamlearning.graduationproject.data.repository.RemoteRepository
 import ru.edamamlearning.graduationproject.retrofit.model.FoodApiDTO
 import ru.edamamlearning.graduationproject.retrofit.model.foodapidtoinnerclasses.FoodDTO
 import ru.edamamlearning.graduationproject.retrofit.model.foodapidtoinnerclasses.HintDTO
 import ru.edamamlearning.graduationproject.retrofit.model.foodapidtoinnerclasses.NutrientsDTO
 
-class FakeNetworkRepositoryImpl : NetworkRepository {
+class FakeNetworkRepositoryImpl : RemoteRepository {
 
     override suspend fun get(text: String): FoodApiDTO {
         return fakeNetworkModel

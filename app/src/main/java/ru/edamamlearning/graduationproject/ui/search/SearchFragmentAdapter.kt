@@ -12,7 +12,7 @@ import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.roundAp
 
 class SearchAdapter(
-    private val onItemClicked: (FoodDomainModel) -> Unit,
+    private val onFavouriteItemClicked: (FoodDomainModel) -> Unit,
     private val isFavorite: (FoodDomainModel) -> Boolean,
     private val favouriteClickHandler: (FoodDomainModel) -> Boolean,
 ) : ListAdapter<FoodDomainModel, SearchAdapter.SearchViewHolder>(DiffCallback) {
@@ -30,7 +30,7 @@ class SearchAdapter(
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val item = getItem(position)
         holder.itemView.setOnClickListener {
-            onItemClicked(item)
+            onFavouriteItemClicked(item)
         }
         holder.bind(item)
     }

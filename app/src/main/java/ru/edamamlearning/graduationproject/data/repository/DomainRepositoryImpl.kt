@@ -11,12 +11,12 @@ import ru.edamamlearning.graduationproject.utils.toListHistoryFoodEntity
 import javax.inject.Inject
 
 class DomainRepositoryImpl @Inject constructor(
-    private val networkRepository: NetworkRepository,
+    private val remoteRepository: RemoteRepository,
     private val cacheFoodRepository: CacheFoodRepository
 ) : DomainRepository {
 
     override suspend fun getFoodModel(text: String): List<FoodDomainModel> {
-        val listFood = networkRepository.get(text).toFoodDomainModel()
+        val listFood = remoteRepository.get(text).toFoodDomainModel()
         cacheFoodRepository.saveSearchedFood(listFood.toListHistoryFoodEntity())
         return listFood
     }

@@ -28,7 +28,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
     private val binding: FragmentSearchBinding by viewBinding()
     private val adapter by lazy {
         SearchAdapter(
-            onItemClicked = this::navigate,
+            onFavouriteItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
             favouriteClickHandler = viewModel::favouriteFoodClickHandler,
         )

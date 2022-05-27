@@ -4,8 +4,8 @@ import dagger.Binds
 import dagger.Module
 import ru.edamamlearning.graduationproject.domain.DomainRepository
 import ru.edamamlearning.graduationproject.data.repository.DomainRepositoryImpl
-import ru.edamamlearning.graduationproject.data.repository.NetworkRepository
-import ru.edamamlearning.graduationproject.retrofit.NetworkRepositoryImpl
+import ru.edamamlearning.graduationproject.data.repository.RemoteRepository
+import ru.edamamlearning.graduationproject.retrofit.RemoteRepositoryImpl
 import ru.edamamlearning.graduationproject.data.repository.CacheFoodRepository
 import ru.edamamlearning.graduationproject.room.CacheFoodRepositoryImpl
 import javax.inject.Singleton
@@ -19,7 +19,7 @@ interface DataModule {
 
     @Singleton
     @Binds
-    fun bindNetworkRepository(networkRepository: NetworkRepositoryImpl): NetworkRepository
+    fun bindNetworkRepository(networkRepository: RemoteRepositoryImpl): RemoteRepository
 
     @Singleton
     @Binds
