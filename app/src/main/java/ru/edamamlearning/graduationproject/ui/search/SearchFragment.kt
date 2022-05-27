@@ -21,6 +21,7 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentSearchBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
+import ru.edamamlearning.graduationproject.utils.saveNavigate
 import javax.inject.Inject
 
 class SearchFragment : BaseFragment(R.layout.fragment_search) {
@@ -56,8 +57,8 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .distinctUntilChanged()
                 .collectLatest { isConnection ->
-                    if(!isConnection){
-                        findNavController().navigate(R.id.action_searchFragment_to_disconnectDialog)
+                    if (!isConnection) {
+                        findNavController().saveNavigate(SearchFragmentDirections.actionSearchFragmentToDisconnectDialog())
                     }
                 }
         }
