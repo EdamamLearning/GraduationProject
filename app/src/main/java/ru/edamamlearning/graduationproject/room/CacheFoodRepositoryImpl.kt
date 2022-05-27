@@ -29,6 +29,10 @@ class CacheFoodRepositoryImpl @Inject constructor(
         return database.historyFoodDao().getAll()
     }
 
+    override suspend fun getFoodModelById(foodId: String): HistoryFoodEntity {
+        return database.historyFoodDao().getDataByFoodId(foodId)
+    }
+
     override fun getAllFavoriteFoods(): Flow<List<FavoriteFoodEntity>> {
         return database.favoriteFoodDao().getAll()
     }

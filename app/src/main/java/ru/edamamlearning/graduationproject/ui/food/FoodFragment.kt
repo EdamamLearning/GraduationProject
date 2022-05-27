@@ -42,15 +42,6 @@ class FoodFragment : BaseFragment(R.layout.fragment_food) {
             adapter.submitList(it)
         }
         viewModel.food.observe(viewLifecycleOwner, observer)
-
-       /* lifecycleScope.launchWhenStarted {
-            viewModel.getFood("")
-            viewModel.food.observe(viewLifecycleOwner) { items ->
-                items.let {
-                    adapter.submitList(it)
-                }
-            }
-        }*/
     }
 
     override fun onStart() {

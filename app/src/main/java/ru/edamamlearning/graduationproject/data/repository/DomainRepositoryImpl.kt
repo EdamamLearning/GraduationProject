@@ -18,6 +18,10 @@ class DomainRepositoryImpl @Inject constructor(
         return listFood
     }
 
+    override suspend fun getFoodModelById(foodId: String): FoodDomainModel {
+        return cacheFoodRepository.getFoodModelById(foodId).toFoodDomainModel()
+    }
+
     override suspend fun saveFavoriteFood(foodDomainModel: FoodDomainModel) {
         cacheFoodRepository.saveFavoriteFood(foodDomainModel.toFavoriteFoodEntity())
     }
