@@ -68,7 +68,8 @@
         android:paddingBottom="@dimen/padding"
         android:requiresFadingEdge="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:listitem="@layout/item_search"/>
 
     <LinearLayout
         android:id="@+id/empty_search_layout"
