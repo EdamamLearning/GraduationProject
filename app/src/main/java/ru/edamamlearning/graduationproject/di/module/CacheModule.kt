@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
-import ru.edamamlearning.graduationproject.domain.room.FoodDataBase
+import ru.edamamlearning.graduationproject.room.FoodDataBase
 import javax.inject.Singleton
 
 @Module

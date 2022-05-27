@@ -1,19 +1,35 @@
 package ru.edamamlearning.graduationproject.data.repository
 
-import ru.edamamlearning.graduationproject.data.toFoodDomainModel
-import ru.edamamlearning.graduationproject.domain.cloud.CloudRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import ru.edamamlearning.graduationproject.domain.DomainRepository
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
-import ru.edamamlearning.graduationproject.domain.room.CacheFoodRepository
+import ru.edamamlearning.graduationproject.utils.toFavoriteFoodEntity
+import ru.edamamlearning.graduationproject.utils.toFoodDomainModel
+import ru.edamamlearning.graduationproject.utils.toListFoodDomainModel
+import ru.edamamlearning.graduationproject.utils.toListHistoryFoodEntity
 import javax.inject.Inject
 
 class DomainRepositoryImpl @Inject constructor(
-    private val repository: CloudRepository,
-    private val localRepository: CacheFoodRepository
+    private val remoteRepository: RemoteRepository,
+    private val cacheFoodRepository: CacheFoodRepository
 ) : DomainRepository {
 
     override suspend fun getFoodModel(text: String): List<FoodDomainModel> {
-        val listFood = repository.get(text).toFoodDomainModel()
-        localRepository.insertListFood(listFood)
+        val listFood = remoteRepository.get(text).toFoodDomainModel()
+        cacheFoodRepository.saveSearchedFood(listFood.toListHistoryFoodEntity())
         return listFood
+    }
+
+    override suspend fun saveFavoriteFood(foodDomainModel: FoodDomainModel) {
+        cacheFoodRepository.saveFavoriteFood(foodDomainModel.toFavoriteFoodEntity())
+    }
+
+    override suspend fun deleteFavoriteFood(foodDomainModel: FoodDomainModel) {
+        cacheFoodRepository.deleteFavoriteFood(foodDomainModel.toFavoriteFoodEntity())
+    }
+
+    override fun getAllFavoriteFoods(): Flow<List<FoodDomainModel>> {
+        return cacheFoodRepository.getAllFavoriteFoods().map { it.toListFoodDomainModel() }
     }
 }
