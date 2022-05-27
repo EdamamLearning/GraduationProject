@@ -4,10 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import ru.edamamlearning.graduationproject.domain.DomainRepository
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
-import ru.edamamlearning.graduationproject.utils.toFavoriteFoodEntity
-import ru.edamamlearning.graduationproject.utils.toFoodDomainModel
-import ru.edamamlearning.graduationproject.utils.toListFoodDomainModel
-import ru.edamamlearning.graduationproject.utils.toListHistoryFoodEntity
+import ru.edamamlearning.graduationproject.utils.*
 import javax.inject.Inject
 
 class DomainRepositoryImpl @Inject constructor(
@@ -27,6 +24,10 @@ class DomainRepositoryImpl @Inject constructor(
 
     override suspend fun deleteFavoriteFood(foodDomainModel: FoodDomainModel) {
         cacheFoodRepository.deleteFavoriteFood(foodDomainModel.toFavoriteFoodEntity())
+    }
+
+    override suspend fun getAllHistoryFoods(): List<FoodDomainModel> {
+        return cacheFoodRepository.getAllHistoryFoods().map { it.toFoodDomainModel() }
     }
 
     override fun getAllFavoriteFoods(): Flow<List<FoodDomainModel>> {

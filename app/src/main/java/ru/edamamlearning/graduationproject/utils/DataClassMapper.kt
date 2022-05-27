@@ -81,3 +81,26 @@ fun FavoriteFoodEntity.toFoodDomainModel() = FoodDomainModel(
         protein = this.protein,
     )
 )
+
+fun HistoryFoodEntity.toFoodDomainModel() = FoodDomainModel(
+    foodId = this.foodId,
+    category = this.category,
+    categoryLabel = this.categoryLabel,
+    label = this.label,
+    image = this.image,
+    brand = this.brand,
+    foodContentsLabel = this.foodContentsLabel,
+    servingsPerContainer = this.servingsPerContainer,
+    nutrients = DomainNutrients(
+        carbohydrate = "00",
+        energyKCal = "00",
+        fat = "00",
+        fiber = "00",
+        protein = "00"
+//            carbohydrate = this.carbohydrate,
+//            energyKCal = this.energyKCal,
+//            fat = this.fat,
+//            fiber = this.fiber,
+//            protein = this.protein,
+    )
+)

@@ -24,11 +24,4 @@ interface DataModule {
     @Singleton
     @Binds
     fun bindCacheRepository(cacheFoodRepository: CacheFoodRepositoryImpl): CacheFoodRepository
-//**************** Временно поставил фейк репозиторий для работы над UI, позже вернём обратно ******
-    /*@Provides
-    fun provideNetworkRepository(
-        retrofitService: RetrofitService
-    ): NetworkRepository {
-        return FakeNetworkRepositoryImpl()
-    }*/
 }
