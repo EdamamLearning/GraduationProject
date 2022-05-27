@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.BaseFragment
 import ru.edamamlearning.graduationproject.core.viewBinding
@@ -22,7 +23,15 @@ class FoodFragment : BaseFragment(R.layout.fragment_food) {
     private val binding: FragmentFoodBinding by viewBinding()
 
     private val adapter by lazy {
-        FoodFragmentAdapter()
+        FoodFragmentAdapter(
+            onHistoryItemClicked = this::navigate
+        )
+    }
+
+    private fun navigate(foodDomainModel: FoodDomainModel) {
+        val action = FoodFragmentDirections
+            .actionHomeFragmentToInfoFragment2(foodDomainModel.foodId)
+        findNavController().navigate(action)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,7 +39,7 @@ class FoodFragment : BaseFragment(R.layout.fragment_food) {
         binding.sfRv.adapter = adapter
 
         val observer = Observer<List<FoodDomainModel>> {
-            adapter.setData(it)
+            adapter.submitList(it)
         }
         viewModel.food.observe(viewLifecycleOwner, observer)
 

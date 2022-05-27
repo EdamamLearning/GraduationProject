@@ -7,17 +7,17 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.edamamlearning.graduationproject.R
-import ru.edamamlearning.graduationproject.databinding.ItemSearchBinding
+import ru.edamamlearning.graduationproject.databinding.ItemHistoryBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 
-class FoodFragmentAdapter :
+class FoodFragmentAdapter(
+    private val onHistoryItemClicked: (FoodDomainModel) -> Unit
+) :
     ListAdapter<FoodDomainModel, FoodFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
-
-    private var domainData: List<FoodDomainModel> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StartFragmentViewHolder {
         return StartFragmentViewHolder(
-            ItemSearchBinding.inflate(
+            ItemHistoryBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -26,27 +26,27 @@ class FoodFragmentAdapter :
     }
 
     override fun onBindViewHolder(holder: StartFragmentViewHolder, position: Int) {
-        holder.show(domainData[position])
+        val item = getItem(position)
+        holder.itemView.setOnClickListener {
+            onHistoryItemClicked(item)
+        }
+        holder.show(item)
     }
 
-    override fun getItemCount(): Int {
-        return domainData.size
-    }
-
-    inner class StartFragmentViewHolder(private val vb: ItemSearchBinding) :
+    inner class StartFragmentViewHolder(private val vb: ItemHistoryBinding) :
         RecyclerView.ViewHolder(vb.root) {
 
         fun show(model: FoodDomainModel) {
             vb.label.text = model.label
             vb.category.text = model.category
-            vb.proteinCount.text = model.nutrients.protein
-            vb.fatsCount.text = model.nutrients.fat
-            vb.carbohydratesCount.text = model.nutrients.carbohydrate
+//            vb.proteinCount.text = model.nutrients.protein
+//            vb.fatsCount.text = model.nutrients.fat
+//            vb.carbohydratesCount.text = model.nutrients.carbohydrate
             loadPicture(model.image, vb)
         }
     }
 
-    private fun loadPicture(image: String?, binding: ItemSearchBinding) {
+    private fun loadPicture(image: String?, binding: ItemHistoryBinding) {
         if (image != null) {
             Glide.with(binding.root)
                 .load(image)
@@ -54,11 +54,6 @@ class FoodFragmentAdapter :
                 .placeholder(R.drawable.food)
                 .into(binding.foodImage)
         }
-    }
-
-    fun setData(data: List<FoodDomainModel>) {
-        domainData = data
-        notifyDataSetChanged()
     }
 
     companion object ItemFsRvCallback : DiffUtil.ItemCallback<FoodDomainModel>() {
