@@ -6,7 +6,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.edamamlearning.graduationproject.data.network.RetrofitService
+import ru.edamamlearning.graduationproject.retrofit.RetrofitService
 import javax.inject.Singleton
 
 private const val BASE_URL = "https://api.edamam.com/"

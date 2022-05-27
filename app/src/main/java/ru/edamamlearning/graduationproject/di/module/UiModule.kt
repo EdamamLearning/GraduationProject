@@ -3,6 +3,7 @@ package ru.edamamlearning.graduationproject.di.module
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import ru.edamamlearning.graduationproject.ui.MainActivity
+import ru.edamamlearning.graduationproject.ui.favorite.FavoriteFragment
 import ru.edamamlearning.graduationproject.ui.food.FoodFragment
 import ru.edamamlearning.graduationproject.ui.info.InfoFragment
 import ru.edamamlearning.graduationproject.ui.search.SearchFragment
@@ -21,4 +22,7 @@ interface UiModule {
 
     @ContributesAndroidInjector
     fun bindInfoFragment(): InfoFragment
+
+    @ContributesAndroidInjector
+    fun bindFavoriteFragment(): FavoriteFragment
 }
