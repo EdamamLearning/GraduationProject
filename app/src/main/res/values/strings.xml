@@ -22,5 +22,6 @@
     <string name="enter_search_word">Введите продукт</string>
     <string name="info">Info</string>
     <string name="error">Что-то пошло не так. Мы уже работаем над исправлением ошибки.</string>
+    <string name="network_is_not_available">Network is not available</string>
 
 </resources>
