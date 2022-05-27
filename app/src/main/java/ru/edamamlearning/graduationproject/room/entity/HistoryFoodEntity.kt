@@ -29,5 +29,15 @@ data class HistoryFoodEntity(
     @field:ColumnInfo(name = "foodContentsLabel")
     val foodContentsLabel: String,
     @field:ColumnInfo(name = "servingsPerContainer")
-    val servingsPerContainer: String
+    val servingsPerContainer: String,
+    @field:ColumnInfo(name = "carbohydrate")
+    val carbohydrate: String,
+    @field:ColumnInfo(name = "energyKCal")
+    val energyKCal: String,
+    @field:ColumnInfo(name = "fat")
+    val fat: String,
+    @field:ColumnInfo(name = "fiber")
+    val fiber: String,
+    @field:ColumnInfo(name = "protein")
+    val protein: String,
 )

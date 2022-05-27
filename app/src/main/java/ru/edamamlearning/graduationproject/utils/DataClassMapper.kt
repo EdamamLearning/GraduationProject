@@ -37,7 +37,12 @@ fun FoodDomainModel.toHistoryFoodEntity() = HistoryFoodEntity(
     image = this.image,
     brand = this.brand,
     foodContentsLabel = this.foodContentsLabel,
-    servingsPerContainer = this.servingsPerContainer
+    servingsPerContainer = this.servingsPerContainer,
+    carbohydrate = this.nutrients.carbohydrate,
+    energyKCal = this.nutrients.energyKCal,
+    fat = this.nutrients.fat,
+    fiber = this.nutrients.fiber,
+    protein = this.nutrients.protein,
 )
 
 fun List<FoodDomainModel>.toListHistoryFoodEntity() = this.map {
