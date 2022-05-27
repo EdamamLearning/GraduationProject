@@ -12,5 +12,6 @@ interface CacheFoodRepository {
     suspend fun saveSearchedFood(food: List<HistoryFoodEntity>)
     suspend fun saveFavoriteFood(food: FavoriteFoodEntity)
     suspend fun deleteFavoriteFood(food: FavoriteFoodEntity)
+    suspend fun getAllHistoryFoods(): List<HistoryFoodEntity>
     fun getAllFavoriteFoods(): Flow<List<FavoriteFoodEntity>>
 }
