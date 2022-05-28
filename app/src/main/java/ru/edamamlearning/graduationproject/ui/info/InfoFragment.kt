@@ -44,8 +44,31 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
 
     private fun renderData(food: FoodDomainModel) {
         binding.apply {
-                loadPicture(food.image)
-                textView.text = food.label
+            loadPicture(food.image)
+            textView.text = food.label
+            categoryLabel.text = food.categoryLabel
+            category.text = food.category
+            if (food.brand != NULL) {
+                brand.text = food.brand
+                brand.visibility = View.VISIBLE
+                brandLabel.visibility = View.VISIBLE
+            }
+            if (food.foodContentsLabel != NULL) {
+                foodContentsLabel.text = food.foodContentsLabel
+                foodContentsLabel.visibility = View.VISIBLE
+                foodContentsLabelLabel.visibility = View.VISIBLE
+            }
+            if (food.servingsPerContainer != NULL) {
+                servingPerContainer.text = food.servingsPerContainer
+                servingPerContainer.visibility = View.VISIBLE
+                servingPerContainerLabel.visibility = View.VISIBLE
+                scrollView.visibility = View.VISIBLE
+            }
+            carbohydrate.text = food.nutrients.carbohydrate
+            energyKCal.text = food.nutrients.energyKCal
+            fat.text = food.nutrients.fat
+            fiber.text = food.nutrients.fiber
+            protein.text = food.nutrients.protein
         }
     }
 
@@ -57,5 +80,9 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
                 .placeholder(R.drawable.food)
                 .into(binding.foodImage)
         }
+    }
+
+    companion object {
+        const val NULL = ""
     }
 }

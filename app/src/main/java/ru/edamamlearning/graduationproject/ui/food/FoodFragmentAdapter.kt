@@ -39,9 +39,6 @@ class FoodFragmentAdapter(
         fun show(model: FoodDomainModel) {
             vb.label.text = model.label
             vb.category.text = model.category
-//            vb.proteinCount.text = model.nutrients.protein
-//            vb.fatsCount.text = model.nutrients.fat
-//            vb.carbohydratesCount.text = model.nutrients.carbohydrate
             loadPicture(model.image, vb)
         }
     }

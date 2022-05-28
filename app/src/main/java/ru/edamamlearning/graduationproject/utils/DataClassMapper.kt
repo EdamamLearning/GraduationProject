@@ -87,8 +87,6 @@ fun FavoriteFoodEntity.toFoodDomainModel() = FoodDomainModel(
     )
 )
 
-const val NULL = "00"
-
 fun HistoryFoodEntity.toFoodDomainModel() = FoodDomainModel(
     foodId = this.foodId,
     category = this.category,
@@ -99,15 +97,10 @@ fun HistoryFoodEntity.toFoodDomainModel() = FoodDomainModel(
     foodContentsLabel = this.foodContentsLabel,
     servingsPerContainer = this.servingsPerContainer,
     nutrients = DomainNutrients(
-        carbohydrate = NULL,
-        energyKCal = NULL,
-        fat = NULL,
-        fiber = NULL,
-        protein = NULL
-//            carbohydrate = this.carbohydrate,
-//            energyKCal = this.energyKCal,
-//            fat = this.fat,
-//            fiber = this.fiber,
-//            protein = this.protein,
+            carbohydrate = this.carbohydrate,
+            energyKCal = this.energyKCal,
+            fat = this.fat,
+            fiber = this.fiber,
+            protein = this.protein,
     )
 )
