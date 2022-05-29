@@ -1,15 +1,16 @@
 package ru.edamamlearning.graduationproject.ui.food
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import ru.edamamlearning.graduationproject.R
-import ru.edamamlearning.graduationproject.application.App
 import ru.edamamlearning.graduationproject.core.BaseFragment
 import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentFoodBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
+import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import javax.inject.Inject
 
 class FoodFragment : BaseFragment(R.layout.fragment_food) {
@@ -22,25 +23,29 @@ class FoodFragment : BaseFragment(R.layout.fragment_food) {
     private val binding: FragmentFoodBinding by viewBinding()
 
     private val adapter by lazy {
-        FoodFragmentAdapter()
+        FoodFragmentAdapter(
+            onHistoryItemClicked = this::navigate
+        )
     }
 
-    override fun onAttach(context: Context) {
-        App.instance.appComponent.inject(this)
-        super.onAttach(context)
+    private fun navigate(foodDomainModel: FoodDomainModel) {
+        val action = FoodFragmentDirections
+            .actionHomeFragmentToInfoFragment2(foodDomainModel.foodId)
+        findNavController().navigate(action)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.sfRv.adapter = adapter
 
-       /* lifecycleScope.launchWhenStarted {
-            viewModel.getFood("")
-            viewModel.food.observe(viewLifecycleOwner) { items ->
-                items.let {
-                    adapter.submitList(it)
-                }
-            }
-        }*/
+        val observer = Observer<List<FoodDomainModel>> {
+            adapter.submitList(it)
+        }
+        viewModel.food.observe(viewLifecycleOwner, observer)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getFood()
     }
 }

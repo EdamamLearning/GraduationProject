@@ -1,4 +1,4 @@
-package ru.edamamlearning.graduationproject.ui.search
+package ru.edamamlearning.graduationproject.ui.favorite
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,14 +11,13 @@ import ru.edamamlearning.graduationproject.databinding.ItemSearchBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.roundAp
 
-class SearchAdapter(
-    private val onFavouriteItemClicked: (FoodDomainModel) -> Unit,
+class FavoriteFragmentAdapter(
     private val isFavorite: (FoodDomainModel) -> Boolean,
     private val favouriteClickHandler: (FoodDomainModel) -> Boolean,
-) : ListAdapter<FoodDomainModel, SearchAdapter.SearchViewHolder>(DiffCallback) {
+) : ListAdapter<FoodDomainModel, FavoriteFragmentAdapter.FavoriteViewHolder>(DiffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
-        return SearchViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
+        return FavoriteViewHolder(
             ItemSearchBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -27,11 +26,8 @@ class SearchAdapter(
         )
     }
 
-    override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
         val item = getItem(position)
-        holder.itemView.setOnClickListener {
-            onFavouriteItemClicked(item)
-        }
         holder.bind(item)
     }
 
@@ -41,12 +37,15 @@ class SearchAdapter(
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
+        override fun areContentsTheSame(
+            oldItem: FoodDomainModel,
+            newItem: FoodDomainModel
+        ): Boolean {
             return oldItem.foodId == newItem.foodId
         }
     }
 
-    inner class SearchViewHolder(private val binding: ItemSearchBinding) :
+    inner class FavoriteViewHolder(private val binding: ItemSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(model: FoodDomainModel) {
@@ -57,7 +56,7 @@ class SearchAdapter(
             binding.carbohydratesCount.text = roundAp(model.nutrients.carbohydrate)
             loadPicture(model.image, binding)
             binding.favoriteButton.isChecked = isFavorite(model)
-            binding.favoriteButton.setOnClickListener{
+            binding.favoriteButton.setOnClickListener {
                 binding.favoriteButton.isChecked = favouriteClickHandler(model)
             }
         }

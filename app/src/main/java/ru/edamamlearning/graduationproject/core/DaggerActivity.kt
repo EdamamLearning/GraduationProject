@@ -1,16 +1,16 @@
 package ru.edamamlearning.graduationproject.core
 
-import android.content.Context
+import android.os.Bundle
 import androidx.annotation.LayoutRes
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
+import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
-import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-abstract class BaseFragment(@LayoutRes layoutRes: Int) :
-    Fragment(layoutRes),
+abstract class DaggerActivity(@LayoutRes contentLayoutId: Int) :
+    AppCompatActivity(contentLayoutId),
     HasAndroidInjector {
 
     @Inject
@@ -20,8 +20,8 @@ abstract class BaseFragment(@LayoutRes layoutRes: Int) :
         return androidInjector
     }
 
-    override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
+        super.onCreate(savedInstanceState)
     }
 }

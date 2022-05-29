@@ -38,29 +38,33 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/foodImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/food" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/layout_margin_small"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageLayout">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ingredients"
+                android:text="Carbohydrate"
                 android:textColor="@color/black"
                 android:textSize="@dimen/standart_text_size"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/carbohydrate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:text="1 cup sugar"
+                android:text="00"
                 android:textColor="@color/black"
                 android:textSize="@dimen/standart_text_size" />
 
@@ -68,7 +72,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:text="6 egg yolks"
+                android:text="EnergyKCal"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/energyKCal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="00"
                 android:textColor="@color/black"
                 android:textSize="@dimen/standart_text_size" />
 
@@ -76,7 +90,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:text="3 cups milk"
+                android:text="Fat"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="00"
                 android:textColor="@color/black"
                 android:textSize="@dimen/standart_text_size" />
 
@@ -84,7 +108,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:text="1 cup heavy cream"
+                android:text="Fiber"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/fiber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="00"
                 android:textColor="@color/black"
                 android:textSize="@dimen/standart_text_size" />
 
@@ -92,104 +126,166 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:text="oil olive"
+                android:text="Protein"
                 android:textColor="@color/black"
-                android:textSize="@dimen/standart_text_size" />
+                android:textSize="@dimen/standart_text_size"
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/protein"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lines="1"
-                android:text="1 pound pasta"
+                android:text="00"
                 android:textColor="@color/black"
                 android:textSize="@dimen/standart_text_size" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:text="1 clove of garlic"
-                android:textColor="@color/black"
-                android:textSize="@dimen/standart_text_size" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:text="1/2 cup mushrooms"
-                android:textColor="@color/black"
-                android:textSize="@dimen/standart_text_size" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:text="1/2 cup asparagus"
-                android:textColor="@color/black"
-                android:textSize="@dimen/standart_text_size" />
-
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/cal_serv_daily_layout"
-        android:layout_width="match_parent"
+        android:id="@+id/left_info_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/layout_margin"
-        android:orientation="horizontal"
+        android:layout_marginVertical="20dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageLayout">
+        app:layout_constraintTop_toBottomOf="@id/imageLayout">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/layout_margin_small"
-            android:layout_weight="1"
-            android:background="@drawable/layout_bg"
-            android:padding="@dimen/paddingTV"
-            android:text="513\ncal/serv"
-            android:textColor="@color/power_green"
-            android:textSize="@dimen/info_text_size" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category label"
+            android:textColor="@color/black"
+            android:textSize="@dimen/standart_text_size"
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/layout_margin_small"
-            android:layout_weight="1"
-            android:background="@drawable/layout_bg"
-            android:padding="@dimen/paddingTV"
-            android:text="25%\ndaily value"
-            android:textColor="@color/power_green"
-            android:textSize="@dimen/info_text_size" />
+            android:id="@+id/category_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/standart_text_size" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/layout_margin_small"
-            android:layout_weight="1"
-            android:background="@drawable/layout_bg"
-            android:padding="@dimen/paddingTV"
-            android:text="4\nservings"
-            android:textColor="@color/power_green"
-            android:textSize="@dimen/info_text_size" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="Category"
+            android:textColor="@color/black"
+            android:textSize="@dimen/standart_text_size"
+            android:textStyle="bold" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/layout_margin_small"
-            android:layout_weight="1.1"
-            android:src="@drawable/favorite_button_selector" />
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/standart_text_size" />
+
+        <TextView
+            android:id="@+id/brand_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="Brand"
+            android:textColor="@color/black"
+            android:textSize="@dimen/standart_text_size"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/standart_text_size"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/serving_per_container_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="Serving per container"
+            android:textColor="@color/black"
+            android:textSize="@dimen/standart_text_size"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/serving_per_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/standart_text_size"
+            android:visibility="gone" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/infoLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/layout_margin"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cal_serv_daily_layout"
-        tools:listitem="@layout/item_info_rv">
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    </androidx.recyclerview.widget.RecyclerView>
+    <LinearLayout
+        android:id="@+id/right_info_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@id/imageLayout">
+
+        <TextView
+            android:id="@+id/food_contents_label_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="Food contents label"
+            android:textColor="@color/black"
+            android:textSize="@dimen/standart_text_size"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingHorizontal="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/favorite_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@id/right_info_layout">
+
+        <TextView
+            android:id="@+id/food_contents_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00"
+            android:textColor="@color/black"
+            android:textSize="@dimen/standart_text_size"
+            android:visibility="gone" />
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/favorite_button"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="80dp"
+        android:src="@drawable/favorite_button_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

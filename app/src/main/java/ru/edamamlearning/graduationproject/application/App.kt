@@ -1,26 +1,17 @@
 package ru.edamamlearning.graduationproject.application
 
-import android.app.Application
-import ru.edamamlearning.graduationproject.di.module.AppModule
-import ru.edamamlearning.graduationproject.di.component.AppComponent
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 import ru.edamamlearning.graduationproject.di.component.DaggerAppComponent
 
-class App: Application() {
-
-    companion object {
-        private var _instance: App? = null
-        val instance
-            get() = _instance!!
-    }
-
-    override fun onCreate() {
-        super.onCreate()
-        _instance = this
-    }
-
-    val appComponent: AppComponent by lazy {
-        DaggerAppComponent.builder()
-            .appModule(AppModule(this))
+class App : DaggerApplication() {
+    /**
+     * Dagger скомпилировал нам наш компонент Dagger+ApplicationComponent,
+     * который создает граф зависимостей(cicerone, router, schedulers).
+     */
+    override fun applicationInjector(): AndroidInjector<App> =
+        DaggerAppComponent
+            .builder()
+            .withContext(applicationContext)
             .build()
-    }
 }

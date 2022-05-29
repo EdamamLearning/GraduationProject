@@ -90,7 +90,7 @@
         android:requiresFadingEdge="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:ignore="MissingConstraints"
-        tools:listitem="@layout/item_search" />
+        tools:listitem="@layout/item_history" />
 
     <LinearLayout
         android:id="@+id/no_internet_layout"

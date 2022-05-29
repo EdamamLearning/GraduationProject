@@ -1,25 +1,27 @@
 package ru.edamamlearning.graduationproject.di.module
 
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import ru.edamamlearning.graduationproject.data.NetworkRepository
-import ru.edamamlearning.graduationproject.data.network.NetworkRepositoryImpl
-import ru.edamamlearning.graduationproject.data.network.RetrofitService
+import ru.edamamlearning.graduationproject.domain.DomainRepository
+import ru.edamamlearning.graduationproject.data.repository.DomainRepositoryImpl
+import ru.edamamlearning.graduationproject.data.repository.RemoteRepository
+import ru.edamamlearning.graduationproject.retrofit.RemoteRepositoryImpl
+import ru.edamamlearning.graduationproject.data.repository.CacheFoodRepository
+import ru.edamamlearning.graduationproject.room.CacheFoodRepositoryImpl
+import javax.inject.Singleton
 
 @Module
-class DataModule {
+interface DataModule {
 
-    @Provides
-    fun provideNetworkRepository(
-        retrofitService: RetrofitService
-    ): NetworkRepository {
-        return NetworkRepositoryImpl(retrofitService)
-    }
-//**************** Временно поставил фейк репозиторий для работы над UI, позже вернём обратно ******
-    /*@Provides
-    fun provideNetworkRepository(
-        retrofitService: RetrofitService
-    ): NetworkRepository {
-        return FakeNetworkRepositoryImpl()
-    }*/
+    @Singleton
+    @Binds
+    fun bindDomainRepository(domainRepository: DomainRepositoryImpl): DomainRepository
+
+    @Singleton
+    @Binds
+    fun bindNetworkRepository(networkRepository: RemoteRepositoryImpl): RemoteRepository
+
+    @Singleton
+    @Binds
+    fun bindCacheRepository(cacheFoodRepository: CacheFoodRepositoryImpl): CacheFoodRepository
 }
