@@ -5,8 +5,6 @@
     <string name="search">Search</string>
     <string name="diary">Diary</string>
     <string name="food_facts">Food Facts</string>
-    <string name="all_types">all_types</string>
-    <string name="meat">meat</string>
     <string name="check_internet_connection">check internet connection</string>
     <string name="ingredients">ingredients:</string>
     <string name="search_textview_default_message">Write a keyword in the search bar</string>
@@ -23,5 +21,16 @@
     <string name="info">Info</string>
     <string name="error">Что-то пошло не так. Мы уже работаем над исправлением ошибки.</string>
     <string name="network_is_not_available">Network is not available</string>
+
+    //products label
+    <string name="eggs">Eggs</string>
+    <string name="fat">Fat</string>
+    <string name="fish">Fish</string>
+    <string name="chicken">Chicken</string>
+    <string name="spicy">Spicy</string>
+    <string name="sweet">Sweet</string>
+    <string name="milk">Milk</string>
+    <string name="all_types">All types</string>
+    <string name="meat">Meat</string>
 
 </resources>

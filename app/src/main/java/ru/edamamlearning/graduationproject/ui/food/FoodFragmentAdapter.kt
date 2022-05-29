@@ -12,8 +12,7 @@ import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 
 class FoodFragmentAdapter(
     private val onHistoryItemClicked: (FoodDomainModel) -> Unit
-) :
-    ListAdapter<FoodDomainModel, FoodFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
+) : ListAdapter<FoodDomainModel, FoodFragmentAdapter.StartFragmentViewHolder>(ItemFsRvCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StartFragmentViewHolder {
         return StartFragmentViewHolder(
@@ -59,7 +58,7 @@ class FoodFragmentAdapter(
     companion object ItemFsRvCallback : DiffUtil.ItemCallback<FoodDomainModel>() {
 
         override fun areItemsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
-            return oldItem == newItem
+            return oldItem.foodId == newItem.foodId
         }
 
         override fun areContentsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
