@@ -14,6 +14,7 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentInfoBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
+import ru.edamamlearning.graduationproject.utils.roundAp
 import javax.inject.Inject
 
 class InfoFragment : BaseFragment(R.layout.fragment_info) {
@@ -64,11 +65,11 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
                 servingPerContainerLabel.visibility = View.VISIBLE
                 scrollView.visibility = View.VISIBLE
             }
-            carbohydrate.text = food.nutrients.carbohydrate
-            energyKCal.text = food.nutrients.energyKCal
-            fat.text = food.nutrients.fat
-            fiber.text = food.nutrients.fiber
-            protein.text = food.nutrients.protein
+            energyKCal.text = roundAp(food.nutrients.energyKCal)
+            fiber.text = roundAp(food.nutrients.fiber)
+            fat.text = roundAp(food.nutrients.fat)
+            carbohydrate.text = roundAp(food.nutrients.carbohydrate)
+            protein.text = roundAp(food.nutrients.protein)
         }
     }
 
