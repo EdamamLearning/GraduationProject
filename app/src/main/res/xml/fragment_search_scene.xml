@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:motion="http://schemas.android.com/apk/res-auto">
+    <Transition
+        motion:constraintSetEnd="@layout/fragment_search"
+        motion:constraintSetStart="@layout/fragment_search_start"
+        motion:duration="1000">
+        <OnClick motion:targetId="@id/search_btn" />
+    </Transition>
+
+</MotionScene>
+
