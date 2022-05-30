@@ -16,7 +16,7 @@
         app:titleTextAppearance="@style/TextViewToolBar" />
 
     <HorizontalScrollView
-        android:id="@+id/horizontal_chips"
+        android:id="@+id/horizontalChips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolBar"
@@ -25,62 +25,66 @@
         android:scrollbars="none">
 
         <com.google.android.material.chip.ChipGroup
-            android:id="@+id/types_chip_group"
+            android:id="@+id/chipGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/layout_margin"
-            app:checkedChip="@id/all_types_chip"
+            app:checkedChip="@id/allTypesChip"
             app:selectionRequired="true"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/all_types_chip"
+                android:id="@+id/allTypesChip"
                 style="@style/CustomChipStyle"
                 android:text="@string/all_types" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/milk"
+                style="@style/CustomChipStyle"
+                android:text="@string/milk" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/meat"
                 style="@style/CustomChipStyle"
                 android:text="@string/meat" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/eggs"
                 style="@style/CustomChipStyle"
-                android:text="vegan" />
+                android:text="@string/eggs" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/fat"
                 style="@style/CustomChipStyle"
-                android:text="fat" />
+                android:text="@string/fat" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/fish"
                 style="@style/CustomChipStyle"
-                android:text="milk" />
+                android:text="@string/fish" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chicken"
                 style="@style/CustomChipStyle"
-                android:text="fish" />
+                android:text="@string/chicken" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/spicy"
                 style="@style/CustomChipStyle"
-                android:text="chicken" />
+                android:text="@string/spicy" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/sweet"
                 style="@style/CustomChipStyle"
-                android:text="spicy" />
-
-            <com.google.android.material.chip.Chip
-                style="@style/CustomChipStyle"
-                android:text="flour" />
-
-            <com.google.android.material.chip.Chip
-                style="@style/CustomChipStyle"
-                android:text="sweet" />
+                android:text="@string/sweet" />
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sf_rv"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/horizontal_chips"
+        android:layout_below="@id/horizontalChips"
         android:layout_marginHorizontal="@dimen/horizontal_margin"
         android:layout_marginBottom="@dimen/marginBottomRV"
         android:clipToPadding="false"
@@ -110,7 +114,8 @@
             android:layout_width="@dimen/widthIV"
             android:layout_height="@dimen/heightIV"
             android:layout_gravity="center"
-            android:src="@drawable/no_internet_icon" />
+            android:src="@drawable/no_internet_icon"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -120,6 +125,5 @@
             android:text="@string/check_internet_connection"
             android:textColor="@color/title_color"
             android:textSize="@dimen/info_text_size" />
-
     </LinearLayout>
 </RelativeLayout>

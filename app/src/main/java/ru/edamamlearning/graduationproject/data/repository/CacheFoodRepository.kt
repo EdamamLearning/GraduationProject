@@ -6,9 +6,6 @@ import ru.edamamlearning.graduationproject.room.entity.HistoryFoodEntity
 
 interface CacheFoodRepository {
 
-    /**
-     * Вставить список продуктов в таблицу БД
-     */
     suspend fun saveSearchedFood(food: List<HistoryFoodEntity>)
     suspend fun saveFavoriteFood(food: FavoriteFoodEntity)
     suspend fun deleteFavoriteFood(food: FavoriteFoodEntity)
