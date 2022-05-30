@@ -11,6 +11,6 @@
         android:text="@string/network_is_not_available"
         android:layout_margin="16dp"
         android:textColor="@color/black"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"/>
+        android:textSize="@dimen/info_text_size" />
 
 </FrameLayout>
