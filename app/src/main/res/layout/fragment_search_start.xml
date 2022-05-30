@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/search"
         app:titleMarginStart="160dp"
         app:titleTextAppearance="@style/TextViewToolBar" />
 
@@ -26,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="10dp"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/input_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/input_layout"
@@ -46,8 +47,7 @@
             app:endIconMode="custom"
             app:helperText="@string/search_helper_text"
             app:layout_constraintBottom_toTopOf="@+id/recycler_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toEndOf="parent">
 
             <EditText
                 android:id="@+id/searchEditText"
@@ -58,6 +58,7 @@
                 android:autofillHints=""
                 android:background="@drawable/rounded_border_search_bar"
                 android:drawablePadding="@dimen/padding"
+                android:hint="@string/search_pokemon"
                 android:imeOptions="actionSearch"
                 android:inputType="textNoSuggestions"
                 android:paddingHorizontal="@dimen/paddingSearch"
@@ -97,7 +98,8 @@
         android:paddingBottom="@dimen/padding"
         android:requiresFadingEdge="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:listitem="@layout/item_search"/>
 
     <LinearLayout
         android:id="@+id/empty_search_layout"
