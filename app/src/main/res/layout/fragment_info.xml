@@ -132,7 +132,7 @@
 
     <LinearLayout
         android:id="@+id/left_info_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/standart_text_size"
         android:orientation="vertical"
@@ -141,7 +141,7 @@
         app:layout_constraintTop_toBottomOf="@id/imageLayout">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Category label"
             android:textColor="@color/black"
@@ -150,17 +150,15 @@
 
         <TextView
             android:id="@+id/category_label"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lines="1"
             android:text="00"
             android:textColor="@color/black"
             android:textSize="@dimen/standart_text_size" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lines="1"
             android:text="Category"
             android:textColor="@color/black"
             android:textSize="@dimen/standart_text_size"
@@ -168,18 +166,16 @@
 
         <TextView
             android:id="@+id/category"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lines="1"
             android:text="00"
             android:textColor="@color/black"
             android:textSize="@dimen/standart_text_size" />
 
         <TextView
             android:id="@+id/brand_label"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lines="1"
             android:text="Brand"
             android:textColor="@color/black"
             android:textSize="@dimen/standart_text_size"
@@ -188,7 +184,7 @@
 
         <TextView
             android:id="@+id/brand"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="00"
             android:textColor="@color/black"
@@ -199,7 +195,6 @@
             android:id="@+id/serving_per_container_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:lines="1"
             android:text="Serving per container"
             android:textColor="@color/black"
             android:textSize="@dimen/standart_text_size"
@@ -208,7 +203,7 @@
 
         <TextView
             android:id="@+id/serving_per_container"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="00"
             android:textColor="@color/black"
@@ -236,9 +231,8 @@
 
         <TextView
             android:id="@+id/food_contents_label_label"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lines="1"
             android:text="Food contents label"
             android:textColor="@color/black"
             android:textSize="@dimen/standart_text_size"
@@ -259,7 +253,7 @@
 
         <TextView
             android:id="@+id/food_contents_label"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="00"
             android:textColor="@color/black"
