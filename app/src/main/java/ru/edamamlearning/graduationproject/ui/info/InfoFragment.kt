@@ -35,6 +35,10 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar(
+            toolbar = binding.toolBar,
+            titleInToolbar = getString(R.string.info)
+        )
         val foodId = navigationArgs.foodId
         val observer = Observer<FoodDomainModel> {
             it?.let { renderData(it) }
@@ -52,24 +56,24 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
             if (food.brand != NULL) {
                 brand.text = food.brand
                 brand.visibility = View.VISIBLE
-                brandLabel.visibility = View.VISIBLE
+                brandTitle.visibility = View.VISIBLE
             }
             if (food.foodContentsLabel != NULL) {
                 foodContentsLabel.text = food.foodContentsLabel
                 foodContentsLabel.visibility = View.VISIBLE
-                foodContentsLabelLabel.visibility = View.VISIBLE
+                contentsTitle.visibility = View.VISIBLE
             }
             if (food.servingsPerContainer != NULL) {
-                servingPerContainer.text = food.servingsPerContainer
-                servingPerContainer.visibility = View.VISIBLE
-                servingPerContainerLabel.visibility = View.VISIBLE
+                serving.text = roundAp(food.servingsPerContainer)
+                serving.visibility = View.VISIBLE
+                servingTitle.visibility = View.VISIBLE
                 scrollView.visibility = View.VISIBLE
             }
-            energyKCal.text = roundAp(food.nutrients.energyKCal)
-            fiber.text = roundAp(food.nutrients.fiber)
-            fat.text = roundAp(food.nutrients.fat)
-            carbohydrate.text = roundAp(food.nutrients.carbohydrate)
-            protein.text = roundAp(food.nutrients.protein)
+            caloriesCount.text = roundAp(food.nutrients.energyKCal)
+            fiberCount.text = roundAp(food.nutrients.fiber)
+            fatsCount.text = roundAp(food.nutrients.fat)
+            carbohydrateCount.text = roundAp(food.nutrients.carbohydrate)
+            proteinCount.text = roundAp(food.nutrients.protein)
         }
     }
 

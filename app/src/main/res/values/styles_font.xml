@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="TextViewRoboto" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="TextViewRoboto.Caption">
+        <item name="android:textSize" tools:ignore="SpUsage">16dp</item>
+        <item name="lineHeight">16dp</item>
+        <item name="firstBaselineToTopHeight">11dp</item>
+        <item name="lastBaselineToBottomHeight">3dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">0.0</item>
+    </style>
+
+    <style name="TextViewRoboto.Body1">
+        <item name="android:textSize" tools:ignore="SpUsage">20dp</item>
+        <item name="lineHeight">20dp</item>
+        <item name="firstBaselineToTopHeight">15dp</item>
+        <item name="lastBaselineToBottomHeight">5dp</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">0.0</item>
+    </style>
+</resources>

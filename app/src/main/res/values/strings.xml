@@ -1,26 +1,24 @@
 <resources>
     <string name="app_name">GraduationProject</string>
     <string name="home">HomeScreen</string>
-    <string name="favorites">Favorite</string>
-    <string name="search">Search</string>
-    <string name="diary">Diary</string>
     <string name="food_facts">Food Facts</string>
-    <string name="check_internet_connection">check internet connection</string>
+    <string name="check_internet_connection">Сheck internet connection</string>
     <string name="ingredients">ingredients:</string>
     <string name="search_textview_default_message">Write a keyword in the search bar</string>
     <string name="search_textview_error_message">Error! Nothing found.</string>
     <string name="search_pokemon">Search eat</string>
     <string name="favorites_textview_message">Click on the heart-shaped icon on a Eat card to add it to your favorites!</string>
-    <string name="day_callories">Количество каллорий в день:</string>
-    <string name="protein_text">Белки:</string>
-    <string name="fats_text">Жиры:</string>
-    <string name="carbohydrates_text">Углеводы:</string>
+    <string name="day_callories">Количество калорий в день:</string>
     <string name="ignore">ignore</string>
-    <string name="food">Food</string>
     <string name="enter_search_word">Введите продукт</string>
-    <string name="info">Info</string>
     <string name="error">Что-то пошло не так. Мы уже работаем над исправлением ошибки.</string>
     <string name="network_is_not_available">Network is not available</string>
+
+    <string name="food">Food</string>
+    <string name="info">Info</string>
+    <string name="search">Search</string>
+    <string name="favorites">Favorite</string>
+    <string name="diary">Diary</string>
 
     //products label
     <string name="eggs">Eggs</string>
@@ -32,5 +30,16 @@
     <string name="milk">Milk</string>
     <string name="all_types">All types</string>
     <string name="meat">Meat</string>
+
+    <string name="protein_text">Белки:</string>
+    <string name="fats_text">Жиры:</string>
+    <string name="carbohydrates_text">Углеводы:</string>
+    <string name="fiber">Клетчатка:</string>
+    <string name="calories">Калории:</string>
+    <string name="category_label">Название категории:</string>
+    <string name="сategory">Категория:</string>
+    <string name="Brand">Производитель:</string>
+    <string name="serving_per_container">Подача:</string>
+    <string name="food_contents_label">Состав:</string>
 
 </resources>

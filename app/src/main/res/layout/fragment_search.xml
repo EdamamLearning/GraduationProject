@@ -20,27 +20,31 @@
             app:titleMarginStart="160dp"
             app:titleTextAppearance="@style/TextViewToolBar" />
 
-        <EditText
-            android:id="@+id/searchEditText"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/searchLayout"
+            style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="@dimen/layout_margin"
-            android:layout_marginTop="@dimen/layout_margin"
-            android:autofillHints=""
-            android:background="@drawable/rounded_border_search_bar"
-            android:drawablePadding="@dimen/padding"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:hint="@string/search_pokemon"
-            android:imeOptions="actionSearch"
-            android:inputType="textNoSuggestions"
-            android:paddingHorizontal="@dimen/paddingSearch"
-            android:paddingVertical="@dimen/paddingSearch"
-            android:textColor="@color/title_color"
-            android:textSize="@dimen/standart_text_size"
+            app:endIconDrawable="@drawable/ic_clear"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/secondary_label"
+            app:endIconTintMode="src_atop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolBar"
-            tools:ignore="TouchTargetSizeCheck" />
+            app:layout_constraintTop_toBottomOf="@id/toolBar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchEditText"
+                style="@style/TextInputEditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionSearch"
+                android:inputType="textNoSuggestions"
+                tools:text="eggs" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -69,7 +73,7 @@
         android:requiresFadingEdge="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:ignore="SpeakableTextPresentCheck"
-        tools:listitem="@layout/item_search"/>
+        tools:listitem="@layout/item_search" />
 
     <LinearLayout
         android:id="@+id/empty_search_layout"

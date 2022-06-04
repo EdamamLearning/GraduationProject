@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="android:theme">@style/TextInputLayoutTheme</item>
+        <item name="android:background">@color/base_01</item>
+        <item name="android:textColorHint">@color/secondary_label</item>
+        <item name="hintTextColor">@color/secondary_label</item>
+        <item name="hintTextAppearance">@style/TextViewRoboto.Caption</item>
+        <item name="boxBackgroundColor">@color/base_01</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="errorEnabled">false</item>
+        <item name="counterEnabled">false</item>
+    </style>
+
+    <style name="TextInputLayoutTheme" parent="ThemeOverlay.MaterialComponents.TextInputEditText.FilledBox.Dense">
+        <item name="editTextStyle">@style/TextInputEditTextStyle</item>
+        <item name="colorControlActivated">@color/primary_label</item>
+    </style>
+
+    <style name="TextInputEditTextStyle" parent="Widget.MaterialComponents.TextInputEditText.FilledBox.Dense">
+        <item name="android:textColor">@color/primary_label</item>
+        <item name="android:textAppearance">@style/TextViewRoboto.Body1</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+</resources>
