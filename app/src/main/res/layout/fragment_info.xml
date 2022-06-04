@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/info"
-        app:titleMarginStart="160dp"
+        app:navigationIcon="@drawable/ic_toolbar_back_button"
         app:titleTextAppearance="@style/TextViewToolBar" />
 
     <TextView
@@ -22,252 +21,287 @@
         android:layout_margin="@dimen/layout_margin"
         android:background="@drawable/layout_bg"
         android:gravity="center"
+        android:paddingVertical="16dp"
         android:textColor="@color/link"
         android:textSize="@dimen/info_text_size"
         app:layout_constraintTop_toBottomOf="@id/toolBar"
         tools:text="Pasta Primavera" />
 
-    <LinearLayout
-        android:id="@+id/imageLayout"
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/foodImage"
+        android:layout_width="230dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/food"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/protein"
+        style="@style/BaseTextBody1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/layout_margin"
-        android:background="@drawable/layout_bg"
+        android:layout_marginTop="16dp"
+        android:lines="1"
+        android:text="@string/protein_text"
+        app:layout_constraintStart_toEndOf="@+id/foodImage"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/proteinCount"
+        style="@style/BaseTextBody1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:lines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:text="15" />
+
+    <TextView
+        android:id="@+id/fats"
+        style="@style/BaseTextBody1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:lines="1"
+        android:text="@string/fats_text"
+        app:layout_constraintStart_toEndOf="@+id/foodImage"
+        app:layout_constraintTop_toBottomOf="@+id/protein" />
+
+    <TextView
+        android:id="@+id/fatsCount"
+        style="@style/BaseTextBody1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:lines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/proteinCount"
+        tools:text="15" />
+
+    <TextView
+        android:id="@+id/carbohydrates"
+        style="@style/BaseTextBody1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/carbohydrates_text"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/foodImage"
+        app:layout_constraintTop_toBottomOf="@+id/fats" />
+
+    <TextView
+        android:id="@+id/carbohydrateCount"
+        style="@style/BaseTextBody1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:lines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fatsCount"
+        tools:text="15" />
+
+    <TextView
+        android:id="@+id/calories"
+        style="@style/BaseTextBody1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:lines="1"
+        android:text="@string/calories"
+        app:layout_constraintStart_toEndOf="@id/foodImage"
+        app:layout_constraintTop_toBottomOf="@+id/carbohydrates" />
+
+    <TextView
+        android:id="@+id/caloriesCount"
+        style="@style/BaseTextBody1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:lines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carbohydrateCount"
+        tools:text="15" />
+
+    <TextView
+        android:id="@+id/fiber"
+        style="@style/BaseTextBody1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:lines="1"
+        android:text="@string/fiber"
+        app:layout_constraintStart_toEndOf="@id/foodImage"
+        app:layout_constraintTop_toBottomOf="@id/calories" />
+
+    <TextView
+        android:id="@+id/fiberCount"
+        style="@style/BaseTextBody1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:lines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/caloriesCount"
+        tools:text="15" />
+
+    <ImageView
+        android:id="@+id/favorite_button"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/favorite_button_selector"
+        app:layout_constraintBottom_toBottomOf="@+id/foodImage"
+        app:layout_constraintEnd_toEndOf="@+id/foodImage"
+        tools:ignore="ContentDescription" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/foodImage"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_gravity="center_vertical"
-            android:paddingHorizontal="@dimen/standart_text_size"
-            android:src="@drawable/food" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/layout_margin"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageLayout">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Carbohydrate"
-                android:textColor="@color/black"
-                style="@style/BaseTextBody1" />
-
-            <TextView
-                android:id="@+id/carbohydrate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:text="00"
-                style="@style/BaseTextBody1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:text="EnergyKCal"
-                style="@style/BaseTextBody1" />
-
-            <TextView
-                android:id="@+id/energyKCal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:text="00"
-                style="@style/BaseTextBody1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:text="Fat"
-                style="@style/BaseTextBody1" />
-
-            <TextView
-                android:id="@+id/fat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:text="00"
-                style="@style/BaseTextBody1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:text="Fiber"
-                style="@style/BaseTextBody1" />
-
-            <TextView
-                android:id="@+id/fiber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:text="00"
-                style="@style/BaseTextBody1" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:text="Protein"
-                style="@style/BaseTextBody1" />
-
-            <TextView
-                android:id="@+id/protein"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:text="00"
-                style="@style/BaseTextBody1" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/left_info_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/standart_text_size"
-        android:orientation="vertical"
-        android:paddingHorizontal="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageLayout">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Category label"
-            android:textColor="@color/black"
-            android:textSize="@dimen/standart_text_size"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/category_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="00"
-            android:textColor="@color/black"
-            android:textSize="@dimen/standart_text_size" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Category"
-            android:textColor="@color/black"
-            android:textSize="@dimen/standart_text_size"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="00"
-            android:textColor="@color/black"
-            android:textSize="@dimen/standart_text_size" />
-
-        <TextView
-            android:id="@+id/brand_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Brand"
-            android:textColor="@color/black"
-            android:textSize="@dimen/standart_text_size"
-            android:textStyle="bold"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/brand"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="00"
-            android:textColor="@color/black"
-            android:textSize="@dimen/standart_text_size"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/serving_per_container_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Serving per container"
-            android:textColor="@color/black"
-            android:textSize="@dimen/standart_text_size"
-            android:textStyle="bold"
-            android:visibility="gone" />
-
-        <TextView
-            android:id="@+id/serving_per_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="00"
-            android:textColor="@color/black"
-            android:textSize="@dimen/standart_text_size"
-            android:visibility="gone" />
-    </LinearLayout>
+        app:layout_constraintGuide_percent="0.48" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/right_info_layout"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
-        android:orientation="vertical"
-        android:paddingHorizontal="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/barrier"
-        app:layout_constraintTop_toBottomOf="@id/imageLayout">
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="center" />
 
-        <TextView
-            android:id="@+id/food_contents_label_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Food contents label"
-            android:textColor="@color/black"
-            android:textSize="@dimen/standart_text_size"
-            android:textStyle="bold"
-            android:visibility="gone" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/categoryLabelTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/category_label"
+        android:textColor="@color/black"
+        android:textSize="@dimen/standart_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier" />
+
+    <TextView
+        android:id="@+id/categoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/standart_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier"
+        tools:text="food" />
+
+    <TextView
+        android:id="@+id/categoryTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/сategory"
+        android:textColor="@color/black"
+        android:textSize="@dimen/standart_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categoryLabelTitle" />
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/standart_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categoryLabel"
+        tools:text="упаковка" />
+
+    <TextView
+        android:id="@+id/brandTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/Brand"
+        android:textColor="@color/black"
+        android:textSize="@dimen/standart_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/categoryTitle" />
+
+    <TextView
+        android:id="@+id/brand"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="end"
+        android:maxLines="2"
+        android:textColor="@color/black"
+        android:textSize="@dimen/standart_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category"
+        tools:text="Kineret Foods Corporation" />
+
+    <TextView
+        android:id="@+id/servingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/serving_per_container"
+        android:textColor="@color/black"
+        android:textSize="@dimen/standart_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brand" />
+
+    <TextView
+        android:id="@+id/serving"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/standart_text_size"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brand"
+        tools:text="8.0" />
+
+    <TextView
+        android:id="@+id/contentsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/food_contents_label"
+        android:textColor="@color/black"
+        android:textSize="@dimen/standart_text_size"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/servingTitle" />
 
     <ScrollView
         android:id="@+id/scroll_view"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingHorizontal="10dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/favorite_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/barrier"
-        app:layout_constraintTop_toBottomOf="@id/right_info_layout">
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="72dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentsTitle">
 
         <TextView
             android:id="@+id/food_contents_label"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00"
             android:textColor="@color/black"
-            android:textSize="@dimen/standart_text_size"
-            android:visibility="gone" />
+            android:textSize="14sp"
+            tools:text="99%Egg Whites, Contains Less Than 1% Of Calcium mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm" />
     </ScrollView>
-
-    <ImageView
-        android:id="@+id/favorite_button"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="80dp"
-        android:src="@drawable/favorite_button_selector"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
