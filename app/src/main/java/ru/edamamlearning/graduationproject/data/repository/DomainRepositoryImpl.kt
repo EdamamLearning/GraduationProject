@@ -26,8 +26,16 @@ class DomainRepositoryImpl @Inject constructor(
         cacheFoodRepository.saveFavoriteFood(foodDomainModel.toFavoriteFoodEntity())
     }
 
+    override suspend fun saveDiaryFood(foodDomainModel: FoodDomainModel) {
+        cacheFoodRepository.saveDiaryFood(foodDomainModel.toDiaryFoodEntity())
+    }
+
     override suspend fun deleteFavoriteFood(foodDomainModel: FoodDomainModel) {
         cacheFoodRepository.deleteFavoriteFood(foodDomainModel.toFavoriteFoodEntity())
+    }
+
+    override suspend fun deleteDiaryFood(foodDomainModel: FoodDomainModel) {
+       cacheFoodRepository.deleteDiaryFood(foodDomainModel.toDiaryFoodEntity())
     }
 
     override suspend fun getAllHistoryFoods(): List<FoodDomainModel> {
@@ -37,4 +45,9 @@ class DomainRepositoryImpl @Inject constructor(
     override fun getAllFavoriteFoods(): Flow<List<FoodDomainModel>> {
         return cacheFoodRepository.getAllFavoriteFoods().map { it.toListFoodDomainModel() }
     }
+
+    override fun getAllDiaryFoods(): Flow<List<FoodDomainModel>> {
+        return cacheFoodRepository.getAllDiaryFoods().map {it.toListFoodDomainModel()}
+    }
+
 }

@@ -154,6 +154,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/foodImage" />
 
+        <ToggleButton
+            android:id="@+id/diary_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@null"
+            android:checked="false"
+            android:drawableBottom="@drawable/add_button_selector"
+            android:drawablePadding="8dp"
+            android:paddingHorizontal="8dp"
+            android:paddingBottom="10dp"
+            android:textSize="0sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/favorite_button" />
+
         <ImageView
             android:id="@+id/foodImage"
             android:layout_width="150dp"

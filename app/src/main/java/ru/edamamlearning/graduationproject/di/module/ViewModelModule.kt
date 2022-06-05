@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelKey
+import ru.edamamlearning.graduationproject.ui.diary.DiaryViewModel
 import ru.edamamlearning.graduationproject.ui.favorite.FavoriteViewModel
 import ru.edamamlearning.graduationproject.ui.food.FoodViewModel
 import ru.edamamlearning.graduationproject.ui.info.InfoViewModel
@@ -37,4 +38,9 @@ interface ViewModelModule {
     @IntoMap
     @ViewModelKey(InfoViewModel::class)
     fun bindInfoViewModel(vm: InfoViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DiaryViewModel::class)
+    fun bindDiaryViewModel(vm: DiaryViewModel): ViewModel
 }
