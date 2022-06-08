@@ -40,7 +40,10 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         SearchAdapter(
             onFavouriteItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
+            isAFoodChoise = viewModel::isAFoodChoise,
             favouriteClickHandler = viewModel::favouriteFoodClickHandler,
+            diaryClickHandler = viewModel::diaryFoodClickHandler,
+
         )
     }
 
@@ -67,9 +70,10 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
 
     private fun navigate(foodDomainModel: FoodDomainModel) {
         val action = SearchFragmentDirections
-            .actionSearchFragmentToInfoFragment(foodDomainModel.foodId)
+           .actionSearchFragmentToInfoFragment(foodDomainModel.foodId)
         findNavController().navigate(action)
     }
+
 
     private fun setQueryListener() {
         binding.searchEditText.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
@@ -112,3 +116,4 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         binding.progressBar.isVisible = loading
     }
 }
+
