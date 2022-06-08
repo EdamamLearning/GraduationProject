@@ -152,12 +152,13 @@
         app:layout_constraintTop_toBottomOf="@id/caloriesCount"
         tools:text="15" />
 
-    <ImageView
-        android:id="@+id/favorite_button"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+    <ToggleButton
+        android:id="@+id/info_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="26dp"
         android:layout_marginBottom="8dp"
+        android:drawableBottom="@drawable/favorite_button_selector"
         android:src="@drawable/favorite_button_selector"
         app:layout_constraintBottom_toBottomOf="@+id/foodImage"
         app:layout_constraintEnd_toEndOf="@+id/foodImage"

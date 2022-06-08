@@ -4,6 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import ru.edamamlearning.graduationproject.data.repository.CacheFoodRepository
 import ru.edamamlearning.graduationproject.room.entity.FavoriteFoodEntity
 import ru.edamamlearning.graduationproject.room.entity.HistoryFoodEntity
+import ru.edamamlearning.graduationproject.room.entity.InfoFoodEntity
 import javax.inject.Inject
 
 class CacheFoodRepositoryImpl @Inject constructor(
@@ -19,6 +20,18 @@ class CacheFoodRepositoryImpl @Inject constructor(
 
     override suspend fun saveFavoriteFood(food: FavoriteFoodEntity) {
         database.favoriteFoodDao().insert(food)
+    }
+
+    override suspend fun saveInfoFood(food: InfoFoodEntity) {
+        database.infoFoodDao().insert(food)
+    }
+
+    override suspend fun deleteInfoFood(food: InfoFoodEntity) {
+        database.infoFoodDao().delete(food)
+    }
+
+    override fun getAllInfoFood(): Flow<List<InfoFoodEntity>> {
+        return database.infoFoodDao().getAll()
     }
 
     override suspend fun deleteFavoriteFood(food: FavoriteFoodEntity) {

@@ -22,6 +22,18 @@ class DomainRepositoryImpl @Inject constructor(
         return cacheFoodRepository.getFoodModelById(foodId).toFoodDomainModel()
     }
 
+    override suspend fun saveInfoFood(foodDomainModel: FoodDomainModel) {
+        cacheFoodRepository.saveInfoFood(foodDomainModel.toInfoFoodEntity())
+    }
+
+    override suspend fun deleteInfoFood(foodDomainModel: FoodDomainModel) {
+        cacheFoodRepository.deleteInfoFood(foodDomainModel.toInfoFoodEntity())
+    }
+
+    override fun getAllInfoFoods(): Flow<List<FoodDomainModel>> {
+        return cacheFoodRepository.getAllInfoFood().map { it.toListFoodDomainModel() }
+    }
+
     override suspend fun saveFavoriteFood(foodDomainModel: FoodDomainModel) {
         cacheFoodRepository.saveFavoriteFood(foodDomainModel.toFavoriteFoodEntity())
     }
