@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleMarginStart="160dp"
+        app:titleMarginStart="@dimen/margin_start_toolbar"
         app:titleTextAppearance="@style/TextViewToolBar" />
 
     <androidx.constraintlayout.motion.widget.MotionLayout
@@ -27,8 +27,8 @@
             android:id="@+id/search_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="@dimen/margin_end_image_view"
+            android:layout_marginBottom="@dimen/margin_bottom_image_view"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/input_layout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,9 +53,10 @@
 
             <EditText
                 android:id="@+id/searchEditText"
-                android:layout_width="409dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_margin_edit_text"
+                android:layout_marginStart="@dimen/margin_edit_text"
+                android:layout_marginEnd="@dimen/margin_edit_text"
                 android:autofillHints=""
                 android:background="@drawable/rounded_border_search_bar"
                 android:drawablePadding="@dimen/padding"
@@ -73,8 +74,8 @@
 
         <ProgressBar
             android:id="@+id/progressBar"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/progress_bar"
+            android:layout_height="@dimen/progress_bar"
             android:indeterminate="true"
             android:indeterminateTint="@color/link"
             android:visibility="invisible"
@@ -109,8 +110,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="@dimen/marginBottomRV"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/paddingRV"
@@ -119,8 +119,8 @@
 
         <ImageView
             android:id="@+id/search_imageview"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/imageView_search"
+            android:layout_height="@dimen/imageView_search"
             android:layout_gravity="center"
             android:src="@drawable/ic_search"
             android:visibility="gone"
