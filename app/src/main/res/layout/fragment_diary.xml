@@ -48,7 +48,7 @@
             android:textSize="16sp"></TextView>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view2"
+            android:id="@+id/diary_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/calendar_layout"
@@ -61,6 +61,6 @@
             android:paddingBottom="@dimen/padding"
             android:requiresFadingEdge="vertical"
             tools:ignore="SpeakableTextPresentCheck"
-            tools:listitem="@layout/item_dairy" />
+            tools:listitem="@layout/item_diary" />
     </LinearLayout>
 </RelativeLayout>

@@ -7,19 +7,18 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.edamamlearning.graduationproject.R
-import ru.edamamlearning.graduationproject.databinding.ItemDairyBinding
-import ru.edamamlearning.graduationproject.databinding.ItemSearchBinding
+import ru.edamamlearning.graduationproject.databinding.ItemDiaryBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.roundAp
 
 class DiaryFragmentAdapter(
-    private val isAFoodChoise: (FoodDomainModel) -> Boolean,
+    private val isFoodChoise: (FoodDomainModel) -> Boolean,
     private val diaryClickHandler: (FoodDomainModel) -> Boolean,
-) : ListAdapter<FoodDomainModel, DiaryFragmentAdapter.DairyViewHolder>(DiffCallback) {
+) : ListAdapter<FoodDomainModel, DiaryFragmentAdapter.DiaryViewHolder>(DiffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DairyViewHolder {
-        return DairyViewHolder(
-            ItemDairyBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaryViewHolder {
+        return DiaryViewHolder(
+            ItemDiaryBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -27,7 +26,7 @@ class DiaryFragmentAdapter(
         )
     }
 
-    override fun onBindViewHolder(holder: DairyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DiaryViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(item)
     }
@@ -46,7 +45,7 @@ class DiaryFragmentAdapter(
         }
     }
 
-    inner class DairyViewHolder(private val binding: ItemDairyBinding) :
+    inner class DiaryViewHolder(private val binding: ItemDiaryBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(model: FoodDomainModel) {
@@ -55,14 +54,14 @@ class DiaryFragmentAdapter(
             binding.fat.text = roundAp(model.nutrients.fat)
             binding.carbohydrate.text = roundAp(model.nutrients.carbohydrate)
             loadPicture(model.image, binding)
-            binding.diaryButton.isChecked = isAFoodChoise(model)
+            binding.diaryButton.isChecked = isFoodChoise(model)
             binding.diaryButton.setOnClickListener {
                 binding.diaryButton.isChecked = diaryClickHandler(model)
             }
         }
     }
 
-    private fun loadPicture(image: String?, binding: ItemDairyBinding) {
+    private fun loadPicture(image: String?, binding: ItemDiaryBinding) {
         if (image != null) {
             Glide.with(binding.root)
                 .load(image)

@@ -99,11 +99,11 @@ fun HistoryFoodEntity.toFoodDomainModel() = FoodDomainModel(
     foodContentsLabel = this.foodContentsLabel,
     servingsPerContainer = this.servingsPerContainer,
     nutrients = DomainNutrients(
-            carbohydrate = this.carbohydrate,
-            energyKCal = this.energyKCal,
-            fat = this.fat,
-            fiber = this.fiber,
-            protein = this.protein,
+        carbohydrate = this.carbohydrate,
+        energyKCal = this.energyKCal,
+        fat = this.fat,
+        fiber = this.fiber,
+        protein = this.protein,
     )
 )
 
@@ -130,8 +130,6 @@ fun DiaryFoodEntity.toFoodDomainModel() = FoodDomainModel(
         protein = this.protein,
     )
 )
-
-
 
 fun FoodDomainModel.toDiaryFoodEntity() = DiaryFoodEntity(
     foodId = this.foodId,

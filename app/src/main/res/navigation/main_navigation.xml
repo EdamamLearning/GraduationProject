@@ -52,7 +52,7 @@
         android:id="@+id/dairyFragment"
         android:name="ru.edamamlearning.graduationproject.ui.diary.DiaryFragment"
         android:label="fragment_dairy"
-        tools:layout="@layout/fragment_dairy">
+        tools:layout="@layout/fragment_diary">
 
         <argument
             android:name="food_id"

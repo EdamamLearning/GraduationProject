@@ -2,6 +2,7 @@ package ru.edamamlearning.graduationproject.ui.diary
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.flowWithLifecycle
@@ -11,11 +12,11 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.BaseFragment
 import ru.edamamlearning.graduationproject.core.viewBinding
-import ru.edamamlearning.graduationproject.databinding.FragmentDairyBinding
+import ru.edamamlearning.graduationproject.databinding.FragmentDiaryBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import javax.inject.Inject
 
-class DiaryFragment : BaseFragment(R.layout.fragment_dairy) {
+class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
 
     @Inject
 
@@ -26,16 +27,16 @@ class DiaryFragment : BaseFragment(R.layout.fragment_dairy) {
 
     private val adapter by lazy {
         DiaryFragmentAdapter(
-            isAFoodChoise = viewModel::isAFoodChoise,
+            isFoodChoise = viewModel::isFoodChoise,
             diaryClickHandler = viewModel::diaryFoodClickHandler
         )
     }
 
-    private val binding: FragmentDairyBinding by viewBinding()
+    private val binding: FragmentDiaryBinding by viewBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerView2.adapter = adapter
+        binding.diaryRecyclerView.adapter = adapter
     }
 
     override fun onStart() {
@@ -53,7 +54,7 @@ class DiaryFragment : BaseFragment(R.layout.fragment_dairy) {
 
     private fun checkDiary() {
         if (!viewModel.isDiaryFoodsEmpty()) {
-            binding.recyclerLayout.visibility = View.GONE
+            binding.recyclerLayout.isVisible = !viewModel.isDiaryFoodsEmpty()
         }
     }
 

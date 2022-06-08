@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/dairyFragment"
-        android:icon="@drawable/dairy_icon"
+        android:icon="@drawable/diary_icon"
         android:title="@string/favorites" />
 
 </menu>
