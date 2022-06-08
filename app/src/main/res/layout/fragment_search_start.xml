@@ -8,18 +8,20 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBar"
+        app:title="@string/search"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/search"
         app:titleMarginStart="160dp"
         app:titleTextAppearance="@style/TextViewToolBar" />
 
     <androidx.constraintlayout.motion.widget.MotionLayout
+        android:layout_below="@id/toolBar"
         android:id="@+id/rootLayoutConstraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layoutDescription="@xml/fragment_search_scene">
+        app:layoutDescription="@xml/fragment_search_scene"
+        app:layout_constraintTop_toTopOf="@id/toolBar">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/search_btn"
@@ -30,7 +32,7 @@
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/input_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/input_layout"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_search_btn" />
 
 
@@ -39,11 +41,11 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/search"
             app:counterEnabled="true"
             app:counterMaxLength="20"
             app:endIconCheckable="true"
             app:endIconDrawable="@drawable/ic_search"
+            app:endIconTint="@null"
             app:endIconMode="custom"
             app:helperText="@string/search_helper_text"
             app:layout_constraintBottom_toTopOf="@+id/recycler_view"
@@ -53,8 +55,7 @@
                 android:id="@+id/searchEditText"
                 android:layout_width="409dp"
                 android:layout_height="50dp"
-                android:layout_margin="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="0dp"
                 android:autofillHints=""
                 android:background="@drawable/rounded_border_search_bar"
                 android:drawablePadding="@dimen/padding"
@@ -64,7 +65,7 @@
                 android:paddingHorizontal="@dimen/paddingSearch"
                 android:paddingVertical="@dimen/paddingSearch"
                 android:textColor="@color/title_color"
-                android:textSize="@dimen/standart_text_size"
+                android:textSize="@dimen/search_text_size"
                 app:layout_constraintTop_toBottomOf="@id/toolBar"
                 tools:ignore="TouchTargetSizeCheck"
                 tools:layout_editor_absoluteX="1dp" />
@@ -108,7 +109,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/marginBottomRV"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="70dp"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/paddingRV"
