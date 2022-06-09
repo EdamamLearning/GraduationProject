@@ -47,4 +47,8 @@
     <string name="protein_result">prot</string>
     <string name="carbohydrate">carb</string>
 
+    //строки для модального окна
+    <string name="ok">Продолжить</string>
+    <string name="info_app">Информация о проекте.</string>
+    <string name="info_user">разработчик №1: Евгений разработчик №2: Андрей разработчик №3: Игорь разработчик №4: Константин разработчик №5: Иван разработчик №6: Татьяна </string>
 </resources>
