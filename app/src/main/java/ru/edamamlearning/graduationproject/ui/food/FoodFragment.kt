@@ -2,9 +2,12 @@ package ru.edamamlearning.graduationproject.ui.food
 
 import android.os.Bundle
 import android.view.View
+import android.widget.CompoundButton
+import androidx.core.view.forEach
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.chip.Chip
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.BaseFragment
 import ru.edamamlearning.graduationproject.core.viewBinding
@@ -34,18 +37,31 @@ class FoodFragment : BaseFragment(R.layout.fragment_food) {
         findNavController().navigate(action)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.sfRv.adapter = adapter
-
-        val observer = Observer<List<FoodDomainModel>> {
-            adapter.submitList(it)
-        }
-        viewModel.food.observe(viewLifecycleOwner, observer)
-    }
-
     override fun onStart() {
         super.onStart()
-        viewModel.getFood()
+        viewModel.getFoodOfLabel("All types")
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.recyclerView.adapter = adapter
+        val observer = Observer<List<FoodDomainModel>> { listFood ->
+            adapter.submitList(listFood)
+        }
+        viewModel.food.observe(viewLifecycleOwner, observer)
+        setupChipGroup()
+    }
+
+    private fun setupChipGroup() {
+        binding.chipGroup.forEach {
+            val chip = it as Chip
+            chip.setOnCheckedChangeListener { compoundButton: CompoundButton, isChecked: Boolean ->
+                compoundButton as Chip
+                if (isChecked) {
+                    val chipText = chip.text.toString()
+                    viewModel.getFoodOfLabel(chipText)
+                }
+            }
+        }
     }
 }

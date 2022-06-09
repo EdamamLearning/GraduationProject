@@ -35,4 +35,13 @@
     <color name="base_07">#5c636b</color>
     <color name="base_08">#333333</color>
     <color name="base_09">#000000</color>
+
+    <!-- common text -->
+    <color name="negative">#c70000</color>
+    <color name="primary_label">#000000</color>
+    <color name="primary_label_inverse">#ffffff</color>
+    <color name="secondary_label">#993C3C43</color>
+    <color name="secondary_label_inverse">#99FFFFFF</color>
+    <color name="tertiary_label">#4D3C3C43</color>
+    <color name="tertiaty_label_inverse">#4DFFFFFF</color>
 </resources>

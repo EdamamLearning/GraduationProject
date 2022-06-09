@@ -11,7 +11,7 @@
     <dimen name="title_text_size">36sp</dimen>
     <dimen name="standart_text_size">16sp</dimen>
     <dimen name="search_text_size">14sp</dimen>
-    <dimen name="info_text_size">24sp</dimen>
+    <dimen name="info_text_size">18sp</dimen>
     <dimen name="start_margin">16dp</dimen>
     <dimen name="margin_horizontal">8dp</dimen>
     <dimen name="margin_bottom">68dp</dimen>

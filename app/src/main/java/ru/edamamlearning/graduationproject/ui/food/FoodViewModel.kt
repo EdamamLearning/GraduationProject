@@ -15,9 +15,16 @@ class FoodViewModel @Inject constructor(
     private val _food = MutableLiveData<List<FoodDomainModel>>()
     val food: LiveData<List<FoodDomainModel>> = _food
 
-    fun getFood() {
+    fun getFoodOfLabel(label: String) {
         tryLaunch {
-            _food.value = domainRepository.getAllHistoryFoods().asReversed()
+            val foodList = domainRepository.getAllHistoryFoods().asReversed()
+            if (label == "All types") {
+                _food.value = foodList
+            } else {
+                _food.value = foodList.filter {
+                    it.label.contains(label)
+                }
+            }
         }.catch { throwable ->
             Timber.e(throwable.message)
         }.start()

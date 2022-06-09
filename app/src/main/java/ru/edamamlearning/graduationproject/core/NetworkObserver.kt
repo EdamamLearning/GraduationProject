@@ -16,7 +16,7 @@ class NetworkObserver @Inject constructor(_context: Context) {
     private val context = WeakReference(_context)
     private val connectivityManager = context.get()?.getSystemService<ConnectivityManager>()
 
-    private val networkStatus = MutableStateFlow<Boolean>(false)
+    private val networkStatus = MutableStateFlow(false)
 
     fun networkIsAvailable(): StateFlow<Boolean> = networkStatus.asStateFlow()
 

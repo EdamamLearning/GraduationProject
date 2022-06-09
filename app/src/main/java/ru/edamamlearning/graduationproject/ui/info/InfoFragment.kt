@@ -14,6 +14,7 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentInfoBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
+import ru.edamamlearning.graduationproject.utils.roundAp
 import javax.inject.Inject
 
 class InfoFragment : BaseFragment(R.layout.fragment_info) {
@@ -34,6 +35,10 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initToolbar(
+            toolbar = binding.toolBar,
+            titleInToolbar = getString(R.string.info)
+        )
         val foodId = navigationArgs.foodId
         val observer = Observer<FoodDomainModel> {
             it?.let { renderData(it) }
@@ -51,24 +56,24 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
             if (food.brand != NULL) {
                 brand.text = food.brand
                 brand.visibility = View.VISIBLE
-                brandLabel.visibility = View.VISIBLE
+                brandTitle.visibility = View.VISIBLE
             }
             if (food.foodContentsLabel != NULL) {
                 foodContentsLabel.text = food.foodContentsLabel
                 foodContentsLabel.visibility = View.VISIBLE
-                foodContentsLabelLabel.visibility = View.VISIBLE
+                contentsTitle.visibility = View.VISIBLE
             }
             if (food.servingsPerContainer != NULL) {
-                servingPerContainer.text = food.servingsPerContainer
-                servingPerContainer.visibility = View.VISIBLE
-                servingPerContainerLabel.visibility = View.VISIBLE
+                serving.text = roundAp(food.servingsPerContainer)
+                serving.visibility = View.VISIBLE
+                servingTitle.visibility = View.VISIBLE
                 scrollView.visibility = View.VISIBLE
             }
-            carbohydrate.text = food.nutrients.carbohydrate
-            energyKCal.text = food.nutrients.energyKCal
-            fat.text = food.nutrients.fat
-            fiber.text = food.nutrients.fiber
-            protein.text = food.nutrients.protein
+            caloriesCount.text = roundAp(food.nutrients.energyKCal)
+            fiberCount.text = roundAp(food.nutrients.fiber)
+            fatsCount.text = roundAp(food.nutrients.fat)
+            carbohydrateCount.text = roundAp(food.nutrients.carbohydrate)
+            proteinCount.text = roundAp(food.nutrients.protein)
         }
     }
 
