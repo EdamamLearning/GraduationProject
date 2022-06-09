@@ -8,7 +8,7 @@
     <string name="search_textview_error_message">Error! Nothing found.</string>
     <string name="search_pokemon">Search eat</string>
     <string name="favorites_textview_message">Click on the heart-shaped icon on a Eat card to add it to your favorites!</string>
-    <string name="day_callories">Количество калорий в день:</string>
+    <string name="day_callories">В сутки: </string>
     <string name="ignore">ignore</string>
     <string name="enter_search_word">Введите продукт</string>
     <string name="error">Что-то пошло не так. Мы уже работаем над исправлением ошибки.</string>
@@ -42,5 +42,9 @@
     <string name="Brand">Производитель:</string>
     <string name="serving_per_container">Подача:</string>
     <string name="food_contents_label">Состав:</string>
+    <string name="EnergyCal">Cal</string>
+    <string name="fat_result">fat</string>
+    <string name="protein_result">prot</string>
+    <string name="carbohydrate">carb</string>
 
 </resources>

@@ -4,8 +4,10 @@ import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.domain.model.fooddomainmodelinnerclasses.DomainNutrients
 import ru.edamamlearning.graduationproject.retrofit.model.FoodApiDTO
 import ru.edamamlearning.graduationproject.retrofit.model.foodapidtoinnerclasses.NutrientsDTO
+import ru.edamamlearning.graduationproject.room.entity.DiaryFoodEntity
 import ru.edamamlearning.graduationproject.room.entity.FavoriteFoodEntity
 import ru.edamamlearning.graduationproject.room.entity.HistoryFoodEntity
+
 
 fun FoodApiDTO.toFoodDomainModel() = this.hints.map {
     FoodDomainModel(
@@ -97,10 +99,50 @@ fun HistoryFoodEntity.toFoodDomainModel() = FoodDomainModel(
     foodContentsLabel = this.foodContentsLabel,
     servingsPerContainer = this.servingsPerContainer,
     nutrients = DomainNutrients(
-            carbohydrate = this.carbohydrate,
-            energyKCal = this.energyKCal,
-            fat = this.fat,
-            fiber = this.fiber,
-            protein = this.protein,
+        carbohydrate = this.carbohydrate,
+        energyKCal = this.energyKCal,
+        fat = this.fat,
+        fiber = this.fiber,
+        protein = this.protein,
     )
+)
+
+
+@JvmName("toListFoodDomainModelDiaryFoodEntity")
+fun List<DiaryFoodEntity>.toListFoodDomainModel() = this.map {
+    it.toFoodDomainModel()
+}
+
+fun DiaryFoodEntity.toFoodDomainModel() = FoodDomainModel(
+    foodId = this.foodId,
+    category = this.category,
+    categoryLabel = this.categoryLabel,
+    label = this.label,
+    image = this.image,
+    brand = this.brand,
+    foodContentsLabel = this.foodContentsLabel,
+    servingsPerContainer = this.servingsPerContainer,
+    nutrients = DomainNutrients(
+        carbohydrate = this.carbohydrate,
+        energyKCal = this.energyKCal,
+        fat = this.fat,
+        fiber = this.fiber,
+        protein = this.protein,
+    )
+)
+
+fun FoodDomainModel.toDiaryFoodEntity() = DiaryFoodEntity(
+    foodId = this.foodId,
+    category = this.category,
+    categoryLabel = this.categoryLabel,
+    label = this.label,
+    image = this.image,
+    brand = this.brand,
+    foodContentsLabel = this.foodContentsLabel,
+    servingsPerContainer = this.servingsPerContainer,
+    carbohydrate = this.nutrients.carbohydrate,
+    energyKCal = this.nutrients.energyKCal,
+    fat = this.nutrients.fat,
+    fiber = this.nutrients.fiber,
+    protein = this.nutrients.protein,
 )

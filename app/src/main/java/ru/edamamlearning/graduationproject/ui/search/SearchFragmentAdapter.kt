@@ -13,7 +13,9 @@ import ru.edamamlearning.graduationproject.utils.roundAp
 
 class SearchAdapter(
     private val onFavouriteItemClicked: (FoodDomainModel) -> Unit,
+    private val diaryClickHandler: (FoodDomainModel) -> Boolean,
     private val isFavorite: (FoodDomainModel) -> Boolean,
+    private val isFoodChoise: (FoodDomainModel)-> Boolean,
     private val favouriteClickHandler: (FoodDomainModel) -> Boolean,
 ) : ListAdapter<FoodDomainModel, SearchAdapter.SearchViewHolder>(DiffCallback) {
 
@@ -60,6 +62,10 @@ class SearchAdapter(
             binding.favoriteButton.setOnClickListener{
                 binding.favoriteButton.isChecked = favouriteClickHandler(model)
             }
+            binding.diaryButton.isChecked = isFoodChoise(model)
+                binding.diaryButton.setOnClickListener{
+                    binding.diaryButton.isChecked = diaryClickHandler(model)
+                }
         }
     }
 

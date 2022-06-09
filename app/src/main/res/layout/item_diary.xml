@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dairyCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="8dp"
+    app:cardBackgroundColor="@color/bg_color"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dairy_relative_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:alpha="0.9"
+            android:gravity="center"
+            android:minLines="1"
+            android:textColor="@color/text_color"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="beacon" />
+
+        <LinearLayout
+            android:id="@+id/imageLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/amountlayout"
+            app:layout_constraintTop_toBottomOf="@+id/label">
+
+            <ImageView
+                android:id="@+id/food_image"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/amountlayout"
+                app:layout_constraintTop_toBottomOf="@+id/label"
+                tools:src="@drawable/food" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/label">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Carbohydrate"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="EnergyKCal"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="Fat"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="Protein"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/amountlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@id/label">
+
+            <TextView
+                android:id="@+id/carbohydrate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size" />
+
+            <TextView
+                android:id="@+id/energyKCal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size" />
+
+            <TextView
+                android:id="@+id/fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size" />
+
+            <TextView
+                android:id="@+id/protein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/standart_text_size" />
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/diary_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@null"
+            android:checked="false"
+            android:drawableBottom="@drawable/add_button_selector"
+            android:drawablePadding="8dp"
+            android:paddingHorizontal="8dp"
+            android:paddingBottom="10dp"
+            android:textSize="0sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageLayout"
+            app:layout_constraintStart_toEndOf="@+id/amountlayout"
+            app:layout_constraintTop_toBottomOf="@id/label" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

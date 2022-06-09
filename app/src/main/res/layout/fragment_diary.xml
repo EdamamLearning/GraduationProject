@@ -34,20 +34,63 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/recycler_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/calendar_layout"
         android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/result_layout"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginHorizontal="16dp"
-            android:text="@string/day_callories"
-            android:textSize="16sp"></TextView>
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/calendar_layout"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="16dp"
+                android:lines="1"
+                android:text="@string/day_callories"
+                android:textSize="16sp"></TextView>
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="16dp"
+                android:hint="@string/EnergyCal"
+                android:lines="1"
+                android:textSize="16sp"></TextView>
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="16dp"
+                android:hint="@string/fat_result"
+                android:lines="1"
+                android:textSize="16sp"></TextView>
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="16dp"
+                android:hint="@string/protein_result"
+                android:lines="1"
+                android:textSize="16sp"></TextView>
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="16dp"
+                android:hint="@string/carbohydrate"
+                android:lines="1"
+                android:textSize="16sp"></TextView>
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view2"
+            android:id="@+id/diary_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/calendar_layout"
@@ -60,6 +103,6 @@
             android:paddingBottom="@dimen/padding"
             android:requiresFadingEdge="vertical"
             tools:ignore="SpeakableTextPresentCheck"
-            tools:listitem="@layout/item_dairy" />
+            tools:listitem="@layout/item_diary" />
     </LinearLayout>
 </RelativeLayout>
