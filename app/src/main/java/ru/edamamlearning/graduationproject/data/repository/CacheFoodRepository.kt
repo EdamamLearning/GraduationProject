@@ -23,3 +23,4 @@ interface CacheFoodRepository {
     fun getAllInfoFood(): Flow<List<InfoFoodEntity>>
     fun getAllFavoriteFoods(): Flow<List<FavoriteFoodEntity>>
     fun getAllDiaryFoods(): Flow<List<DiaryFoodEntity>>
+}

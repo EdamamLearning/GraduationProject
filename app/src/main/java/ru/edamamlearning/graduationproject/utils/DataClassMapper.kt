@@ -45,7 +45,7 @@ fun FoodDomainModel.toHistoryFoodEntity() = HistoryFoodEntity(
     energyKCal = this.nutrients.energyKCal,
     fat = this.nutrients.fat,
     fiber = this.nutrients.fiber,
-    protein = this.nutrients.protein,
+    protein = this.nutrients.protein
 )
 
 fun List<FoodDomainModel>.toListHistoryFoodEntity() = this.map {
@@ -108,14 +108,28 @@ fun HistoryFoodEntity.toFoodDomainModel() = FoodDomainModel(
     )
 )
 
-
-
 @JvmName("toListFoodDomainModelInfoFoodEntity")
 fun List<InfoFoodEntity>.toListFoodDomainModel() = this.map {
     it.toFoodDomainModel()
 }
 
 fun InfoFoodEntity.toFoodDomainModel() = FoodDomainModel(
+    foodId = this.foodId,
+    category = this.category,
+    categoryLabel = this.categoryLabel,
+    label = this.label,
+    image = this.image,
+    brand = this.brand,
+    foodContentsLabel = this.foodContentsLabel,
+    servingsPerContainer = this.servingsPerContainer,
+    nutrients = DomainNutrients(
+        carbohydrate = this.carbohydrate,
+        energyKCal = this.energyKCal,
+        fat = this.fat,
+        fiber = this.fiber,
+        protein = this.protein
+    )
+)
 
 @JvmName("toListFoodDomainModelDiaryFoodEntity")
 fun List<DiaryFoodEntity>.toListFoodDomainModel() = this.map {
@@ -123,7 +137,6 @@ fun List<DiaryFoodEntity>.toListFoodDomainModel() = this.map {
 }
 
 fun DiaryFoodEntity.toFoodDomainModel() = FoodDomainModel(
-
     foodId = this.foodId,
     category = this.category,
     categoryLabel = this.categoryLabel,
@@ -141,11 +154,7 @@ fun DiaryFoodEntity.toFoodDomainModel() = FoodDomainModel(
     )
 )
 
-
 fun FoodDomainModel.toInfoFoodEntity() = InfoFoodEntity(
-
-fun FoodDomainModel.toDiaryFoodEntity() = DiaryFoodEntity(
-
     foodId = this.foodId,
     category = this.category,
     categoryLabel = this.categoryLabel,
@@ -158,10 +167,22 @@ fun FoodDomainModel.toDiaryFoodEntity() = DiaryFoodEntity(
     energyKCal = this.nutrients.energyKCal,
     fat = this.nutrients.fat,
     fiber = this.nutrients.fiber,
-    protein = this.nutrients.protein,
+    protein = this.nutrients.protein
+)
 
-
-    )
-
+fun FoodDomainModel.toDiaryFoodEntity() = DiaryFoodEntity(
+    foodId = this.foodId,
+    category = this.category,
+    categoryLabel = this.categoryLabel,
+    label = this.label,
+    image = this.image,
+    brand = this.brand,
+    foodContentsLabel = this.foodContentsLabel,
+    servingsPerContainer = this.servingsPerContainer,
+    carbohydrate = this.nutrients.carbohydrate,
+    energyKCal = this.nutrients.energyKCal,
+    fat = this.nutrients.fat,
+    fiber = this.nutrients.fiber,
+    protein = this.nutrients.protein
 )
 

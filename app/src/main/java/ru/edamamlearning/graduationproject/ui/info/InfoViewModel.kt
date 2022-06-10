@@ -36,14 +36,14 @@ class InfoViewModel @Inject constructor(
         }.start()
     }
 
-    fun isAFoodChoise(foodDomainModel: FoodDomainModel): Boolean {
+    fun isAFoodChoice(foodDomainModel: FoodDomainModel): Boolean {
         return infoFood.value.contains(foodDomainModel)
     }
 
     fun isInfoFoodsEmpty(): Boolean = infoFood.value.isEmpty()
 
     fun infoFoodClickHandler(foodDomainModel: FoodDomainModel): Boolean {
-        return when (isAFoodChoise(foodDomainModel)) {
+        return when (isAFoodChoice(foodDomainModel)) {
             true -> {
                 viewModelScope.launch(Dispatchers.IO) {
                     domainRepository.deleteFavoriteFood(foodDomainModel)

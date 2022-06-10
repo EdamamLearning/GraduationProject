@@ -40,7 +40,7 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
     private val adapter by lazy {
         InfoFragmentAdapter(
             onFavouriteItemClicked = this::renderData,
-            isAFoodChoise = viewModel::isAFoodChoise,
+            isAFoodChoice = viewModel::isAFoodChoice,
             infoClickHandler = viewModel::infoFoodClickHandler
         )
     }
@@ -116,9 +116,6 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
     companion object {
         const val NULL = ""
     }
-
-}
-
 
     override fun onResume() {
         super.onResume()

@@ -34,6 +34,7 @@ class CacheFoodRepositoryImpl @Inject constructor(
 
     override fun getAllInfoFood(): Flow<List<InfoFoodEntity>> {
         return database.infoFoodDao().getAll()
+    }
 
     override suspend fun saveDiaryFood(food: DiaryFoodEntity) {
         database.diaryFoodDao().insert(food)
