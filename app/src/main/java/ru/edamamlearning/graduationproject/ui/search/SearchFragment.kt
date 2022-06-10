@@ -25,7 +25,7 @@ import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.ToolbarApp
 import ru.edamamlearning.graduationproject.utils.hideKeyboard
-import ru.edamamlearning.graduationproject.utils.saveNavigate
+import ru.edamamlearning.graduationproject.utils.extensions.saveNavigate
 import javax.inject.Inject
 
 class SearchFragment : BaseFragment(R.layout.fragment_search) {

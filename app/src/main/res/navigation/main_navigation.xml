@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
+            app:destination="@id/infoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_searchFragment_to_disconnectDialog"
             app:destination="@id/disconnectDialog" />
@@ -28,7 +32,11 @@
         tools:layout="@layout/fragment_food">
         <action
             android:id="@+id/action_homeFragment_to_infoFragment2"
-            app:destination="@id/infoFragment" />
+            app:destination="@id/infoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
@@ -49,7 +57,11 @@
         tools:layout="@layout/fragment_favorite">
         <action
             android:id="@+id/action_favoritesFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
+            app:destination="@id/infoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/dairyFragment"

@@ -6,15 +6,9 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
-import androidx.lifecycle.*
-
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-
+import androidx.lifecycle.*
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import ru.edamamlearning.graduationproject.R
@@ -24,6 +18,7 @@ import ru.edamamlearning.graduationproject.databinding.FragmentInfoBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.ToolbarApp
+import ru.edamamlearning.graduationproject.utils.extensions.loadPicture
 import ru.edamamlearning.graduationproject.utils.roundAp
 import javax.inject.Inject
 
@@ -75,7 +70,7 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
 
     private fun renderData(food: FoodDomainModel) {
         binding.apply {
-            loadPicture(food.image)
+            binding.foodImage.loadPicture(food.image)
             textView.text = food.label
             categoryLabel.text = food.categoryLabel
             category.text = food.category
@@ -100,16 +95,6 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
             fatsCount.text = roundAp(food.nutrients.fat)
             carbohydrateCount.text = roundAp(food.nutrients.carbohydrate)
             proteinCount.text = roundAp(food.nutrients.protein)
-        }
-    }
-
-    private fun loadPicture(image: String?) {
-        if (image != null) {
-            Glide.with(binding.root)
-                .load(image)
-                .error(R.drawable.food_no_photo)
-                .placeholder(R.drawable.food)
-                .into(binding.foodImage)
         }
     }
 
@@ -144,4 +129,3 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
         }
     }
 }
-

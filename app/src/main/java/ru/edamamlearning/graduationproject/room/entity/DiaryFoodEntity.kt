@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class DiaryFoodEntity (
+data class DiaryFoodEntity(
     @PrimaryKey
     val foodId: String,
     val category: String,

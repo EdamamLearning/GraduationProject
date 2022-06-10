@@ -5,10 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.databinding.ItemHistoryBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
+import ru.edamamlearning.graduationproject.utils.extensions.loadPicture
 
 class FoodFragmentAdapter(
     private val onHistoryItemClicked: (FoodDomainModel) -> Unit
@@ -38,17 +37,7 @@ class FoodFragmentAdapter(
         fun show(model: FoodDomainModel) {
             vb.label.text = model.label
             vb.category.text = model.category
-            loadPicture(model.image, vb)
-        }
-    }
-
-    private fun loadPicture(image: String?, binding: ItemHistoryBinding) {
-        if (image != null) {
-            Glide.with(binding.root)
-                .load(image)
-                .error(R.drawable.food_no_photo)
-                .placeholder(R.drawable.food)
-                .into(binding.foodImage)
+            vb.foodImage.loadPicture(model.image)
         }
     }
 
@@ -58,7 +47,10 @@ class FoodFragmentAdapter(
             return oldItem.foodId == newItem.foodId
         }
 
-        override fun areContentsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
+        override fun areContentsTheSame(
+            oldItem: FoodDomainModel,
+            newItem: FoodDomainModel
+        ): Boolean {
             return oldItem == newItem
         }
     }

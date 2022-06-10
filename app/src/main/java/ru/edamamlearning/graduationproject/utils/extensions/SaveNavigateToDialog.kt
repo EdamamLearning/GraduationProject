@@ -1,4 +1,4 @@
-package ru.edamamlearning.graduationproject.utils
+package ru.edamamlearning.graduationproject.utils.extensions
 
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections

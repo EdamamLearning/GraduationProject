@@ -1,4 +1,4 @@
-package ru.edamamlearning.graduationproject.utils
+package ru.edamamlearning.graduationproject.utils.extensions
 
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.domain.model.fooddomainmodelinnerclasses.DomainNutrients
@@ -8,7 +8,6 @@ import ru.edamamlearning.graduationproject.room.entity.DiaryFoodEntity
 import ru.edamamlearning.graduationproject.room.entity.FavoriteFoodEntity
 import ru.edamamlearning.graduationproject.room.entity.HistoryFoodEntity
 import ru.edamamlearning.graduationproject.room.entity.InfoFoodEntity
-
 
 fun FoodApiDTO.toFoodDomainModel() = this.hints.map {
     FoodDomainModel(
