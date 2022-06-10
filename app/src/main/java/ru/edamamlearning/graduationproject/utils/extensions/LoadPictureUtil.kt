@@ -1,4 +1,4 @@
-package ru.edamamlearning.graduationproject.utils
+package ru.edamamlearning.graduationproject.utils.extensions
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide

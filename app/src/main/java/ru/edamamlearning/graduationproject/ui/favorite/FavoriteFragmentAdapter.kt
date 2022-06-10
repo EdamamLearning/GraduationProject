@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.edamamlearning.graduationproject.databinding.ItemSearchBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
-import ru.edamamlearning.graduationproject.utils.loadPicture
+import ru.edamamlearning.graduationproject.utils.extensions.loadPicture
 import ru.edamamlearning.graduationproject.utils.roundAp
 
 class FavoriteFragmentAdapter(

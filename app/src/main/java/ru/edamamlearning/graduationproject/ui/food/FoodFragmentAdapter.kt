@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.edamamlearning.graduationproject.databinding.ItemHistoryBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
-import ru.edamamlearning.graduationproject.utils.loadPicture
+import ru.edamamlearning.graduationproject.utils.extensions.loadPicture
 
 class FoodFragmentAdapter(
     private val onHistoryItemClicked: (FoodDomainModel) -> Unit
@@ -47,7 +47,10 @@ class FoodFragmentAdapter(
             return oldItem.foodId == newItem.foodId
         }
 
-        override fun areContentsTheSame(oldItem: FoodDomainModel, newItem: FoodDomainModel): Boolean {
+        override fun areContentsTheSame(
+            oldItem: FoodDomainModel,
+            newItem: FoodDomainModel
+        ): Boolean {
             return oldItem == newItem
         }
     }

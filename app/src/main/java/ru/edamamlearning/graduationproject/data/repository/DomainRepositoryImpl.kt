@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import ru.edamamlearning.graduationproject.domain.DomainRepository
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
-import ru.edamamlearning.graduationproject.utils.*
+import ru.edamamlearning.graduationproject.utils.extensions.*
 import javax.inject.Inject
 
 class DomainRepositoryImpl @Inject constructor(
@@ -47,7 +47,7 @@ class DomainRepositoryImpl @Inject constructor(
     }
 
     override suspend fun deleteDiaryFood(foodDomainModel: FoodDomainModel) {
-       cacheFoodRepository.deleteDiaryFood(foodDomainModel.toDiaryFoodEntity())
+        cacheFoodRepository.deleteDiaryFood(foodDomainModel.toDiaryFoodEntity())
     }
 
     override suspend fun getAllHistoryFoods(): List<FoodDomainModel> {
@@ -59,6 +59,6 @@ class DomainRepositoryImpl @Inject constructor(
     }
 
     override fun getAllDiaryFoods(): Flow<List<FoodDomainModel>> {
-        return cacheFoodRepository.getAllDiaryFoods().map {it.toListFoodDomainModel()}
+        return cacheFoodRepository.getAllDiaryFoods().map { it.toListFoodDomainModel() }
     }
 }

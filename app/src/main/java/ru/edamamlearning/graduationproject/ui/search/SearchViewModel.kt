@@ -18,7 +18,8 @@ class SearchViewModel @Inject constructor(
     private var domainRepository: DomainRepository
 ) : BaseViewModel() {
 
-    private val favoriteFood: StateFlow<List<FoodDomainModel>> = domainRepository.getAllFavoriteFoods()
+    private val favoriteFood: StateFlow<List<FoodDomainModel>> =
+        domainRepository.getAllFavoriteFoods()
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.Eagerly,

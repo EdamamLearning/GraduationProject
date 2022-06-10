@@ -7,9 +7,10 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import androidx.navigation.fragment.navArgs
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.BaseFragment
 import ru.edamamlearning.graduationproject.core.viewBinding
@@ -17,7 +18,7 @@ import ru.edamamlearning.graduationproject.databinding.FragmentInfoBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.ToolbarApp
-import ru.edamamlearning.graduationproject.utils.loadPicture
+import ru.edamamlearning.graduationproject.utils.extensions.loadPicture
 import ru.edamamlearning.graduationproject.utils.roundAp
 import javax.inject.Inject
 
