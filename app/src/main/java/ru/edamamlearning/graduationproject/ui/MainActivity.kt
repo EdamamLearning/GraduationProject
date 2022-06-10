@@ -33,6 +33,7 @@ class MainActivity : DaggerActivity(R.layout.activity_main) {
                 R.id.foodFragment -> showBottomNav()
                 R.id.favoritesFragment -> showBottomNav()
                 R.id.dairyFragment -> showBottomNav()
+                R.id.infoFragment -> showBottomNav()
             }
         }
     }

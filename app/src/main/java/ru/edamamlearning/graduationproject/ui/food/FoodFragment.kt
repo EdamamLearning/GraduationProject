@@ -35,17 +35,6 @@ class FoodFragment : BaseFragment(R.layout.fragment_food) {
         )
     }
 
-    private fun navigate(foodDomainModel: FoodDomainModel) {
-        val action = FoodFragmentDirections
-            .actionHomeFragmentToInfoFragment2(foodDomainModel.foodId)
-        findNavController().navigate(action)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        viewModel.getFoodOfLabel("All types")
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.adapter = adapter
@@ -54,6 +43,17 @@ class FoodFragment : BaseFragment(R.layout.fragment_food) {
         }
         viewModel.food.observe(viewLifecycleOwner, observer)
         setupChipGroup()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.getFoodOfLabel("All types")
+    }
+
+    private fun navigate(foodDomainModel: FoodDomainModel) {
+        val action = FoodFragmentDirections
+            .actionHomeFragmentToInfoFragment2(foodDomainModel.foodId)
+        findNavController().navigate(action)
     }
 
     private fun setupChipGroup() {

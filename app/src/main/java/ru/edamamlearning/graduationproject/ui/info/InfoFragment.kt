@@ -6,11 +6,17 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+
+import androidx.lifecycle.*
+
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.BaseFragment
 import ru.edamamlearning.graduationproject.core.viewBinding
@@ -31,6 +37,14 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
     private val navigationArgs: InfoFragmentArgs by navArgs()
     private val binding: FragmentInfoBinding by viewBinding()
 
+    private val adapter by lazy {
+        InfoFragmentAdapter(
+            onFavouriteItemClicked = this::renderData,
+            isAFoodChoise = viewModel::isAFoodChoise,
+            infoClickHandler = viewModel::infoFoodClickHandler
+        )
+    }
+
     @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +59,18 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
         }
         viewModel.food.observe(viewLifecycleOwner, observer)
         viewModel.getFood(foodId)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        lifecycleScope.launchWhenStarted {
+            viewModel.infoFood
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .distinctUntilChanged()
+                .collectLatest {
+                    adapter.submitList(it)
+                }
+        }
     }
 
     private fun renderData(food: FoodDomainModel) {
@@ -91,6 +117,9 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
         const val NULL = ""
     }
 
+}
+
+
     override fun onResume() {
         super.onResume()
         setToolbar()
@@ -118,3 +147,4 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
         }
     }
 }
+
