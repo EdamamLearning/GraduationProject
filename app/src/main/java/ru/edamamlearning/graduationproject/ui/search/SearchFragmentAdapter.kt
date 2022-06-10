@@ -5,10 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.databinding.ItemSearchBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
+import ru.edamamlearning.graduationproject.utils.loadPicture
 import ru.edamamlearning.graduationproject.utils.roundAp
 
 class SearchAdapter(
@@ -57,7 +56,7 @@ class SearchAdapter(
             binding.proteinCount.text = roundAp(model.nutrients.protein)
             binding.fatsCount.text = roundAp(model.nutrients.fat)
             binding.carbohydratesCount.text = roundAp(model.nutrients.carbohydrate)
-            loadPicture(model.image, binding)
+            binding.foodImage.loadPicture(model.image)
             binding.favoriteButton.isChecked = isFavorite(model)
             binding.favoriteButton.setOnClickListener{
                 binding.favoriteButton.isChecked = favouriteClickHandler(model)
@@ -66,16 +65,6 @@ class SearchAdapter(
                 binding.diaryButton.setOnClickListener{
                     binding.diaryButton.isChecked = diaryClickHandler(model)
                 }
-        }
-    }
-
-    private fun loadPicture(image: String?, binding: ItemSearchBinding) {
-        if (image != null) {
-            Glide.with(binding.root)
-                .load(image)
-                .error(R.drawable.food_no_photo)
-                .placeholder(R.drawable.food)
-                .into(binding.foodImage)
         }
     }
 }
