@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_searchFragment_to_disconnectDialog"
             app:destination="@id/disconnectDialog" />
+        <action
+            android:id="@+id/action_searchFragment_to_dairyFragment"
+            app:destination="@id/dairyFragment" />
     </fragment>
 
     <fragment
@@ -52,10 +55,12 @@
         android:id="@+id/dairyFragment"
         android:name="ru.edamamlearning.graduationproject.ui.diary.DiaryFragment"
         android:label="fragment_dairy"
-        tools:layout="@layout/fragment_dairy">
-        <action
-            android:id="@+id/action_infoFragment_to_fragment_dairy"
-            app:destination="@id/infoFragment" />
+        tools:layout="@layout/fragment_diary">
+
+        <argument
+            android:name="food_id"
+            app:argType="string" />
+
     </fragment>
     <dialog
         android:id="@+id/disconnectDialog"

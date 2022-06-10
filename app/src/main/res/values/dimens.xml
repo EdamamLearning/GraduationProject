@@ -10,6 +10,7 @@
     <dimen name="elevation">8dp</dimen>
     <dimen name="title_text_size">36sp</dimen>
     <dimen name="standart_text_size">16sp</dimen>
+    <dimen name="search_text_size">14sp</dimen>
     <dimen name="info_text_size">18sp</dimen>
     <dimen name="start_margin">16dp</dimen>
     <dimen name="margin_horizontal">8dp</dimen>
@@ -21,4 +22,12 @@
     <dimen name="fadingEdgeLengthScroll">24dp</dimen>
     <dimen name="marginBottomRV">72dp</dimen>
     <dimen name="paddingRV">24dp</dimen>
-    </resources>
+    <dimen name="margin_edit_text">5dp</dimen>
+    <dimen name="height_margin_edit_text">50dp</dimen>
+    <dimen name="margin_start_toolbar">160dp</dimen>
+    <dimen name="margin_end_image_view">8dp</dimen>
+    <dimen name="margin_bottom_image_view">10dp</dimen>
+    <dimen name="progress_bar">24dp</dimen>
+    <dimen name="imageView_search">60dp</dimen>
+    <dimen name="text_size_search_textview">18sp</dimen>
+</resources>

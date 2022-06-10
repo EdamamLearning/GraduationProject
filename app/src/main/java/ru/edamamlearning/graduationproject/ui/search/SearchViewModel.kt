@@ -63,4 +63,41 @@ class SearchViewModel @Inject constructor(
             }
         }
     }
+
+
+    private val diaryFood: StateFlow<List<FoodDomainModel>> =
+        domainRepository.getAllDiaryFoods()
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.Eagerly,
+                initialValue = emptyList()
+            )
+
+    fun isAFoodChoise(foodDomainModel: FoodDomainModel): Boolean {
+        return diaryFood.value.contains(foodDomainModel)
+    }
+
+    fun diaryFoodClickHandler(foodDomainModel: FoodDomainModel): Boolean {
+        return when (isAFoodChoise(foodDomainModel)) {
+            true -> {
+                viewModelScope.launch(Dispatchers.IO) {
+                    domainRepository.deleteDiaryFood(foodDomainModel)
+                }
+                tryLaunch {
+                    domainRepository.deleteDiaryFood(foodDomainModel)
+                }.catch { throwable ->
+                    Timber.e(throwable.message)
+                }.start()
+                false
+            }
+            false -> {
+                tryLaunch {
+                    domainRepository.saveDiaryFood(foodDomainModel)
+                }.catch { throwable ->
+                    Timber.e(throwable.message)
+                }.start()
+                true
+            }
+        }
+    }
 }

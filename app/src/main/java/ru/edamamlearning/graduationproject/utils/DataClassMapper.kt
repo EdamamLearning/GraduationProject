@@ -4,9 +4,11 @@ import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.domain.model.fooddomainmodelinnerclasses.DomainNutrients
 import ru.edamamlearning.graduationproject.retrofit.model.FoodApiDTO
 import ru.edamamlearning.graduationproject.retrofit.model.foodapidtoinnerclasses.NutrientsDTO
+import ru.edamamlearning.graduationproject.room.entity.DiaryFoodEntity
 import ru.edamamlearning.graduationproject.room.entity.FavoriteFoodEntity
 import ru.edamamlearning.graduationproject.room.entity.HistoryFoodEntity
 import ru.edamamlearning.graduationproject.room.entity.InfoFoodEntity
+
 
 fun FoodApiDTO.toFoodDomainModel() = this.hints.map {
     FoodDomainModel(
@@ -107,12 +109,21 @@ fun HistoryFoodEntity.toFoodDomainModel() = FoodDomainModel(
 )
 
 
+
 @JvmName("toListFoodDomainModelInfoFoodEntity")
 fun List<InfoFoodEntity>.toListFoodDomainModel() = this.map {
     it.toFoodDomainModel()
 }
 
 fun InfoFoodEntity.toFoodDomainModel() = FoodDomainModel(
+
+@JvmName("toListFoodDomainModelDiaryFoodEntity")
+fun List<DiaryFoodEntity>.toListFoodDomainModel() = this.map {
+    it.toFoodDomainModel()
+}
+
+fun DiaryFoodEntity.toFoodDomainModel() = FoodDomainModel(
+
     foodId = this.foodId,
     category = this.category,
     categoryLabel = this.categoryLabel,
@@ -130,7 +141,11 @@ fun InfoFoodEntity.toFoodDomainModel() = FoodDomainModel(
     )
 )
 
+
 fun FoodDomainModel.toInfoFoodEntity() = InfoFoodEntity(
+
+fun FoodDomainModel.toDiaryFoodEntity() = DiaryFoodEntity(
+
     foodId = this.foodId,
     category = this.category,
     categoryLabel = this.categoryLabel,
@@ -145,4 +160,8 @@ fun FoodDomainModel.toInfoFoodEntity() = InfoFoodEntity(
     fiber = this.nutrients.fiber,
     protein = this.nutrients.protein,
 
+
     )
+
+)
+

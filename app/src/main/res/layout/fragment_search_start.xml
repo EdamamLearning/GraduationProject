@@ -8,41 +8,12 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBar"
+        app:title="@string/search"
         android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:background="@color/white"
-        android:minHeight="?android:attr/actionBarSize"
-        android:translationZ="5dp"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/search"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginEnd="16dp"
-            app:srcCompat="@drawable/ic_info"
-            tools:ignore="RtlHardcoded" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginEnd="16dp"
-            app:srcCompat="@drawable/ic_toolbar_back_button"
-            tools:ignore="RtlHardcoded" />
-
-    </androidx.appcompat.widget.Toolbar>
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleMarginStart="@dimen/margin_start_toolbar"
+        app:titleTextAppearance="@style/TextViewToolBar" />
 
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_below="@id/toolBar"
@@ -58,11 +29,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin_end_image_view"
             android:layout_marginBottom="@dimen/margin_bottom_image_view"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/input_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/input_layout"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_search_btn" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_layout"
@@ -77,18 +49,18 @@
             app:endIconMode="custom"
             app:helperText="@string/search_helper_text"
             app:layout_constraintBottom_toTopOf="@+id/recycler_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toEndOf="parent">
 
             <EditText
                 android:id="@+id/searchEditText"
-                android:layout_marginStart="@dimen/margin_edit_text"
-                android:layout_marginEnd="@dimen/margin_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_margin_edit_text"
+                android:layout_marginStart="@dimen/margin_edit_text"
+                android:layout_marginEnd="@dimen/margin_edit_text"
                 android:autofillHints=""
                 android:background="@drawable/rounded_border_search_bar"
                 android:drawablePadding="@dimen/padding"
+                android:hint="@string/search_pokemon"
                 android:imeOptions="actionSearch"
                 android:inputType="textNoSuggestions"
                 android:paddingHorizontal="@dimen/paddingSearch"
@@ -114,6 +86,7 @@
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
@@ -127,7 +100,8 @@
         android:paddingBottom="@dimen/padding"
         android:requiresFadingEdge="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:listitem="@layout/item_search"/>
 
     <LinearLayout
         android:id="@+id/empty_search_layout"
@@ -160,7 +134,7 @@
             android:gravity="center"
             android:text="@string/search_textview_default_message"
             android:textColor="@color/title_color"
-            android:textSize="@dimen/text_size_search_textview" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 

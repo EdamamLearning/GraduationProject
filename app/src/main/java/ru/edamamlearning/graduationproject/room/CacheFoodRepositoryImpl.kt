@@ -2,6 +2,7 @@ package ru.edamamlearning.graduationproject.room
 
 import kotlinx.coroutines.flow.Flow
 import ru.edamamlearning.graduationproject.data.repository.CacheFoodRepository
+import ru.edamamlearning.graduationproject.room.entity.DiaryFoodEntity
 import ru.edamamlearning.graduationproject.room.entity.FavoriteFoodEntity
 import ru.edamamlearning.graduationproject.room.entity.HistoryFoodEntity
 import ru.edamamlearning.graduationproject.room.entity.InfoFoodEntity
@@ -22,6 +23,7 @@ class CacheFoodRepositoryImpl @Inject constructor(
         database.favoriteFoodDao().insert(food)
     }
 
+
     override suspend fun saveInfoFood(food: InfoFoodEntity) {
         database.infoFoodDao().insert(food)
     }
@@ -32,6 +34,13 @@ class CacheFoodRepositoryImpl @Inject constructor(
 
     override fun getAllInfoFood(): Flow<List<InfoFoodEntity>> {
         return database.infoFoodDao().getAll()
+
+    override suspend fun saveDiaryFood(food: DiaryFoodEntity) {
+        database.diaryFoodDao().insert(food)
+    }
+    override suspend fun deleteDiaryFood(food: DiaryFoodEntity) {
+        database.diaryFoodDao().delete(food)
+
     }
 
     override suspend fun deleteFavoriteFood(food: FavoriteFoodEntity) {
@@ -48,5 +57,9 @@ class CacheFoodRepositoryImpl @Inject constructor(
 
     override fun getAllFavoriteFoods(): Flow<List<FavoriteFoodEntity>> {
         return database.favoriteFoodDao().getAll()
+    }
+
+    override fun getAllDiaryFoods(): Flow<List<DiaryFoodEntity>> {
+        return database.diaryFoodDao().getAll()
     }
 }

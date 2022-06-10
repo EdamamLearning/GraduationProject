@@ -10,8 +10,14 @@ interface DomainRepository {
     suspend fun saveInfoFood(foodDomainModel: FoodDomainModel)
     suspend fun deleteInfoFood(foodDomainModel: FoodDomainModel)
     suspend fun saveFavoriteFood(foodDomainModel: FoodDomainModel)
+    suspend fun saveDiaryFood(foodDomainModel: FoodDomainModel)
     suspend fun deleteFavoriteFood(foodDomainModel: FoodDomainModel)
+    suspend fun deleteDiaryFood(foodDomainModel: FoodDomainModel)
     suspend fun getAllHistoryFoods(): List<FoodDomainModel>
     fun getAllFavoriteFoods(): Flow<List<FoodDomainModel>>
+
     fun getAllInfoFoods(): Flow<List<FoodDomainModel>>
+
+    fun getAllDiaryFoods(): Flow<List<FoodDomainModel>>
+
 }
