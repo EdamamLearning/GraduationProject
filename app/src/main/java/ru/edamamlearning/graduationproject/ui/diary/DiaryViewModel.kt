@@ -24,13 +24,13 @@ class DiaryViewModel @Inject constructor(
                 initialValue = emptyList()
             )
 
-    fun isFoodChoise(foodDomainModel: FoodDomainModel): Boolean {
+    fun isFoodChoice(foodDomainModel: FoodDomainModel): Boolean {
         return diaryFood.value.contains(foodDomainModel)
     }
 
     fun isDiaryFoodsEmpty(): Boolean = diaryFood.value.isEmpty()
     fun diaryFoodClickHandler(foodDomainModel: FoodDomainModel): Boolean {
-        return when (isFoodChoise(foodDomainModel)) {
+        return when (isFoodChoice(foodDomainModel)) {
             true -> {
                 viewModelScope.launch(Dispatchers.IO) {
                     domainRepository.deleteDiaryFood(foodDomainModel)

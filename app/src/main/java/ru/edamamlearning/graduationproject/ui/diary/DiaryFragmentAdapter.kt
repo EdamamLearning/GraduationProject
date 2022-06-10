@@ -12,7 +12,7 @@ import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.roundAp
 
 class DiaryFragmentAdapter(
-    private val isFoodChoise: (FoodDomainModel) -> Boolean,
+    private val isFoodChoice: (FoodDomainModel) -> Boolean,
     private val diaryClickHandler: (FoodDomainModel) -> Boolean,
 ) : ListAdapter<FoodDomainModel, DiaryFragmentAdapter.DiaryViewHolder>(DiffCallback) {
 
@@ -54,7 +54,7 @@ class DiaryFragmentAdapter(
             binding.fat.text = roundAp(model.nutrients.fat)
             binding.carbohydrate.text = roundAp(model.nutrients.carbohydrate)
             loadPicture(model.image, binding)
-            binding.diaryButton.isChecked = isFoodChoise(model)
+            binding.diaryButton.isChecked = isFoodChoice(model)
             binding.diaryButton.setOnClickListener {
                 binding.diaryButton.isChecked = diaryClickHandler(model)
             }

@@ -31,7 +31,7 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
 
     private val adapter by lazy {
         DiaryFragmentAdapter(
-            isFoodChoise = viewModel::isFoodChoise,
+            isFoodChoice = viewModel::isFoodChoice,
             diaryClickHandler = viewModel::diaryFoodClickHandler
         )
     }

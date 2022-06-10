@@ -16,7 +16,7 @@ import ru.edamamlearning.graduationproject.utils.roundAp
  **/
 class InfoFragmentAdapter(
     private val onFavouriteItemClicked: (FoodDomainModel) -> Unit,
-    private val isAFoodChoise: (FoodDomainModel) -> Boolean,
+    private val isAFoodChoice: (FoodDomainModel) -> Boolean,
     private val infoClickHandler: (FoodDomainModel) -> Boolean,
 ) : ListAdapter<FoodDomainModel, InfoFragmentAdapter.InfoViewHolder>(DiffCallback) {
 
@@ -62,7 +62,7 @@ class InfoFragmentAdapter(
             binding.fatsCount.text = roundAp(model.nutrients.fat)
             binding.carbohydrateCount.text = roundAp(model.nutrients.carbohydrate)
             loadPicture(model.image, binding)
-            binding.infoButton.isChecked = isAFoodChoise(model)
+            binding.infoButton.isChecked = isAFoodChoice(model)
             binding.infoButton.setOnClickListener {
                 binding.infoButton.isChecked = infoClickHandler(model)
             }

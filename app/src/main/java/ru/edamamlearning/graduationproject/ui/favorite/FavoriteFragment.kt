@@ -2,10 +2,7 @@ package ru.edamamlearning.graduationproject.ui.favorite
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.view.isGone
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.flowWithLifecycle

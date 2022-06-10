@@ -61,5 +61,4 @@ class DomainRepositoryImpl @Inject constructor(
     override fun getAllDiaryFoods(): Flow<List<FoodDomainModel>> {
         return cacheFoodRepository.getAllDiaryFoods().map {it.toListFoodDomainModel()}
     }
-
 }
