@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.flowWithLifecycle
@@ -28,15 +27,13 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
     private val viewModel: DiaryViewModel by lazy {
         ViewModelProvider(this, vmFactory)[DiaryViewModel::class.java]
     }
-
+    private val binding: FragmentDiaryBinding by viewBinding()
     private val adapter by lazy {
         DiaryFragmentAdapter(
             isFoodChoice = viewModel::isFoodChoice,
             diaryClickHandler = viewModel::diaryFoodClickHandler
         )
     }
-
-    private val binding: FragmentDiaryBinding by viewBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,14 +48,7 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
                 .distinctUntilChanged()
                 .collectLatest {
                     adapter.submitList(it)
-                    checkDiary()
                 }
-        }
-    }
-
-    private fun checkDiary() {
-        if (!viewModel.isDiaryFoodsEmpty()) {
-            binding.recyclerLayout.isVisible = !viewModel.isDiaryFoodsEmpty()
         }
     }
 

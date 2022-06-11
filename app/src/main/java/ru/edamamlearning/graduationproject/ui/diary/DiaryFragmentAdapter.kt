@@ -2,10 +2,11 @@ package ru.edamamlearning.graduationproject.ui.diary
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ru.edamamlearning.graduationproject.databinding.ItemDiaryBinding
+import ru.edamamlearning.graduationproject.databinding.ItemSearchBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.extensions.loadPicture
 import ru.edamamlearning.graduationproject.utils.roundAp
@@ -17,7 +18,7 @@ class DiaryFragmentAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaryViewHolder {
         return DiaryViewHolder(
-            ItemDiaryBinding.inflate(
+            ItemSearchBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -44,15 +45,17 @@ class DiaryFragmentAdapter(
         }
     }
 
-    inner class DiaryViewHolder(private val binding: ItemDiaryBinding) :
+    inner class DiaryViewHolder(private val binding: ItemSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(model: FoodDomainModel) {
             binding.label.text = model.label
-            binding.protein.text = roundAp(model.nutrients.protein)
-            binding.fat.text = roundAp(model.nutrients.fat)
-            binding.carbohydrate.text = roundAp(model.nutrients.carbohydrate)
+            binding.category.text = model.category
+            binding.proteinCount.text = roundAp(model.nutrients.protein)
+            binding.fatsCount.text = roundAp(model.nutrients.fat)
+            binding.carbohydratesCount.text = roundAp(model.nutrients.carbohydrate)
             binding.foodImage.loadPicture(model.image)
+            binding.favoriteButton.isVisible = false
             binding.diaryButton.isChecked = isFoodChoice(model)
             binding.diaryButton.setOnClickListener {
                 binding.diaryButton.isChecked = diaryClickHandler(model)

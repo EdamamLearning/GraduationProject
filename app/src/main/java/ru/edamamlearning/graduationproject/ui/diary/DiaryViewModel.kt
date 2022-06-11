@@ -1,11 +1,9 @@
 package ru.edamamlearning.graduationproject.ui.diary
 
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
 import ru.edamamlearning.graduationproject.core.BaseViewModel
 import ru.edamamlearning.graduationproject.domain.DomainRepository
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
@@ -28,13 +26,9 @@ class DiaryViewModel @Inject constructor(
         return diaryFood.value.contains(foodDomainModel)
     }
 
-    fun isDiaryFoodsEmpty(): Boolean = diaryFood.value.isEmpty()
     fun diaryFoodClickHandler(foodDomainModel: FoodDomainModel): Boolean {
         return when (isFoodChoice(foodDomainModel)) {
             true -> {
-                viewModelScope.launch(Dispatchers.IO) {
-                    domainRepository.deleteDiaryFood(foodDomainModel)
-                }
                 tryLaunch {
                     domainRepository.deleteDiaryFood(foodDomainModel)
                 }.catch { throwable ->
