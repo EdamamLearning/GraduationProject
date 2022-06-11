@@ -16,6 +16,7 @@
     <color name="border_color">#DD202020</color>
     <color name="bg_color">#EFEFEF</color>
     <color name="title_color">#5F5F5F</color>
+    <color name="shadow_grey">#a1a2b1</color>
     <color name="selector_default">#BBBBBB</color>
     <color name="selector_pressed">#333333</color>
     <color name="selector_checked">#5F5F5F</color>
@@ -44,4 +45,7 @@
     <color name="secondary_label_inverse">#99FFFFFF</color>
     <color name="tertiary_label">#4D3C3C43</color>
     <color name="tertiaty_label_inverse">#4DFFFFFF</color>
+
+    <color name="support_104">#C70000</color>
+    <color name="support_303">#5CC08D</color>
 </resources>

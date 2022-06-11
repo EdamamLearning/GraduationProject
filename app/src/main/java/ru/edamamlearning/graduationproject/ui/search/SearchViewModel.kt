@@ -3,21 +3,30 @@ package ru.edamamlearning.graduationproject.ui.search
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
+import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.BaseViewModel
+import ru.edamamlearning.graduationproject.core.resourcesprovider.ResourcesProvider
 import ru.edamamlearning.graduationproject.domain.DomainRepository
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
+import ru.edamamlearning.graduationproject.utils.message.SystemMessageNotifier
 import timber.log.Timber
 import javax.inject.Inject
 
 class SearchViewModel @Inject constructor(
-    private var domainRepository: DomainRepository
+    private var domainRepository: DomainRepository,
+    private val systemMessageNotifier: SystemMessageNotifier,
+    private val resourcesProvider: ResourcesProvider
 ) : BaseViewModel() {
 
+    private var snackDismissFlow: MutableSharedFlow<Unit>? = null
+    private val _food = MutableLiveData<List<FoodDomainModel>>()
+    val food: LiveData<List<FoodDomainModel>> = _food
     private val favoriteFood: StateFlow<List<FoodDomainModel>> =
         domainRepository.getAllFavoriteFoods()
             .stateIn(
@@ -25,46 +34,6 @@ class SearchViewModel @Inject constructor(
                 started = SharingStarted.Eagerly,
                 initialValue = emptyList()
             )
-
-    private val _food = MutableLiveData<List<FoodDomainModel>>()
-    val food: LiveData<List<FoodDomainModel>> = _food
-
-    fun getFood(food: String) {
-        tryLaunch {
-            _food.value = domainRepository.getFoodModel(food)
-        }.catch { throwable ->
-            Timber.e(throwable.message)
-        }.start()
-    }
-
-    fun isAFoodFavorite(foodDomainModel: FoodDomainModel): Boolean {
-        return favoriteFood.value.contains(foodDomainModel)
-    }
-
-    fun favouriteFoodClickHandler(foodDomainModel: FoodDomainModel): Boolean {
-        return when (isAFoodFavorite(foodDomainModel)) {
-            true -> {
-                viewModelScope.launch(Dispatchers.IO) {
-                    domainRepository.deleteFavoriteFood(foodDomainModel)
-                }
-                tryLaunch {
-                    domainRepository.deleteFavoriteFood(foodDomainModel)
-                }.catch { throwable ->
-                    Timber.e(throwable.message)
-                }.start()
-                false
-            }
-            false -> {
-                tryLaunch {
-                    domainRepository.saveFavoriteFood(foodDomainModel)
-                }.catch { throwable ->
-                    Timber.e(throwable.message)
-                }.start()
-                true
-            }
-        }
-    }
-
 
     private val diaryFood: StateFlow<List<FoodDomainModel>> =
         domainRepository.getAllDiaryFoods()
@@ -74,18 +43,82 @@ class SearchViewModel @Inject constructor(
                 initialValue = emptyList()
             )
 
-    fun isAFoodChoise(foodDomainModel: FoodDomainModel): Boolean {
+    fun getFood(food: String) {
+        tryLaunch {
+            _food.value = domainRepository.getFoodModel(food)
+        }.catch { throwable ->
+            systemMessageNotifier.sendSnack(
+                message = resourcesProvider.getString(R.string.error),
+                colorRes = R.color.support_303
+            )
+            Timber.e(throwable.message)
+        }.start()
+    }
+
+    fun isAFoodFavorite(foodDomainModel: FoodDomainModel): Boolean {
+        return favoriteFood.value.contains(foodDomainModel)
+    }
+
+    fun favouriteFoodClickHandler(foodDomainModel: FoodDomainModel): Boolean {
+
+        return when (isAFoodFavorite(foodDomainModel)) {
+            true -> {
+                tryLaunch {
+                    domainRepository.deleteFavoriteFood(foodDomainModel)
+                    deleteFavoriteDoctor()
+                }.catch { throwable ->
+                    Timber.e(throwable.message)
+                }.start()
+                false
+            }
+            false -> {
+                tryLaunch {
+                    domainRepository.saveFavoriteFood(foodDomainModel)
+                    addFavoriteDoctor()
+                }.catch { throwable ->
+                    Timber.e(throwable.message)
+                }.start()
+                true
+            }
+        }
+    }
+
+    private fun addFavoriteDoctor() {
+        snackDismissFlow = MutableSharedFlow(
+            extraBufferCapacity = 1,
+            onBufferOverflow = BufferOverflow.DROP_OLDEST
+        )
+        systemMessageNotifier.sendSnack(
+            message = resourcesProvider.getString(R.string.favorite_food_added),
+            colorRes = R.color.support_303,
+            duration = Snackbar.LENGTH_SHORT,
+            dismissSnackBar = snackDismissFlow
+        )
+    }
+
+    private fun deleteFavoriteDoctor() {
+        snackDismissFlow = MutableSharedFlow(
+            extraBufferCapacity = 1,
+            onBufferOverflow = BufferOverflow.DROP_OLDEST
+        )
+        systemMessageNotifier.sendSnack(
+            message = resourcesProvider.getString(R.string.favorite_food_delete),
+            colorRes = R.color.support_303,
+            duration = Snackbar.LENGTH_SHORT,
+            dismissSnackBar = snackDismissFlow
+        )
+    }
+
+    fun isFoodChoise(foodDomainModel: FoodDomainModel): Boolean {
         return diaryFood.value.contains(foodDomainModel)
     }
 
     fun diaryFoodClickHandler(foodDomainModel: FoodDomainModel): Boolean {
-        return when (isAFoodChoise(foodDomainModel)) {
+        return when (isFoodChoise(foodDomainModel)) {
             true -> {
-                viewModelScope.launch(Dispatchers.IO) {
-                    domainRepository.deleteDiaryFood(foodDomainModel)
-                }
                 tryLaunch {
                     domainRepository.deleteDiaryFood(foodDomainModel)
+                    deleteFoodFromDiary()
                 }.catch { throwable ->
                     Timber.e(throwable.message)
                 }.start()
@@ -94,11 +127,38 @@ class SearchViewModel @Inject constructor(
             false -> {
                 tryLaunch {
                     domainRepository.saveDiaryFood(foodDomainModel)
+                    addFoodInDiary()
                 }.catch { throwable ->
                     Timber.e(throwable.message)
                 }.start()
                 true
             }
         }
+    }
+
+    private fun addFoodInDiary() {
+        snackDismissFlow = MutableSharedFlow(
+            extraBufferCapacity = 1,
+            onBufferOverflow = BufferOverflow.DROP_OLDEST
+        )
+        systemMessageNotifier.sendSnack(
+            message = resourcesProvider.getString(R.string.diary_food_added),
+            colorRes = R.color.support_303,
+            duration = Snackbar.LENGTH_SHORT,
+            dismissSnackBar = snackDismissFlow
+        )
+    }
+
+    private fun deleteFoodFromDiary() {
+        snackDismissFlow = MutableSharedFlow(
+            extraBufferCapacity = 1,
+            onBufferOverflow = BufferOverflow.DROP_OLDEST
+        )
+        systemMessageNotifier.sendSnack(
+            message = resourcesProvider.getString(R.string.diary_food_delete),
+            colorRes = R.color.support_303,
+            duration = Snackbar.LENGTH_SHORT,
+            dismissSnackBar = snackDismissFlow
+        )
     }
 }
