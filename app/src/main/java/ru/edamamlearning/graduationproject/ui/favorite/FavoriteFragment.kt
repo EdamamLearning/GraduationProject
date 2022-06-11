@@ -68,7 +68,7 @@ class FavoriteFragment : BaseFragment(R.layout.fragment_favorite) {
 
         toolbar.setToolBar(
             activity = requireActivity(),
-            title = "Поиск",
+            title = "Избранное",
             visibleRight = true,
             visibleLeft = false
         )

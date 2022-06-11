@@ -23,6 +23,7 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentSearchBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
+import ru.edamamlearning.graduationproject.utils.ModalDialogInfo
 import ru.edamamlearning.graduationproject.utils.ToolbarApp
 import ru.edamamlearning.graduationproject.utils.hideKeyboard
 import ru.edamamlearning.graduationproject.utils.extensions.saveNavigate
@@ -138,8 +139,18 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         (requireActivity().findViewById<AppCompatImageView>(R.id.back)).setImageResource(R.drawable.ic_toolbar_back_button)
 
         (requireActivity().findViewById<View>(R.id.info) as ImageView).setOnClickListener {
-            Toast.makeText(context, "info", Toast.LENGTH_SHORT).show()
+            val modalBottomSheet = ModalDialogInfo()
+            val bundle = Bundle()
+            bundle.putString("title", getString(R.string.info_app))
+            bundle.putString("message", getString(R.string.info_user))
+            bundle.putInt("btnCount", 1)
+            bundle.putString("btnTextFirst", getString(R.string.ok))
+            bundle.putString("btnTextSecond", "")
+            modalBottomSheet.arguments = bundle
+            modalBottomSheet.show(parentFragmentManager, "ExitProfileDialogFragment")
         }
     }
+
+
 }
 
