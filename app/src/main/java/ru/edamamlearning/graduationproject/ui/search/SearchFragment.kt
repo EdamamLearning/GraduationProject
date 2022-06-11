@@ -25,8 +25,8 @@ import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.ModalDialogInfo
 import ru.edamamlearning.graduationproject.utils.ToolbarApp
-import ru.edamamlearning.graduationproject.utils.hideKeyboard
 import ru.edamamlearning.graduationproject.utils.extensions.saveNavigate
+import ru.edamamlearning.graduationproject.utils.hideKeyboard
 import javax.inject.Inject
 
 class SearchFragment : BaseFragment(R.layout.fragment_search) {
@@ -44,7 +44,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         SearchAdapter(
             onFavouriteItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
-            isFoodChoice = viewModel::isAFoodChoise,
+            isFoodChoice = viewModel::isFoodChoise,
             favouriteClickHandler = viewModel::favouriteFoodClickHandler,
             diaryClickHandler = viewModel::diaryFoodClickHandler,
 

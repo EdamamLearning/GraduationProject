@@ -2,7 +2,6 @@
     <string name="app_name">GraduationProject</string>
     <string name="home">HomeScreen</string>
     <string name="food_facts">Food Facts</string>
-    <string name="check_internet_connection">Сheck internet connection</string>
     <string name="ingredients">ingredients:</string>
     <string name="search_textview_default_message">Write a keyword in the search bar</string>
     <string name="search_textview_error_message">Error! Nothing found.</string>
@@ -11,8 +10,6 @@
     <string name="day_callories">В сутки: </string>
     <string name="ignore">ignore</string>
     <string name="enter_search_word">Введите продукт</string>
-    <string name="error">Что-то пошло не так. Мы уже работаем над исправлением ошибки.</string>
-    <string name="network_is_not_available">Network is not available</string>
     <string name="search_helper_text">введите название блюда</string>
 
     <string name="food">Food</string>
@@ -51,4 +48,13 @@
     <string name="ok">Продолжить</string>
     <string name="info_app">Информация о проекте.</string>
     <string name="info_user">разработчик №1: Евгений разработчик №2: Андрей разработчик №3: Игорь разработчик №4: Константин разработчик №5: Иван разработчик №6: Татьяна </string>
+
+    <string name="favorite_food_added">Продукт добавлен в избранное</string>
+    <string name="favorite_food_delete">Продукт удален из избранного</string>
+    <string name="diary_food_added">Продукт добавлен в ежедневник</string>
+    <string name="diary_food_delete">Продукт удален из ежедневника</string>
+    <string name="check_internet_connection">Проверьте подключение к интернету и попробуйте снова</string>
+    <string name="error">Что-то пошло не так. Мы уже работаем над исправлением ошибки.</string>
+    <string name="network_is_not_available">Отсутствует интернет-соединение</string>
+    <string name="error_dialog_positive_button_ok">Ок</string>
 </resources>

@@ -23,7 +23,6 @@ class CacheFoodRepositoryImpl @Inject constructor(
         database.favoriteFoodDao().insert(food)
     }
 
-
     override suspend fun saveInfoFood(food: InfoFoodEntity) {
         database.infoFoodDao().insert(food)
     }
@@ -42,7 +41,6 @@ class CacheFoodRepositoryImpl @Inject constructor(
 
     override suspend fun deleteDiaryFood(food: DiaryFoodEntity) {
         database.diaryFoodDao().delete(food)
-
     }
 
     override suspend fun deleteFavoriteFood(food: FavoriteFoodEntity) {

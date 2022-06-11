@@ -3,11 +3,9 @@ package ru.edamamlearning.graduationproject.ui.info
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
 import ru.edamamlearning.graduationproject.core.BaseViewModel
 import ru.edamamlearning.graduationproject.domain.DomainRepository
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
@@ -45,9 +43,6 @@ class InfoViewModel @Inject constructor(
     fun infoFoodClickHandler(foodDomainModel: FoodDomainModel): Boolean {
         return when (isAFoodChoice(foodDomainModel)) {
             true -> {
-                viewModelScope.launch(Dispatchers.IO) {
-                    domainRepository.deleteFavoriteFood(foodDomainModel)
-                }
                 tryLaunch {
                     domainRepository.deleteFavoriteFood(foodDomainModel)
                 }.catch { throwable ->
