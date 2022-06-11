@@ -65,7 +65,7 @@ class SearchViewModel @Inject constructor(
             true -> {
                 tryLaunch {
                     domainRepository.deleteFavoriteFood(foodDomainModel)
-                    deleteFavoriteDoctor()
+                    deleteFavoriteFood()
                 }.catch { throwable ->
                     Timber.e(throwable.message)
                 }.start()
@@ -74,7 +74,7 @@ class SearchViewModel @Inject constructor(
             false -> {
                 tryLaunch {
                     domainRepository.saveFavoriteFood(foodDomainModel)
-                    addFavoriteDoctor()
+                    addFavoriteFood()
                 }.catch { throwable ->
                     Timber.e(throwable.message)
                 }.start()
@@ -83,7 +83,7 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-    private fun addFavoriteDoctor() {
+    private fun addFavoriteFood() {
         snackDismissFlow = MutableSharedFlow(
             extraBufferCapacity = 1,
             onBufferOverflow = BufferOverflow.DROP_OLDEST
@@ -96,7 +96,7 @@ class SearchViewModel @Inject constructor(
         )
     }
 
-    private fun deleteFavoriteDoctor() {
+    private fun deleteFavoriteFood() {
         snackDismissFlow = MutableSharedFlow(
             extraBufferCapacity = 1,
             onBufferOverflow = BufferOverflow.DROP_OLDEST
