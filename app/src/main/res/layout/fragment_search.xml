@@ -35,7 +35,7 @@
             app:endIconDrawable="@drawable/ic_search"
             app:endIconTint="@null"
             app:endIconMode="custom"
-            app:helperText="@string/search_helper_text"
+            app:helperText="@string/enter_search_word"
             app:layout_constraintBottom_toTopOf="@+id/recycler_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
