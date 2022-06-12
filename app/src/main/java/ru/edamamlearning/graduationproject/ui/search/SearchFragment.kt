@@ -9,23 +9,17 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.distinctUntilChanged
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.BaseFragment
-import ru.edamamlearning.graduationproject.core.NetworkObserver
 import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentSearchBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.ModalDialogInfo
 import ru.edamamlearning.graduationproject.utils.ToolbarApp
-import ru.edamamlearning.graduationproject.utils.extensions.saveNavigate
 import ru.edamamlearning.graduationproject.utils.hideKeyboard
 import javax.inject.Inject
 
