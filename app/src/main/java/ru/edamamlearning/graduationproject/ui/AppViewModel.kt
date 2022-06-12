@@ -1,4 +1,4 @@
-package ru.edamamlearning.graduationproject.ui.search
+package ru.edamamlearning.graduationproject.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,7 +18,7 @@ import ru.edamamlearning.graduationproject.utils.message.SystemMessageNotifier
 import timber.log.Timber
 import javax.inject.Inject
 
-class SearchViewModel @Inject constructor(
+class AppViewModel @Inject constructor(
     private var domainRepository: DomainRepository,
     private val systemMessageNotifier: SystemMessageNotifier,
     private val resourcesProvider: ResourcesProvider
@@ -27,7 +27,7 @@ class SearchViewModel @Inject constructor(
     private var snackDismissFlow: MutableSharedFlow<Unit>? = null
     private val _food = MutableLiveData<List<FoodDomainModel>>()
     val food: LiveData<List<FoodDomainModel>> = _food
-    private val favoriteFood: StateFlow<List<FoodDomainModel>> =
+    val favoriteFood: StateFlow<List<FoodDomainModel>> =
         domainRepository.getAllFavoriteFoods()
             .stateIn(
                 scope = viewModelScope,
@@ -35,7 +35,7 @@ class SearchViewModel @Inject constructor(
                 initialValue = emptyList()
             )
 
-    private val diaryFood: StateFlow<List<FoodDomainModel>> =
+    val diaryFood: StateFlow<List<FoodDomainModel>> =
         domainRepository.getAllDiaryFoods()
             .stateIn(
                 scope = viewModelScope,
@@ -161,4 +161,6 @@ class SearchViewModel @Inject constructor(
             dismissSnackBar = snackDismissFlow
         )
     }
+
+    fun isFavoriteFoodsEmpty(): Boolean = favoriteFood.value.isEmpty()
 }
