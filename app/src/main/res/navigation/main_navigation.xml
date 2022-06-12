@@ -31,7 +31,7 @@
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="ru.edamamlearning.graduationproject.ui.favorite.FavoriteFragment"
-        android:label="fragment_favorites"
+        android:label="@string/favorites"
         tools:layout="@layout/fragment_favorite">
         <action
             android:id="@+id/action_favoritesFragment_to_infoFragment"
@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/dairyFragment"
         android:name="ru.edamamlearning.graduationproject.ui.diary.DiaryFragment"
-        android:label="fragment_dairy"
+        android:label="@string/diary"
         tools:layout="@layout/fragment_diary">
 
         <argument
