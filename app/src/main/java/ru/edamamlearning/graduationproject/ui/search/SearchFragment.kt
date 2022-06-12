@@ -32,9 +32,6 @@ import javax.inject.Inject
 class SearchFragment : BaseFragment(R.layout.fragment_search) {
 
     @Inject
-    lateinit var networkObserver: NetworkObserver
-
-    @Inject
     lateinit var vmFactory: ViewModelFactory
     private val viewModel: SearchViewModel by lazy {
         ViewModelProvider(this, vmFactory)[SearchViewModel::class.java]
@@ -56,20 +53,6 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         setRecyclerView()
         binding.emptySearchLayout.isInvisible = adapter.itemCount != 0
         setQueryListener()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        lifecycleScope.launchWhenStarted {
-            networkObserver.networkIsAvailable()
-                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                .distinctUntilChanged()
-                .collectLatest { isConnection ->
-                    if (!isConnection) {
-                        findNavController().saveNavigate(SearchFragmentDirections.actionSearchFragmentToDisconnectDialog())
-                    }
-                }
-        }
     }
 
     private fun navigate(foodDomainModel: FoodDomainModel) {

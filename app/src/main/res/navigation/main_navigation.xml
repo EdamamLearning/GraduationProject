@@ -18,9 +18,6 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
         <action
-            android:id="@+id/action_searchFragment_to_disconnectDialog"
-            app:destination="@id/disconnectDialog" />
-        <action
             android:id="@+id/action_searchFragment_to_dairyFragment"
             app:destination="@id/dairyFragment" />
     </fragment>
@@ -74,9 +71,4 @@
             app:argType="string" />
 
     </fragment>
-    <dialog
-        android:id="@+id/disconnectDialog"
-        android:name="ru.edamamlearning.graduationproject.ui.disconnectdialog.DisconnectDialog"
-        android:label="dialog_disconnect"
-        tools:layout="@layout/dialog_disconnect" />
 </navigation>

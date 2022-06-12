@@ -5,18 +5,19 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.annotation.ColorInt
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.*
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.DaggerActivity
+import ru.edamamlearning.graduationproject.core.NetworkObserver
+import ru.edamamlearning.graduationproject.ui.disconnectdialog.DisconnectDialog
 import ru.edamamlearning.graduationproject.utils.extensions.color
 import ru.edamamlearning.graduationproject.utils.extensions.showSnackMessage
 import ru.edamamlearning.graduationproject.utils.message.MessageDialogFragment
@@ -31,6 +32,9 @@ class MainActivity : DaggerActivity(R.layout.activity_main) {
     private lateinit var navController: NavController
 
     @Inject
+    lateinit var networkObserver: NetworkObserver
+
+    @Inject
     lateinit var systemMessageNotifier: SystemMessageNotifier
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +42,23 @@ class MainActivity : DaggerActivity(R.layout.activity_main) {
         configureNavigation()
         supportFragmentManager.beginTransaction()
         subscribeOnSystemMessages()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        lifecycleScope.launchWhenStarted {
+            networkObserver.networkIsAvailable()
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .distinctUntilChanged()
+                .collectLatest { isConnection ->
+                    if (!isConnection) {
+                        DisconnectDialog().show(
+                            supportFragmentManager,
+                            DisconnectDialog::class.java.simpleName
+                        )
+                    }
+                }
+        }
     }
 
     private fun configureNavigation() {
