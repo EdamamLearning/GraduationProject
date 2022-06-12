@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -16,8 +17,10 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentSearchBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
-import ru.edamamlearning.graduationproject.ui.AppViewModel
 import ru.edamamlearning.graduationproject.ui.AppAdapter
+import ru.edamamlearning.graduationproject.ui.AppViewModel
+import ru.edamamlearning.graduationproject.ui.datepickerdialogfragment.DatePickerDialogFragment
+import ru.edamamlearning.graduationproject.utils.extensions.toDiaryFoodDomainModel
 import ru.edamamlearning.graduationproject.utils.hideKeyboard
 import javax.inject.Inject
 
@@ -31,13 +34,11 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
     private val binding: FragmentSearchBinding by viewBinding()
     private val adapter by lazy {
         AppAdapter(
-            onFavouriteItemClicked = this::navigate,
+            onItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
-            isFoodChoice = viewModel::isFoodChoice,
             favouriteClickHandler = viewModel::favouriteFoodClickHandler,
-            diaryClickHandler = viewModel::diaryFoodClickHandler,
-
-            )
+            addDateToFood = this::diaryFoodHandler
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,6 +46,20 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         setRecyclerView()
         binding.emptySearchLayout.isInvisible = adapter.itemCount != 0
         setQueryListener()
+    }
+
+    private fun diaryFoodHandler(foodDomainModel: FoodDomainModel) {
+        showDatePicker()
+        setFragmentResultListener(DatePickerDialogFragment.REQUEST_KEY) { _, result: Bundle ->
+            val array: IntArray = result.getIntArray(DatePickerDialogFragment.KEY_RESPONSE)
+                ?: throw RuntimeException("DialogFragment result is null")
+            val date = "${array[0]}-${array[1]}-${array[2]}"
+            viewModel.diaryFoodClickHandler(foodDomainModel.toDiaryFoodDomainModel(date))
+        }
+    }
+
+    private fun showDatePicker() {
+        findNavController().navigate(R.id.action_searchFragment_to_datePickerDialogFragment)
     }
 
     private fun navigate(foodDomainModel: FoodDomainModel) {
