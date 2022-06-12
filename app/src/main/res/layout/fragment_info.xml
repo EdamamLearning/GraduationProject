@@ -144,18 +144,6 @@
         app:layout_constraintTop_toBottomOf="@id/caloriesCount"
         tools:text="15" />
 
-    <ToggleButton
-        android:id="@+id/info_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="8dp"
-        android:drawableBottom="@drawable/favorite_button_selector"
-        android:src="@drawable/favorite_button_selector"
-        app:layout_constraintBottom_toBottomOf="@+id/foodImage"
-        app:layout_constraintEnd_toEndOf="@+id/foodImage"
-        tools:ignore="ContentDescription" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/center"
         android:layout_width="wrap_content"
