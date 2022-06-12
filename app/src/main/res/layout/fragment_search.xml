@@ -84,7 +84,6 @@
         android:fadingEdgeLength="@dimen/fadingEdgeLength"
         android:paddingTop="@dimen/padding"
         android:paddingBottom="@dimen/padding"
-        android:requiresFadingEdge="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:ignore="SpeakableTextPresentCheck" />
 
