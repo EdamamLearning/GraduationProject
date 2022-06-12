@@ -1,4 +1,4 @@
-package ru.edamamlearning.graduationproject.ui.search
+package ru.edamamlearning.graduationproject.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
