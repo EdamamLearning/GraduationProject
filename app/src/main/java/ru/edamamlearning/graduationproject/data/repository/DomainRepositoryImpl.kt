@@ -65,7 +65,7 @@ class DomainRepositoryImpl @Inject constructor(
         return cacheFoodRepository.getAllDiaryFoods().map { it.toListDiaryFoodDomainModel() }
     }
 
-    override suspend fun getDiaryFoodsByDate(date: String): List<DiaryFoodDomainModel> {
-        return cacheFoodRepository.getDiaryFoodsByDate(date).toListDiaryFoodDomainModel()
+    override fun getDiaryFoodsByDate(date: String): Flow<List<DiaryFoodDomainModel>> {
+        return cacheFoodRepository.getDiaryFoodsByDate(date).map { it.toListDiaryFoodDomainModel() }
     }
 }

@@ -31,6 +31,7 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
             onItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
             favouriteClickHandler = viewModel::favouriteFoodClickHandler,
+            deleteDiaryFood = viewModel::deleteDiaryFood,
         )
     }
 

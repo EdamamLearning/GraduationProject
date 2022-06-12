@@ -33,9 +33,13 @@ class DiaryFragmentViewModel @Inject constructor(
                 initialValue = emptyList()
             )
 
-    fun getByDate(date: String){
+    fun getByDate(date: String) {
         tryLaunch {
-            _diaryFood.value = domainRepository.getDiaryFoodsByDate(date)
+            domainRepository.getDiaryFoodsByDate(date)
+                .distinctUntilChanged()
+                .collectLatest {
+                    _diaryFood.value = it
+                }
         }.catch { throwable ->
             systemMessageNotifier.sendSnack(
                 message = resourcesProvider.getString(R.string.error),
@@ -70,6 +74,14 @@ class DiaryFragmentViewModel @Inject constructor(
                 true
             }
         }
+    }
+
+    fun deleteDiaryFood(diaryFoodDomainModel: DiaryFoodDomainModel) {
+        tryLaunch {
+            domainRepository.deleteDiaryFood(diaryFoodDomainModel)
+        }.catch { throwable ->
+            Timber.e(throwable.message)
+        }.start()
     }
 
     private fun deleteFavoriteFood() {

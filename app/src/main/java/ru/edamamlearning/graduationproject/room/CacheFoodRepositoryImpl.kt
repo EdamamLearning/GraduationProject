@@ -63,7 +63,7 @@ class CacheFoodRepositoryImpl @Inject constructor(
         return database.diaryFoodDao().getAll()
     }
 
-    override suspend fun getDiaryFoodsByDate(date: String): List<DiaryFoodEntity> {
+    override fun getDiaryFoodsByDate(date: String): Flow<List<DiaryFoodEntity>> {
         return database.diaryFoodDao().getByDate(date)
     }
 }

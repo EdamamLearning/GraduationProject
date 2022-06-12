@@ -137,6 +137,7 @@ fun List<DiaryFoodEntity>.toListDiaryFoodDomainModel() = this.map {
 }
 
 fun DiaryFoodEntity.toDiaryFoodDomainModel() = DiaryFoodDomainModel(
+    id = this.id,
     foodId = this.foodId,
     date = this.date,
     category = this.category,
@@ -187,6 +188,7 @@ fun FoodDomainModel.toDiaryFoodDomainModel(date: String) = DiaryFoodDomainModel(
 )
 
 fun DiaryFoodDomainModel.toDiaryFoodEntity() = DiaryFoodEntity(
+    id = this.id,
     foodId = this.foodId,
     date = this.date,
     category = this.category,

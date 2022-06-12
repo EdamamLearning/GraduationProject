@@ -1,6 +1,7 @@
 package ru.edamamlearning.graduationproject.domain.model
 
 data class DiaryFoodDomainModel(
+    val id: Int = 0,
     val foodId: String,
     val date: String,
     val category: String,
