@@ -46,13 +46,12 @@
         android:name="ru.edamamlearning.graduationproject.ui.diary.DiaryFragment"
         android:label="@string/diary"
         tools:layout="@layout/fragment_diary">
-
-        <argument
-            android:name="food_id"
-            app:argType="string" />
         <action
             android:id="@+id/action_dairyFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
-
+            app:destination="@id/infoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>

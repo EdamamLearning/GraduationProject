@@ -15,9 +15,8 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentDiaryBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
-import ru.edamamlearning.graduationproject.ui.AppViewModel
 import ru.edamamlearning.graduationproject.ui.AppAdapter
-import ru.edamamlearning.graduationproject.ui.search.SearchFragmentDirections
+import ru.edamamlearning.graduationproject.ui.AppViewModel
 import javax.inject.Inject
 
 class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
@@ -56,8 +55,8 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
     }
 
     private fun navigate(foodDomainModel: FoodDomainModel) {
-        val action = SearchFragmentDirections
-            .actionSearchFragmentToInfoFragment(foodDomainModel.foodId)
+        val action = DiaryFragmentDirections
+            .actionDairyFragmentToInfoFragment(foodDomainModel.foodId)
         findNavController().navigate(action)
     }
 }

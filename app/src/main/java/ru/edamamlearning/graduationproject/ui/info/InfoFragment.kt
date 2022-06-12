@@ -1,9 +1,8 @@
 package ru.edamamlearning.graduationproject.ui.info
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -17,7 +16,15 @@ import ru.edamamlearning.graduationproject.utils.extensions.loadPicture
 import ru.edamamlearning.graduationproject.utils.roundAp
 import javax.inject.Inject
 
+
 class InfoFragment : BaseFragment(R.layout.fragment_info) {
+
+    interface OnInfoFragmentEvent {
+        fun hideBottomBar()
+        fun showBottomBar()
+    }
+
+    var onInfoFragmentEvent: OnInfoFragmentEvent? = null
 
     @Inject
     lateinit var vmFactory: ViewModelFactory
@@ -27,10 +34,14 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
     private val navigationArgs: InfoFragmentArgs by navArgs()
     private val binding: FragmentInfoBinding by viewBinding()
 
-    @SuppressLint("RestrictedApi")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        (activity as AppCompatActivity?)?.supportActionBar?.setShowHideAnimationEnabled(false)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        onInfoFragmentEvent = try {
+            activity as OnInfoFragmentEvent
+        } catch (e: ClassCastException) {
+            throw ClassCastException("$activity must implement onSomeEventListener")
+        }
+        onInfoFragmentEvent?.hideBottomBar()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -71,6 +82,11 @@ class InfoFragment : BaseFragment(R.layout.fragment_info) {
             carbohydrateCount.text = roundAp(food.nutrients.carbohydrate)
             proteinCount.text = roundAp(food.nutrients.protein)
         }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        onInfoFragmentEvent?.showBottomBar()
     }
 
     companion object {

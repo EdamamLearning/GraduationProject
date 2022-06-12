@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.*
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.DaggerActivity
 import ru.edamamlearning.graduationproject.core.NetworkObserver
+import ru.edamamlearning.graduationproject.ui.info.InfoFragment
 import ru.edamamlearning.graduationproject.utils.extensions.color
 import ru.edamamlearning.graduationproject.utils.extensions.showSnackMessage
 import ru.edamamlearning.graduationproject.utils.message.MessageDialogFragment
@@ -26,7 +27,7 @@ import ru.edamamlearning.graduationproject.utils.message.SystemMessageNotifier
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainActivity : DaggerActivity(R.layout.activity_main) {
+class MainActivity : DaggerActivity(R.layout.activity_main), InfoFragment.OnInfoFragmentEvent {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var navController: NavController
@@ -133,5 +134,13 @@ class MainActivity : DaggerActivity(R.layout.activity_main) {
             dismissSnackBar,
             scope
         )
+    }
+
+    override fun hideBottomBar() {
+        findViewById<View>(R.id.bottom_navigation_view).visibility = View.GONE
+    }
+
+    override fun showBottomBar() {
+        findViewById<View>(R.id.bottom_navigation_view).visibility = View.VISIBLE
     }
 }

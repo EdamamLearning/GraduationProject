@@ -15,9 +15,8 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentFavoriteBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
-import ru.edamamlearning.graduationproject.ui.AppViewModel
 import ru.edamamlearning.graduationproject.ui.AppAdapter
-import ru.edamamlearning.graduationproject.ui.search.SearchFragmentDirections
+import ru.edamamlearning.graduationproject.ui.AppViewModel
 import javax.inject.Inject
 
 class FavoriteFragment : BaseFragment(R.layout.fragment_favorite) {
@@ -35,7 +34,7 @@ class FavoriteFragment : BaseFragment(R.layout.fragment_favorite) {
             isFoodChoice = viewModel::isFoodChoice,
             favouriteClickHandler = viewModel::favouriteFoodClickHandler,
             diaryClickHandler = viewModel::diaryFoodClickHandler,
-            )
+        )
     }
 
     private val binding: FragmentFavoriteBinding by viewBinding()
@@ -59,8 +58,8 @@ class FavoriteFragment : BaseFragment(R.layout.fragment_favorite) {
     }
 
     private fun navigate(foodDomainModel: FoodDomainModel) {
-        val action = SearchFragmentDirections
-            .actionSearchFragmentToInfoFragment(foodDomainModel.foodId)
+        val action = FavoriteFragmentDirections
+            .actionFavoritesFragmentToInfoFragment(foodDomainModel.foodId)
         findNavController().navigate(action)
     }
 
