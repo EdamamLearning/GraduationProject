@@ -29,12 +29,13 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
             app:counterEnabled="true"
             app:counterMaxLength="20"
-            app:endIconCheckable="true"
-            app:endIconDrawable="@drawable/ic_search"
-            app:endIconTint="@null"
-            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/ic_clear"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/secondary_label"
+            app:endIconTintMode="src_atop"
             app:helperText="@string/enter_search_word"
             app:layout_constraintBottom_toTopOf="@+id/recycler_view"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,18 +59,6 @@
                 tools:ignore="TouchTargetSizeCheck"
                 tools:layout_editor_absoluteX="1dp" />
         </com.google.android.material.textfield.TextInputLayout>
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="@dimen/progress_bar"
-            android:layout_height="@dimen/progress_bar"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/link"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
@@ -153,4 +142,13 @@
             android:textColor="@color/title_color"
             android:textSize="@dimen/info_text_size" />
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="@dimen/progress_bar"
+        android:layout_height="@dimen/progress_bar"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/link"
+        android:visibility="gone" />
 </RelativeLayout>

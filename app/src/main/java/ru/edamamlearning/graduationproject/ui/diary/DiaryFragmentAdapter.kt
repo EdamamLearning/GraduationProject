@@ -15,7 +15,7 @@ import ru.edamamlearning.graduationproject.utils.roundAp
 class DiaryFragmentAdapter(
     private val onItemClicked: (DiaryFoodDomainModel) -> Unit,
     private val isFavorite: (FoodDomainModel) -> Boolean,
-    private val favouriteClickHandler: (FoodDomainModel) -> Boolean,
+    private val favoriteClickHandler: (FoodDomainModel) -> Boolean,
     private val deleteDiaryFood: (DiaryFoodDomainModel) -> Unit,
 ) : ListAdapter<DiaryFoodDomainModel, DiaryFragmentAdapter.DiaryViewHolder>(DiffCallback) {
 
@@ -63,7 +63,7 @@ class DiaryFragmentAdapter(
             binding.foodImage.loadPicture(model.image)
             binding.favoriteButton.isChecked = isFavorite(model.toFoodDomainModel())
             binding.favoriteButton.setOnClickListener {
-                binding.favoriteButton.isChecked = favouriteClickHandler(model.toFoodDomainModel())
+                binding.favoriteButton.isChecked = favoriteClickHandler(model.toFoodDomainModel())
             }
             binding.diaryButton.setOnClickListener {
                 deleteDiaryFood(model)
