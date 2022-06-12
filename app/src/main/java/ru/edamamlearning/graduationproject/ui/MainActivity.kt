@@ -18,7 +18,6 @@ import kotlinx.coroutines.flow.*
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.DaggerActivity
 import ru.edamamlearning.graduationproject.core.NetworkObserver
-import ru.edamamlearning.graduationproject.ui.disconnectdialog.DisconnectDialog
 import ru.edamamlearning.graduationproject.utils.extensions.color
 import ru.edamamlearning.graduationproject.utils.extensions.showSnackMessage
 import ru.edamamlearning.graduationproject.utils.message.MessageDialogFragment
@@ -65,9 +64,9 @@ class MainActivity : DaggerActivity(R.layout.activity_main) {
                 .distinctUntilChanged()
                 .collectLatest { isConnection ->
                     if (!isConnection) {
-                        DisconnectDialog().show(
-                            supportFragmentManager,
-                            DisconnectDialog::class.java.simpleName
+                        systemMessageNotifier.sendSnack(
+                            message = getString(R.string.network_is_not_available),
+                            colorRes = R.color.shadow_grey
                         )
                     }
                 }

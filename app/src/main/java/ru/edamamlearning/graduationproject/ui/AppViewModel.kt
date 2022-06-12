@@ -109,12 +109,12 @@ class AppViewModel @Inject constructor(
         )
     }
 
-    fun isFoodChoise(foodDomainModel: FoodDomainModel): Boolean {
+    fun isFoodChoice(foodDomainModel: FoodDomainModel): Boolean {
         return diaryFood.value.contains(foodDomainModel)
     }
 
     fun diaryFoodClickHandler(foodDomainModel: FoodDomainModel): Boolean {
-        return when (isFoodChoise(foodDomainModel)) {
+        return when (isFoodChoice(foodDomainModel)) {
             true -> {
                 tryLaunch {
                     domainRepository.deleteDiaryFood(foodDomainModel)

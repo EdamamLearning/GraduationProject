@@ -33,7 +33,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         AppAdapter(
             onFavouriteItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
-            isFoodChoice = viewModel::isFoodChoise,
+            isFoodChoice = viewModel::isFoodChoice,
             favouriteClickHandler = viewModel::favouriteFoodClickHandler,
             diaryClickHandler = viewModel::diaryFoodClickHandler,
 

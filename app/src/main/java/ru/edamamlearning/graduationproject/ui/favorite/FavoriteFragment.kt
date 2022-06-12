@@ -32,7 +32,7 @@ class FavoriteFragment : BaseFragment(R.layout.fragment_favorite) {
         AppAdapter(
             onFavouriteItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
-            isFoodChoice = viewModel::isFoodChoise,
+            isFoodChoice = viewModel::isFoodChoice,
             favouriteClickHandler = viewModel::favouriteFoodClickHandler,
             diaryClickHandler = viewModel::diaryFoodClickHandler,
             )
