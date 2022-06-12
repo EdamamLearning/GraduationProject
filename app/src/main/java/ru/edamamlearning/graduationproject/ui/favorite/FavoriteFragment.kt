@@ -16,7 +16,7 @@ import ru.edamamlearning.graduationproject.databinding.FragmentFavoriteBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.ui.AppViewModel
-import ru.edamamlearning.graduationproject.ui.SearchAdapter
+import ru.edamamlearning.graduationproject.ui.AppAdapter
 import ru.edamamlearning.graduationproject.ui.search.SearchFragmentDirections
 import javax.inject.Inject
 
@@ -29,7 +29,7 @@ class FavoriteFragment : BaseFragment(R.layout.fragment_favorite) {
     }
 
     private val adapter by lazy {
-        SearchAdapter(
+        AppAdapter(
             onFavouriteItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
             isFoodChoice = viewModel::isFoodChoise,

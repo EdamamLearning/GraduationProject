@@ -10,13 +10,13 @@ import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.extensions.loadPicture
 import ru.edamamlearning.graduationproject.utils.roundAp
 
-class SearchAdapter(
+class AppAdapter(
     private val onFavouriteItemClicked: (FoodDomainModel) -> Unit,
     private val diaryClickHandler: (FoodDomainModel) -> Boolean,
     private val isFavorite: (FoodDomainModel) -> Boolean,
     private val isFoodChoice: (FoodDomainModel) -> Boolean,
     private val favouriteClickHandler: (FoodDomainModel) -> Boolean,
-) : ListAdapter<FoodDomainModel, SearchAdapter.SearchViewHolder>(DiffCallback) {
+) : ListAdapter<FoodDomainModel, AppAdapter.SearchViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder(

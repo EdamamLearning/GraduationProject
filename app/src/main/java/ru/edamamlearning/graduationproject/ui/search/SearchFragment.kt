@@ -17,7 +17,7 @@ import ru.edamamlearning.graduationproject.databinding.FragmentSearchBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.ui.AppViewModel
-import ru.edamamlearning.graduationproject.ui.SearchAdapter
+import ru.edamamlearning.graduationproject.ui.AppAdapter
 import ru.edamamlearning.graduationproject.utils.hideKeyboard
 import javax.inject.Inject
 
@@ -30,7 +30,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
     }
     private val binding: FragmentSearchBinding by viewBinding()
     private val adapter by lazy {
-        SearchAdapter(
+        AppAdapter(
             onFavouriteItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
             isFoodChoice = viewModel::isFoodChoise,
