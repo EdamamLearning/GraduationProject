@@ -6,51 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.search.SearchFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolBar"
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:background="@color/white"
-        android:minHeight="?android:attr/actionBarSize"
-        android:translationZ="5dp"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/search"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginEnd="16dp"
-            app:srcCompat="@drawable/ic_info"
-            tools:ignore="RtlHardcoded" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginEnd="16dp"
-            app:srcCompat="@drawable/ic_toolbar_back_button"
-            tools:ignore="RtlHardcoded" />
-
-    </androidx.appcompat.widget.Toolbar>
-
     <androidx.constraintlayout.motion.widget.MotionLayout
-        android:layout_below="@id/toolBar"
         android:id="@+id/rootLayoutConstraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layoutDescription="@xml/fragment_search_scene"
-        app:layout_constraintTop_toTopOf="@id/toolBar">
+        app:layoutDescription="@xml/fragment_search_scene">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/search_btn"
@@ -95,7 +55,6 @@
                 android:paddingVertical="@dimen/paddingSearch"
                 android:textColor="@color/title_color"
                 android:textSize="@dimen/search_text_size"
-                app:layout_constraintTop_toBottomOf="@id/toolBar"
                 tools:ignore="TouchTargetSizeCheck"
                 tools:layout_editor_absoluteX="1dp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -125,7 +84,6 @@
         android:fadingEdgeLength="@dimen/fadingEdgeLength"
         android:paddingTop="@dimen/padding"
         android:paddingBottom="@dimen/padding"
-        android:requiresFadingEdge="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:ignore="SpeakableTextPresentCheck" />
 

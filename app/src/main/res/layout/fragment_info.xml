@@ -6,44 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.info.InfoFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolBar"
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:background="@color/white"
-        android:minHeight="?android:attr/actionBarSize"
-        android:translationZ="5dp"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/info"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginEnd="16dp"
-            app:srcCompat="@drawable/ic_info"
-            tools:ignore="RtlHardcoded" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginEnd="16dp"
-            app:srcCompat="@drawable/ic_toolbar_back_button"
-            tools:ignore="RtlHardcoded" />
-
-    </androidx.appcompat.widget.Toolbar>
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -54,7 +16,7 @@
         android:paddingVertical="16dp"
         android:textColor="@color/link"
         android:textSize="@dimen/info_text_size"
-        app:layout_constraintTop_toBottomOf="@id/toolBar"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Pasta Primavera" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -181,18 +143,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/caloriesCount"
         tools:text="15" />
-
-    <ToggleButton
-        android:id="@+id/info_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="8dp"
-        android:drawableBottom="@drawable/favorite_button_selector"
-        android:src="@drawable/favorite_button_selector"
-        app:layout_constraintBottom_toBottomOf="@+id/foodImage"
-        app:layout_constraintEnd_toEndOf="@+id/foodImage"
-        tools:ignore="ContentDescription" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/center"

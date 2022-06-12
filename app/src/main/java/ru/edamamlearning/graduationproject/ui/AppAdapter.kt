@@ -1,23 +1,26 @@
-package ru.edamamlearning.graduationproject.ui.favorite
+package ru.edamamlearning.graduationproject.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ru.edamamlearning.graduationproject.databinding.ItemSearchBinding
+import ru.edamamlearning.graduationproject.databinding.ItemRecyclerBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.extensions.loadPicture
 import ru.edamamlearning.graduationproject.utils.roundAp
 
-class FavoriteFragmentAdapter(
+class AppAdapter(
+    private val onFavouriteItemClicked: (FoodDomainModel) -> Unit,
+    private val diaryClickHandler: (FoodDomainModel) -> Boolean,
     private val isFavorite: (FoodDomainModel) -> Boolean,
+    private val isFoodChoice: (FoodDomainModel) -> Boolean,
     private val favouriteClickHandler: (FoodDomainModel) -> Boolean,
-) : ListAdapter<FoodDomainModel, FavoriteFragmentAdapter.FavoriteViewHolder>(DiffCallback) {
+) : ListAdapter<FoodDomainModel, AppAdapter.SearchViewHolder>(DiffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteViewHolder {
-        return FavoriteViewHolder(
-            ItemSearchBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
+        return SearchViewHolder(
+            ItemRecyclerBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -25,8 +28,11 @@ class FavoriteFragmentAdapter(
         )
     }
 
-    override fun onBindViewHolder(holder: FavoriteViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val item = getItem(position)
+        holder.itemView.setOnClickListener {
+            onFavouriteItemClicked(item)
+        }
         holder.bind(item)
     }
 
@@ -44,7 +50,7 @@ class FavoriteFragmentAdapter(
         }
     }
 
-    inner class FavoriteViewHolder(private val binding: ItemSearchBinding) :
+    inner class SearchViewHolder(private val binding: ItemRecyclerBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(model: FoodDomainModel) {
@@ -57,6 +63,10 @@ class FavoriteFragmentAdapter(
             binding.favoriteButton.isChecked = isFavorite(model)
             binding.favoriteButton.setOnClickListener {
                 binding.favoriteButton.isChecked = favouriteClickHandler(model)
+            }
+            binding.diaryButton.isChecked = isFoodChoice(model)
+            binding.diaryButton.setOnClickListener {
+                binding.diaryButton.isChecked = diaryClickHandler(model)
             }
         }
     }
