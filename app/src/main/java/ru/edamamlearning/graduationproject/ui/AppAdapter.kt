@@ -11,7 +11,7 @@ import ru.edamamlearning.graduationproject.utils.extensions.loadPicture
 import ru.edamamlearning.graduationproject.utils.roundAp
 
 class AppAdapter(
-    private val onFavouriteItemClicked: (FoodDomainModel) -> Unit,
+    private val onItemClicked: (FoodDomainModel) -> Unit,
     private val isFavorite: (FoodDomainModel) -> Boolean,
     private val favouriteClickHandler: (FoodDomainModel) -> Boolean,
     private val addDateToFood: (FoodDomainModel) -> Unit,
@@ -30,7 +30,7 @@ class AppAdapter(
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val item = getItem(position)
         holder.itemView.setOnClickListener {
-            onFavouriteItemClicked(item)
+            onItemClicked(item)
         }
         holder.bind(item)
     }

@@ -9,6 +9,7 @@ import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelKey
 import ru.edamamlearning.graduationproject.ui.info.InfoViewModel
 import ru.edamamlearning.graduationproject.ui.AppViewModel
+import ru.edamamlearning.graduationproject.ui.diary.DiaryFragmentViewModel
 
 @Module
 interface ViewModelModule {
@@ -19,10 +20,15 @@ interface ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(AppViewModel::class)
-    fun bindSearchViewModel(vm: AppViewModel): ViewModel
+    fun bindAppViewModel(vm: AppViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(InfoViewModel::class)
     fun bindInfoViewModel(vm: InfoViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DiaryFragmentViewModel::class)
+    fun bindDiaryFragmentViewModel(vm: DiaryFragmentViewModel): ViewModel
 }

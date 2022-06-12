@@ -20,5 +20,5 @@ interface DomainRepository {
     fun getAllInfoFoods(): Flow<List<FoodDomainModel>>
 
     fun getAllDiaryFoods(): Flow<List<DiaryFoodDomainModel>>
-
+    suspend fun getDiaryFoodsByDate(date: String): List<DiaryFoodDomainModel>
 }

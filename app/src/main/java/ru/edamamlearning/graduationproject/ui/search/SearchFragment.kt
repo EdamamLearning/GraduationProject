@@ -34,7 +34,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
     private val binding: FragmentSearchBinding by viewBinding()
     private val adapter by lazy {
         AppAdapter(
-            onFavouriteItemClicked = this::navigate,
+            onItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
             favouriteClickHandler = viewModel::favouriteFoodClickHandler,
             addDateToFood = this::diaryFoodHandler
@@ -53,7 +53,7 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         setFragmentResultListener(DatePickerDialogFragment.REQUEST_KEY) { _, result: Bundle ->
             val array: IntArray = result.getIntArray(DatePickerDialogFragment.KEY_RESPONSE)
                 ?: throw RuntimeException("DialogFragment result is null")
-            val date = "${array[0]} ${array[1]} ${array[2]}"
+            val date = "${array[0]}-${array[1]}-${array[2]}"
             viewModel.diaryFoodClickHandler(foodDomainModel.toDiaryFoodDomainModel(date))
         }
     }

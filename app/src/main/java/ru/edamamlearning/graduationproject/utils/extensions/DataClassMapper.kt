@@ -203,3 +203,20 @@ fun DiaryFoodDomainModel.toDiaryFoodEntity() = DiaryFoodEntity(
     protein = this.protein
 )
 
+fun DiaryFoodDomainModel.toFoodDomainModel() = FoodDomainModel(
+    foodId = this.foodId,
+    category = this.category,
+    categoryLabel = this.categoryLabel,
+    label = this.label,
+    image = this.image,
+    brand = this.brand,
+    foodContentsLabel = this.foodContentsLabel,
+    servingsPerContainer = this.servingsPerContainer,
+    nutrients = DomainNutrients(
+        carbohydrate = this.carbohydrate,
+        energyKCal = this.energyKCal,
+        fat = this.fat,
+        fiber = this.fiber,
+        protein = this.protein
+    )
+)
