@@ -13,6 +13,7 @@ import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.BaseViewModel
 import ru.edamamlearning.graduationproject.core.resourcesprovider.ResourcesProvider
 import ru.edamamlearning.graduationproject.domain.DomainRepository
+import ru.edamamlearning.graduationproject.domain.model.DiaryFoodDomainModel
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.message.SystemMessageNotifier
 import timber.log.Timber
@@ -29,14 +30,6 @@ class AppViewModel @Inject constructor(
     val food: LiveData<List<FoodDomainModel>> = _food
     val favoriteFood: StateFlow<List<FoodDomainModel>> =
         domainRepository.getAllFavoriteFoods()
-            .stateIn(
-                scope = viewModelScope,
-                started = SharingStarted.Eagerly,
-                initialValue = emptyList()
-            )
-
-    val diaryFood: StateFlow<List<FoodDomainModel>> =
-        domainRepository.getAllDiaryFoods()
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.Eagerly,
@@ -109,31 +102,13 @@ class AppViewModel @Inject constructor(
         )
     }
 
-    fun isFoodChoice(foodDomainModel: FoodDomainModel): Boolean {
-        return diaryFood.value.contains(foodDomainModel)
-    }
-
-    fun diaryFoodClickHandler(foodDomainModel: FoodDomainModel): Boolean {
-        return when (isFoodChoice(foodDomainModel)) {
-            true -> {
-                tryLaunch {
-                    domainRepository.deleteDiaryFood(foodDomainModel)
-                    deleteFoodFromDiary()
-                }.catch { throwable ->
-                    Timber.e(throwable.message)
-                }.start()
-                false
-            }
-            false -> {
-                tryLaunch {
-                    domainRepository.saveDiaryFood(foodDomainModel)
-                    addFoodInDiary()
-                }.catch { throwable ->
-                    Timber.e(throwable.message)
-                }.start()
-                true
-            }
-        }
+    fun diaryFoodClickHandler(diaryFoodDomainModel: DiaryFoodDomainModel) {
+        tryLaunch {
+            domainRepository.saveDiaryFood(diaryFoodDomainModel)
+            addFoodInDiary()
+        }.catch { throwable ->
+            Timber.e(throwable.message)
+        }.start()
     }
 
     private fun addFoodInDiary() {
@@ -143,19 +118,6 @@ class AppViewModel @Inject constructor(
         )
         systemMessageNotifier.sendSnack(
             message = resourcesProvider.getString(R.string.diary_food_added),
-            colorRes = R.color.support_303,
-            duration = Snackbar.LENGTH_SHORT,
-            dismissSnackBar = snackDismissFlow
-        )
-    }
-
-    private fun deleteFoodFromDiary() {
-        snackDismissFlow = MutableSharedFlow(
-            extraBufferCapacity = 1,
-            onBufferOverflow = BufferOverflow.DROP_OLDEST
-        )
-        systemMessageNotifier.sendSnack(
-            message = resourcesProvider.getString(R.string.diary_food_delete),
             colorRes = R.color.support_303,
             duration = Snackbar.LENGTH_SHORT,
             dismissSnackBar = snackDismissFlow

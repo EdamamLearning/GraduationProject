@@ -1,6 +1,7 @@
 package ru.edamamlearning.graduationproject.domain
 
 import kotlinx.coroutines.flow.Flow
+import ru.edamamlearning.graduationproject.domain.model.DiaryFoodDomainModel
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 
 interface DomainRepository {
@@ -10,14 +11,14 @@ interface DomainRepository {
     suspend fun saveInfoFood(foodDomainModel: FoodDomainModel)
     suspend fun deleteInfoFood(foodDomainModel: FoodDomainModel)
     suspend fun saveFavoriteFood(foodDomainModel: FoodDomainModel)
-    suspend fun saveDiaryFood(foodDomainModel: FoodDomainModel)
+    suspend fun saveDiaryFood(diaryFoodDomainModel: DiaryFoodDomainModel)
     suspend fun deleteFavoriteFood(foodDomainModel: FoodDomainModel)
-    suspend fun deleteDiaryFood(foodDomainModel: FoodDomainModel)
+    suspend fun deleteDiaryFood(diaryFoodDomainModel: DiaryFoodDomainModel)
     suspend fun getAllHistoryFoods(): List<FoodDomainModel>
     fun getAllFavoriteFoods(): Flow<List<FoodDomainModel>>
 
     fun getAllInfoFoods(): Flow<List<FoodDomainModel>>
 
-    fun getAllDiaryFoods(): Flow<List<FoodDomainModel>>
+    fun getAllDiaryFoods(): Flow<List<DiaryFoodDomainModel>>
 
 }

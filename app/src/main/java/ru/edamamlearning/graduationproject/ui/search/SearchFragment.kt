@@ -17,9 +17,10 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentSearchBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
-import ru.edamamlearning.graduationproject.ui.AppViewModel
 import ru.edamamlearning.graduationproject.ui.AppAdapter
+import ru.edamamlearning.graduationproject.ui.AppViewModel
 import ru.edamamlearning.graduationproject.ui.datepickerdialogfragment.DatePickerDialogFragment
+import ru.edamamlearning.graduationproject.utils.extensions.toDiaryFoodDomainModel
 import ru.edamamlearning.graduationproject.utils.hideKeyboard
 import javax.inject.Inject
 
@@ -35,11 +36,9 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         AppAdapter(
             onFavouriteItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
-            isFoodChoice = viewModel::isFoodChoice,
             favouriteClickHandler = viewModel::favouriteFoodClickHandler,
-            diaryClickHandler = viewModel::diaryFoodClickHandler,
-
-            )
+            addDateToFood = this::diaryFoodHandler
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,16 +46,20 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
         setRecyclerView()
         binding.emptySearchLayout.isInvisible = adapter.itemCount != 0
         setQueryListener()
-        findNavController().navigate(R.id.action_searchFragment_to_datePickerDialogFragment)
-        initDialogResultListener()
     }
 
-    private fun initDialogResultListener() {
+    private fun diaryFoodHandler(foodDomainModel: FoodDomainModel) {
+        showDatePicker()
         setFragmentResultListener(DatePickerDialogFragment.REQUEST_KEY) { _, result: Bundle ->
             val array: IntArray = result.getIntArray(DatePickerDialogFragment.KEY_RESPONSE)
                 ?: throw RuntimeException("DialogFragment result is null")
-            Toast.makeText(context, "${array[0]} ${array[1]} ${array[2]}", Toast.LENGTH_SHORT).show()
+            val date = "${array[0]} ${array[1]} ${array[2]}"
+            viewModel.diaryFoodClickHandler(foodDomainModel.toDiaryFoodDomainModel(date))
         }
+    }
+
+    private fun showDatePicker() {
+        findNavController().navigate(R.id.action_searchFragment_to_datePickerDialogFragment)
     }
 
     private fun navigate(foodDomainModel: FoodDomainModel) {
