@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ru.edamamlearning.graduationproject.databinding.ItemSearchBinding
+import ru.edamamlearning.graduationproject.databinding.ItemRecyclerBinding
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.utils.extensions.loadPicture
 import ru.edamamlearning.graduationproject.utils.roundAp
@@ -20,7 +20,7 @@ class AppAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         return SearchViewHolder(
-            ItemSearchBinding.inflate(
+            ItemRecyclerBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -50,7 +50,7 @@ class AppAdapter(
         }
     }
 
-    inner class SearchViewHolder(private val binding: ItemSearchBinding) :
+    inner class SearchViewHolder(private val binding: ItemRecyclerBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(model: FoodDomainModel) {

@@ -90,7 +90,7 @@
         android:requiresFadingEdge="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:ignore="SpeakableTextPresentCheck"
-        tools:listitem="@layout/item_search"/>
+        tools:listitem="@layout/item_recycler"/>
 
     <LinearLayout
         android:id="@+id/empty_search_layout"

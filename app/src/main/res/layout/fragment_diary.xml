@@ -89,6 +89,6 @@
             android:paddingVertical="@dimen/padding"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:ignore="SpeakableTextPresentCheck"
-            tools:listitem="@layout/item_search" />
+            tools:listitem="@layout/item_recycler" />
     </LinearLayout>
 </RelativeLayout>

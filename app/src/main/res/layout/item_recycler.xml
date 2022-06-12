@@ -5,7 +5,7 @@
     android:id="@+id/rootLayoutConstraint"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="8dp"
+    android:layout_marginHorizontal="10dp"
     android:layout_marginVertical="8dp"
     android:paddingBottom="30dp"
     app:cardBackgroundColor="@color/bg_color"
