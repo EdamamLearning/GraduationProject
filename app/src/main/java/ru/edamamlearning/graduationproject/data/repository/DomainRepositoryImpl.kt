@@ -13,7 +13,9 @@ class DomainRepositoryImpl @Inject constructor(
 ) : DomainRepository {
 
     override suspend fun getFoodModel(text: String): List<FoodDomainModel> {
-        val listFood = remoteRepository.get(text).toFoodDomainModel()
+        val listFood: List<FoodDomainModel> = remoteRepository.get(text).toFoodDomainModel()
+        listFood.distinctBy { it.foodId }
+            .distinctBy { it.label }
         cacheFoodRepository.saveSearchedFood(listFood.toListHistoryFoodEntity())
         return listFood
     }
