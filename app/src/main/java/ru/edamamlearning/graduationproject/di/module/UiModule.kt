@@ -5,7 +5,6 @@ import dagger.android.ContributesAndroidInjector
 import ru.edamamlearning.graduationproject.ui.MainActivity
 import ru.edamamlearning.graduationproject.ui.diary.DiaryFragment
 import ru.edamamlearning.graduationproject.ui.favorite.FavoriteFragment
-import ru.edamamlearning.graduationproject.ui.food.FoodFragment
 import ru.edamamlearning.graduationproject.ui.info.InfoFragment
 import ru.edamamlearning.graduationproject.ui.search.SearchFragment
 
@@ -17,9 +16,6 @@ interface UiModule {
 
     @ContributesAndroidInjector
     fun bindSearchFragment(): SearchFragment
-
-    @ContributesAndroidInjector
-    fun bindFoodFragment(): FoodFragment
 
     @ContributesAndroidInjector
     fun bindInfoFragment(): InfoFragment

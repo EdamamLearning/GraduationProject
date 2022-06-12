@@ -17,24 +17,8 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_searchFragment_to_dairyFragment"
-            app:destination="@id/dairyFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/foodFragment"
-        android:name="ru.edamamlearning.graduationproject.ui.food.FoodFragment"
-        android:label="@string/food"
-        tools:layout="@layout/fragment_food">
-        <action
-            android:id="@+id/action_homeFragment_to_infoFragment2"
-            app:destination="@id/infoFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
-    </fragment>
     <fragment
         android:id="@+id/infoFragment"
         android:name="ru.edamamlearning.graduationproject.ui.info.InfoFragment"
@@ -43,9 +27,6 @@
         <argument
             android:name="food_id"
             app:argType="string" />
-        <action
-            android:id="@+id/action_infoFragment_to_favoritesFragment"
-            app:destination="@+id/favoritesFragment"/>
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
@@ -69,6 +50,9 @@
         <argument
             android:name="food_id"
             app:argType="string" />
+        <action
+            android:id="@+id/action_dairyFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
 
     </fragment>
 </navigation>
