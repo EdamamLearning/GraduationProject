@@ -6,22 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.search.SearchFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolBar"
-        app:title="@string/search"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent"
-        app:titleMarginStart="@dimen/margin_start_toolbar"
-        app:titleTextAppearance="@style/TextViewToolBar" />
 
     <androidx.constraintlayout.motion.widget.MotionLayout
-        android:layout_below="@id/toolBar"
         android:id="@+id/rootLayoutConstraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layoutDescription="@xml/fragment_search_scene"
-        app:layout_constraintTop_toTopOf="@id/toolBar">
+        app:layoutDescription="@xml/fragment_search_scene">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/search_btn"
@@ -67,7 +57,6 @@
                 android:paddingVertical="@dimen/paddingSearch"
                 android:textColor="@color/title_color"
                 android:textSize="@dimen/search_text_size"
-                app:layout_constraintTop_toBottomOf="@id/toolBar"
                 tools:ignore="TouchTargetSizeCheck"
                 tools:layout_editor_absoluteX="1dp" />
         </com.google.android.material.textfield.TextInputLayout>

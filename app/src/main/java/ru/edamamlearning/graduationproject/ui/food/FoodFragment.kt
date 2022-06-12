@@ -3,9 +3,6 @@ package ru.edamamlearning.graduationproject.ui.food
 import android.os.Bundle
 import android.view.View
 import android.widget.CompoundButton
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.forEach
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,7 +14,6 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentFoodBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
-import ru.edamamlearning.graduationproject.utils.ToolbarApp
 import javax.inject.Inject
 
 class FoodFragment : BaseFragment(R.layout.fragment_food) {
@@ -66,29 +62,6 @@ class FoodFragment : BaseFragment(R.layout.fragment_food) {
                     viewModel.getFoodOfLabel(chipText)
                 }
             }
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        setToolbar()
-    }
-
-    private fun setToolbar() {
-        val toolbar = ToolbarApp()
-
-        toolbar.setToolBar(
-            activity = requireActivity(),
-            title = "Продукты",
-            visibleRight = true,
-            visibleLeft = false
-        )
-
-        (requireActivity().findViewById<AppCompatImageView>(R.id.info)).setImageResource(R.drawable.ic_info)
-        (requireActivity().findViewById<AppCompatImageView>(R.id.back)).setImageResource(R.drawable.ic_toolbar_back_button)
-
-        (requireActivity().findViewById<View>(R.id.info) as ImageView).setOnClickListener {
-            Toast.makeText(context, "info", Toast.LENGTH_SHORT).show()
         }
     }
 }
