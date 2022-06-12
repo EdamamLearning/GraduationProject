@@ -21,13 +21,13 @@
         <TextView
             android:id="@+id/protein"
             style="@style/BaseTextBody1"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text="@string/protein_text"
             app:layout_constraintBottom_toTopOf="@+id/fats"
             app:layout_constraintEnd_toStartOf="@+id/proteinCount"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -38,8 +38,8 @@
             android:text="@string/fats_text"
             app:layout_constraintBottom_toTopOf="@+id/carbohydrates"
             app:layout_constraintEnd_toStartOf="@+id/fatsCount"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/protein" />
 
         <TextView
@@ -50,51 +50,51 @@
             android:text="@string/carbohydrates_text"
             app:layout_constraintBottom_toBottomOf="@+id/barrier"
             app:layout_constraintEnd_toStartOf="@id/carbohydratesCount"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fats" />
 
         <TextView
             android:id="@+id/proteinCount"
+            style="@style/BaseTextBody1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_border"
             android:gravity="center"
-            style="@style/BaseTextBody1"
             app:layout_constraintBottom_toTopOf="@+id/fatsCount"
-            app:layout_constraintStart_toEndOf="@+id/protein"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/foodImage"
             app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@+id/protein"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="225" />
 
         <TextView
             android:id="@+id/fatsCount"
+            style="@style/BaseTextBody1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:background="@drawable/rounded_border"
             android:gravity="center"
-            style="@style/BaseTextBody1"
             app:layout_constraintBottom_toTopOf="@+id/carbohydratesCount"
-            app:layout_constraintStart_toEndOf="@+id/fats"
-            app:layout_constraintTop_toBottomOf="@+id/proteinCount"
             app:layout_constraintEnd_toStartOf="@+id/foodImage"
             app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@+id/fats"
+            app:layout_constraintTop_toBottomOf="@+id/proteinCount"
             tools:text="24" />
 
         <TextView
             android:id="@+id/carbohydratesCount"
+            style="@style/BaseTextBody1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_border"
             android:gravity="center"
-            style="@style/BaseTextBody1"
             app:layout_constraintBottom_toBottomOf="@+id/barrier"
-            app:layout_constraintStart_toEndOf="@+id/carbohydrates"
-            app:layout_constraintTop_toBottomOf="@+id/fatsCount"
             app:layout_constraintEnd_toStartOf="@+id/foodImage"
             app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@+id/carbohydrates"
+            app:layout_constraintTop_toBottomOf="@+id/fatsCount"
             tools:text="125" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -121,8 +121,8 @@
             android:textColor="@color/text_color"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/category"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/foodImage"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/barrier"
             tools:text="Hard-boiled Eggs" />
 
@@ -172,11 +172,11 @@
             android:id="@+id/foodImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:contentDescription="@string/ignore"
             android:paddingHorizontal="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="ContentDescription"
             tools:src="@drawable/food" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

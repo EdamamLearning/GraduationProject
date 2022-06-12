@@ -35,9 +35,9 @@
             app:counterMaxLength="20"
             app:endIconCheckable="true"
             app:endIconDrawable="@drawable/ic_search"
-            app:endIconTint="@null"
             app:endIconMode="custom"
-            app:helperText="@string/search_helper_text"
+            app:endIconTint="@null"
+            app:helperText="@string/enter_search_word"
             app:layout_constraintBottom_toTopOf="@+id/recycler_view"
             app:layout_constraintStart_toEndOf="parent">
 
@@ -50,7 +50,7 @@
                 android:autofillHints=""
                 android:background="@drawable/rounded_border_search_bar"
                 android:drawablePadding="@dimen/padding"
-                android:hint="@string/search_pokemon"
+                android:hint="@string/enter_search_word"
                 android:imeOptions="actionSearch"
                 android:inputType="textNoSuggestions"
                 android:paddingHorizontal="@dimen/paddingSearch"
@@ -90,7 +90,7 @@
         android:requiresFadingEdge="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:ignore="SpeakableTextPresentCheck"
-        tools:listitem="@layout/item_recycler"/>
+        tools:listitem="@layout/item_recycler" />
 
     <LinearLayout
         android:id="@+id/empty_search_layout"
@@ -154,8 +154,8 @@
             android:layout_marginHorizontal="@dimen/horizontal_margin"
             android:layout_marginTop="@dimen/top_margin"
             android:gravity="center"
-            android:text="@string/search_textview_error_message"
             android:textColor="@color/title_color"
-            android:textSize="@dimen/info_text_size" />
+            android:textSize="@dimen/info_text_size"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 </RelativeLayout>
