@@ -16,6 +16,8 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentSearchBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
+import ru.edamamlearning.graduationproject.ui.AppViewModel
+import ru.edamamlearning.graduationproject.ui.SearchAdapter
 import ru.edamamlearning.graduationproject.utils.hideKeyboard
 import javax.inject.Inject
 
@@ -23,8 +25,8 @@ class SearchFragment : BaseFragment(R.layout.fragment_search) {
 
     @Inject
     lateinit var vmFactory: ViewModelFactory
-    private val viewModel: SearchViewModel by lazy {
-        ViewModelProvider(this, vmFactory)[SearchViewModel::class.java]
+    private val viewModel: AppViewModel by lazy {
+        ViewModelProvider(this, vmFactory)[AppViewModel::class.java]
     }
     private val binding: FragmentSearchBinding by viewBinding()
     private val adapter by lazy {
