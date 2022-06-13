@@ -1,7 +1,6 @@
 package ru.edamamlearning.graduationproject.ui.diary
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -55,7 +54,6 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
         }
     }
 
-
     override fun onStart() {
         super.onStart()
         lifecycleScope.launchWhenStarted {
@@ -71,14 +69,7 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .distinctUntilChanged()
                 .collectLatest {
-                    /**
-                     *  Данные для экрана
-                     */
-                    Log.d("TestSum carbohydrate = ", it.carbohydrate.toString())
-                    Log.d("TestSum energyKCal = ", it.energyKCal.toString())
-                    Log.d("TestSum fat = ", it.fat.toString())
-                    Log.d("TestSum fiber = ", it.fiber.toString())
-                    Log.d("TestSum protein = ", it.protein.toString())
+                    binding.calories.text = it.energyKCal.toString()
                 }
         }
     }
