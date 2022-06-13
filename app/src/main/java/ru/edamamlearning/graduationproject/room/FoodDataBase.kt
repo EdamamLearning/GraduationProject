@@ -13,7 +13,7 @@ import ru.edamamlearning.graduationproject.room.entity.InfoFoodEntity
 
 @Database(
     entities = [HistoryFoodEntity::class, FavoriteFoodEntity::class, DiaryFoodEntity::class, InfoFoodEntity::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 abstract class FoodDataBase : RoomDatabase() {

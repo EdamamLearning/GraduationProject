@@ -15,7 +15,7 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentDiaryBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.DiaryFoodDomainModel
-import java.util.*
+import java.util.GregorianCalendar
 import javax.inject.Inject
 
 class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
@@ -30,7 +30,7 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
         DiaryFragmentAdapter(
             onItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
-            favouriteClickHandler = viewModel::favouriteFoodClickHandler,
+            favoriteClickHandler = viewModel::favouriteFoodClickHandler,
             deleteDiaryFood = viewModel::deleteDiaryFood,
         )
     }
@@ -48,7 +48,7 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
     }
 
     private fun initCalendar() {
-        binding.calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
+        binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             viewModel.getByDate("$year-$month-$dayOfMonth")
         }
     }
