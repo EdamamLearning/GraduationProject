@@ -1,14 +1,9 @@
-package ru.edamamlearning.graduationproject.ui
+package ru.edamamlearning.graduationproject.ui.diary
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.*
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.BaseViewModel
 import ru.edamamlearning.graduationproject.core.resourcesprovider.ResourcesProvider
@@ -19,16 +14,21 @@ import ru.edamamlearning.graduationproject.utils.message.SystemMessageNotifier
 import timber.log.Timber
 import javax.inject.Inject
 
-class AppViewModel @Inject constructor(
-    private var domainRepository: DomainRepository,
+class DiaryFragmentViewModel @Inject constructor(
+    private val domainRepository: DomainRepository,
     private val systemMessageNotifier: SystemMessageNotifier,
     private val resourcesProvider: ResourcesProvider
 ) : BaseViewModel() {
 
     private var snackDismissFlow: MutableSharedFlow<Unit>? = null
-    private val _food = MutableLiveData<List<FoodDomainModel>>()
-    val food: LiveData<List<FoodDomainModel>> = _food
-    val favoriteFood: StateFlow<List<FoodDomainModel>> =
+
+    private val _diaryFood = MutableStateFlow<List<DiaryFoodDomainModel>>(emptyList())
+    val diaryFood: StateFlow<List<DiaryFoodDomainModel>> = _diaryFood.asStateFlow()
+
+    private val _sumNutrients = MutableStateFlow(SumNutrientsForDairy())
+    val sumNutrients = _sumNutrients.asStateFlow()
+
+    private val favoriteFood: StateFlow<List<FoodDomainModel>> =
         domainRepository.getAllFavoriteFoods()
             .stateIn(
                 scope = viewModelScope,
@@ -36,9 +36,32 @@ class AppViewModel @Inject constructor(
                 initialValue = emptyList()
             )
 
-    fun getFood(food: String) {
+    fun refreshSumNutrients() {
+        _sumNutrients.value = SumNutrientsForDairy()
+    }
+
+    private fun addNutrients(list: List<DiaryFoodDomainModel>) {
+        val sum = SumNutrientsForDairy()
+        list.forEach {
+            sum.plus(
+                _carbohydrate = it.carbohydrate.toDouble(),
+                _energyKCal = it.energyKCal.toDouble(),
+                _fat = it.fat.toDouble(),
+                _fiber = it.fiber.toDouble(),
+                _protein = it.protein.toDouble(),
+            )
+        }
+        _sumNutrients.value = sum
+    }
+
+    fun getByDate(date: String) {
         tryLaunch {
-            _food.value = domainRepository.getFoodModel(food)
+            domainRepository.getDiaryFoodsByDate(date)
+                .distinctUntilChanged()
+                .collectLatest {
+                    _diaryFood.value = it
+                    addNutrients(it)
+                }
         }.catch { throwable ->
             systemMessageNotifier.sendSnack(
                 message = resourcesProvider.getString(R.string.error),
@@ -75,17 +98,12 @@ class AppViewModel @Inject constructor(
         }
     }
 
-    private fun addFavoriteFood() {
-        snackDismissFlow = MutableSharedFlow(
-            extraBufferCapacity = 1,
-            onBufferOverflow = BufferOverflow.DROP_OLDEST
-        )
-        systemMessageNotifier.sendSnack(
-            message = resourcesProvider.getString(R.string.favorite_food_added),
-            colorRes = R.color.support_303,
-            duration = Snackbar.LENGTH_SHORT,
-            dismissSnackBar = snackDismissFlow
-        )
+    fun deleteDiaryFood(diaryFoodDomainModel: DiaryFoodDomainModel) {
+        tryLaunch {
+            domainRepository.deleteDiaryFood(diaryFoodDomainModel)
+        }.catch { throwable ->
+            Timber.e(throwable.message)
+        }.start()
     }
 
     private fun deleteFavoriteFood() {
@@ -101,27 +119,38 @@ class AppViewModel @Inject constructor(
         )
     }
 
-    fun diaryFoodClickHandler(diaryFoodDomainModel: DiaryFoodDomainModel) {
-        tryLaunch {
-            domainRepository.saveDiaryFood(diaryFoodDomainModel)
-            addFoodInDiary()
-        }.catch { throwable ->
-            Timber.e(throwable.message)
-        }.start()
-    }
-
-    private fun addFoodInDiary() {
+    private fun addFavoriteFood() {
         snackDismissFlow = MutableSharedFlow(
             extraBufferCapacity = 1,
             onBufferOverflow = BufferOverflow.DROP_OLDEST
         )
         systemMessageNotifier.sendSnack(
-            message = resourcesProvider.getString(R.string.diary_food_added),
+            message = resourcesProvider.getString(R.string.favorite_food_added),
             colorRes = R.color.support_303,
             duration = Snackbar.LENGTH_SHORT,
             dismissSnackBar = snackDismissFlow
         )
     }
+}
 
-    fun isFavoriteFoodsEmpty(): Boolean = favoriteFood.value.isEmpty()
+data class SumNutrientsForDairy(
+    var carbohydrate: Double = 0.0,
+    var energyKCal: Double = 0.0,
+    var fat: Double = 0.0,
+    var fiber: Double = 0.0,
+    var protein: Double = 0.0,
+) {
+    fun plus(
+        _carbohydrate: Double,
+        _energyKCal: Double,
+        _fat: Double,
+        _fiber: Double,
+        _protein: Double,
+    ) {
+        carbohydrate += _carbohydrate
+        energyKCal += _energyKCal
+        fat += _fat
+        fiber += _fiber
+        protein += _protein
+    }
 }

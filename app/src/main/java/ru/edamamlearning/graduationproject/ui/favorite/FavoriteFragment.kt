@@ -2,6 +2,7 @@ package ru.edamamlearning.graduationproject.ui.favorite
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.flowWithLifecycle
@@ -17,6 +18,8 @@ import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.FoodDomainModel
 import ru.edamamlearning.graduationproject.ui.AppAdapter
 import ru.edamamlearning.graduationproject.ui.AppViewModel
+import ru.edamamlearning.graduationproject.ui.datepickerdialogfragment.DatePickerDialogFragment
+import ru.edamamlearning.graduationproject.utils.extensions.toDiaryFoodDomainModel
 import javax.inject.Inject
 
 class FavoriteFragment : BaseFragment(R.layout.fragment_favorite) {
@@ -29,11 +32,10 @@ class FavoriteFragment : BaseFragment(R.layout.fragment_favorite) {
 
     private val adapter by lazy {
         AppAdapter(
-            onFavouriteItemClicked = this::navigate,
+            onItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
-            isFoodChoice = viewModel::isFoodChoice,
             favouriteClickHandler = viewModel::favouriteFoodClickHandler,
-            diaryClickHandler = viewModel::diaryFoodClickHandler,
+            addDateToFood = this::diaryFoodHandler
         )
     }
 
@@ -42,6 +44,20 @@ class FavoriteFragment : BaseFragment(R.layout.fragment_favorite) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.adapter = adapter
+    }
+
+    private fun diaryFoodHandler(foodDomainModel: FoodDomainModel) {
+        showDatePicker()
+        setFragmentResultListener(DatePickerDialogFragment.REQUEST_KEY) { _, result: Bundle ->
+            val array: IntArray = result.getIntArray(DatePickerDialogFragment.KEY_RESPONSE)
+                ?: throw RuntimeException("DialogFragment result is null")
+            val date = "${array[0]}-${array[1]}-${array[2]}"
+            viewModel.diaryFoodClickHandler(foodDomainModel.toDiaryFoodDomainModel(date))
+        }
+    }
+
+    private fun showDatePicker() {
+        findNavController().navigate(R.id.action_favoritesFragment_to_datePickerDialogFragment)
     }
 
     override fun onStart() {

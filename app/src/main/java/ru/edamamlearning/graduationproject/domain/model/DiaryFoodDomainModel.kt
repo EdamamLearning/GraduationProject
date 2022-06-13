@@ -1,11 +1,6 @@
-package ru.edamamlearning.graduationproject.room.entity
+package ru.edamamlearning.graduationproject.domain.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-@Entity
-data class DiaryFoodEntity(
-    @PrimaryKey(autoGenerate = true)
+data class DiaryFoodDomainModel(
     val id: Int = 0,
     val foodId: String,
     val date: String,

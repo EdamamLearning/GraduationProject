@@ -25,6 +25,7 @@
     <color name="power_orange">#F37F04</color>
     <color name="primary">#f26c55</color>
     <color name="link">#ef553b</color>
+    <color name="transparent">#00000000</color>
 
     <!-- common base -->
     <color name="base_01">#ffffff</color>

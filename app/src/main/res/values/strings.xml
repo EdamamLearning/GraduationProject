@@ -11,7 +11,7 @@
     <string name="search_textview_error_message">Error. Nothing found.</string>
     <string name="favorites_textview_message">Click on the heart-shaped icon on a Eat card to add it to your favorites</string>
 
-    <string name="day_callories">В сутки: </string>
+    <string name="сalories_consumed">Calories consumed per day</string>
 
     <string name="protein_text">Protein:</string>
     <string name="fats_text">Fat:</string>

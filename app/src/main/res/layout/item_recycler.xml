@@ -144,29 +144,22 @@
             android:id="@+id/favorite_button"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@null"
+            android:background="@color/transparent"
             android:checked="false"
-            android:drawableBottom="@drawable/favorite_button_selector"
-            android:drawablePadding="8dp"
-            android:paddingHorizontal="8dp"
-            android:paddingBottom="10dp"
+            android:button="@drawable/favorite_button_selector"
             android:textSize="0sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/foodImage" />
 
-        <ToggleButton
+        <ImageButton
             android:id="@+id/diary_button"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@null"
-            android:checked="false"
-            android:drawableBottom="@drawable/add_button_selector"
-            android:drawablePadding="8dp"
-            android:paddingHorizontal="8dp"
-            android:paddingBottom="10dp"
-            android:textSize="0sp"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_add_24dp_link"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/favorite_button" />
+            app:layout_constraintEnd_toStartOf="@+id/favorite_button"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/foodImage"

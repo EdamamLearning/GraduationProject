@@ -11,11 +11,10 @@ import ru.edamamlearning.graduationproject.utils.extensions.loadPicture
 import ru.edamamlearning.graduationproject.utils.roundAp
 
 class AppAdapter(
-    private val onFavouriteItemClicked: (FoodDomainModel) -> Unit,
-    private val diaryClickHandler: (FoodDomainModel) -> Boolean,
+    private val onItemClicked: (FoodDomainModel) -> Unit,
     private val isFavorite: (FoodDomainModel) -> Boolean,
-    private val isFoodChoice: (FoodDomainModel) -> Boolean,
     private val favouriteClickHandler: (FoodDomainModel) -> Boolean,
+    private val addDateToFood: (FoodDomainModel) -> Unit,
 ) : ListAdapter<FoodDomainModel, AppAdapter.SearchViewHolder>(DiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
@@ -31,7 +30,7 @@ class AppAdapter(
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val item = getItem(position)
         holder.itemView.setOnClickListener {
-            onFavouriteItemClicked(item)
+            onItemClicked(item)
         }
         holder.bind(item)
     }
@@ -64,9 +63,8 @@ class AppAdapter(
             binding.favoriteButton.setOnClickListener {
                 binding.favoriteButton.isChecked = favouriteClickHandler(model)
             }
-            binding.diaryButton.isChecked = isFoodChoice(model)
             binding.diaryButton.setOnClickListener {
-                binding.diaryButton.isChecked = diaryClickHandler(model)
+                addDateToFood(model)
             }
         }
     }

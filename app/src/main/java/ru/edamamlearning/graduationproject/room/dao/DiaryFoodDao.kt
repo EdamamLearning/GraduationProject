@@ -15,4 +15,7 @@ interface DiaryFoodDao {
 
     @Query("SELECT * FROM DiaryFoodEntity")
     fun getAll(): Flow<List<DiaryFoodEntity>>
+
+    @Query("SELECT * FROM DiaryFoodEntity WHERE date=:date")
+    fun getByDate(date: String): Flow<List<DiaryFoodEntity>>
 }

@@ -17,6 +17,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_searchFragment_to_datePickerDialogFragment"
+            app:destination="@id/datePickerDialogFragment" />
     </fragment>
 
     <fragment
@@ -40,6 +43,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_favoritesFragment_to_datePickerDialogFragment"
+            app:destination="@id/datePickerDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/dairyFragment"
@@ -53,5 +59,12 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_dairyFragment_to_datePickerDialogFragment"
+            app:destination="@id/datePickerDialogFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/datePickerDialogFragment"
+        android:name="ru.edamamlearning.graduationproject.ui.datepickerdialogfragment.DatePickerDialogFragment"
+        android:label="DatePickerDialogFragment" />
 </navigation>

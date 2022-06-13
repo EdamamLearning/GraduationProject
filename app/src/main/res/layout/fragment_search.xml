@@ -68,8 +68,8 @@
 
         <ImageView
             android:id="@+id/search_imageview"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/imageView_search"
+            android:layout_height="@dimen/imageView_search"
             android:layout_gravity="center"
             android:src="@drawable/ic_search"
             android:visibility="gone"
