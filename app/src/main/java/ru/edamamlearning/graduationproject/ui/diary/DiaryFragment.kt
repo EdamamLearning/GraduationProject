@@ -15,6 +15,7 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentDiaryBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.DiaryFoodDomainModel
+import ru.edamamlearning.graduationproject.utils.roundAp
 import java.util.GregorianCalendar
 import javax.inject.Inject
 
@@ -69,7 +70,7 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
                 .distinctUntilChanged()
                 .collectLatest {
-                    binding.calories.text = it.energyKCal.toString()
+                    binding.calories.text = roundAp(it.energyKCal.toString())
                 }
         }
     }
