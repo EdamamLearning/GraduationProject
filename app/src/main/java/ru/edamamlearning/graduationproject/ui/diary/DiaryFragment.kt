@@ -15,6 +15,7 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentDiaryBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.DiaryFoodDomainModel
+import ru.edamamlearning.graduationproject.utils.roundAp
 import java.util.GregorianCalendar
 import javax.inject.Inject
 
@@ -49,10 +50,10 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
 
     private fun initCalendar() {
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            viewModel.refreshSumNutrients()
             viewModel.getByDate("$year-$month-$dayOfMonth")
         }
     }
-
 
     override fun onStart() {
         super.onStart()
@@ -62,6 +63,14 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
                 .distinctUntilChanged()
                 .collectLatest {
                     adapter.submitList(it)
+                }
+        }
+        lifecycleScope.launchWhenStarted {
+            viewModel.sumNutrients
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .distinctUntilChanged()
+                .collectLatest {
+                    binding.calories.text = roundAp(it.energyKCal.toString())
                 }
         }
     }

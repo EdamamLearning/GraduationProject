@@ -25,6 +25,9 @@ class DiaryFragmentViewModel @Inject constructor(
     private val _diaryFood = MutableStateFlow<List<DiaryFoodDomainModel>>(emptyList())
     val diaryFood: StateFlow<List<DiaryFoodDomainModel>> = _diaryFood.asStateFlow()
 
+    private val _sumNutrients = MutableStateFlow(SumNutrientsForDairy())
+    val sumNutrients = _sumNutrients.asStateFlow()
+
     private val favoriteFood: StateFlow<List<FoodDomainModel>> =
         domainRepository.getAllFavoriteFoods()
             .stateIn(
@@ -33,12 +36,31 @@ class DiaryFragmentViewModel @Inject constructor(
                 initialValue = emptyList()
             )
 
+    fun refreshSumNutrients() {
+        _sumNutrients.value = SumNutrientsForDairy()
+    }
+
+    private fun addNutrients(list: List<DiaryFoodDomainModel>) {
+        val sum = SumNutrientsForDairy()
+        list.forEach {
+            sum.plus(
+                _carbohydrate = it.carbohydrate.toDouble(),
+                _energyKCal = it.energyKCal.toDouble(),
+                _fat = it.fat.toDouble(),
+                _fiber = it.fiber.toDouble(),
+                _protein = it.protein.toDouble(),
+            )
+        }
+        _sumNutrients.value = sum
+    }
+
     fun getByDate(date: String) {
         tryLaunch {
             domainRepository.getDiaryFoodsByDate(date)
                 .distinctUntilChanged()
                 .collectLatest {
                     _diaryFood.value = it
+                    addNutrients(it)
                 }
         }.catch { throwable ->
             systemMessageNotifier.sendSnack(
@@ -108,5 +130,27 @@ class DiaryFragmentViewModel @Inject constructor(
             duration = Snackbar.LENGTH_SHORT,
             dismissSnackBar = snackDismissFlow
         )
+    }
+}
+
+data class SumNutrientsForDairy(
+    var carbohydrate: Double = 0.0,
+    var energyKCal: Double = 0.0,
+    var fat: Double = 0.0,
+    var fiber: Double = 0.0,
+    var protein: Double = 0.0,
+) {
+    fun plus(
+        _carbohydrate: Double,
+        _energyKCal: Double,
+        _fat: Double,
+        _fiber: Double,
+        _protein: Double,
+    ) {
+        carbohydrate += _carbohydrate
+        energyKCal += _energyKCal
+        fat += _fat
+        fiber += _fiber
+        protein += _protein
     }
 }
