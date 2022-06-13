@@ -48,7 +48,7 @@
             app:destination="@id/datePickerDialogFragment" />
     </fragment>
     <fragment
-        android:id="@+id/dairyFragment"
+        android:id="@+id/diaryFragment"
         android:name="ru.edamamlearning.graduationproject.ui.diary.DiaryFragment"
         android:label="@string/diary"
         tools:layout="@layout/fragment_diary">
