@@ -13,5 +13,6 @@
         android:layout_gravity="bottom"
         android:padding="10dp"
         android:scaleType="fitCenter"
+        tools:ignore="ContentDescription"
         tools:src="@drawable/splash_eat" />
 </FrameLayout>

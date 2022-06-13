@@ -16,7 +16,7 @@ import ru.edamamlearning.graduationproject.core.viewBinding
 import ru.edamamlearning.graduationproject.databinding.FragmentDiaryBinding
 import ru.edamamlearning.graduationproject.di.viewmodelsfactory.ViewModelFactory
 import ru.edamamlearning.graduationproject.domain.model.DiaryFoodDomainModel
-import java.util.*
+import java.util.GregorianCalendar
 import javax.inject.Inject
 
 class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
@@ -31,7 +31,7 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
         DiaryFragmentAdapter(
             onItemClicked = this::navigate,
             isFavorite = viewModel::isAFoodFavorite,
-            favouriteClickHandler = viewModel::favouriteFoodClickHandler,
+            favoriteClickHandler = viewModel::favouriteFoodClickHandler,
             deleteDiaryFood = viewModel::deleteDiaryFood,
         )
     }
@@ -72,7 +72,7 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
                 .distinctUntilChanged()
                 .collectLatest {
                     /**
-                     *  Данные брать для экрана
+                     *  Данные для экрана
                      */
                     Log.d("TestSum carbohydrate = ", it.carbohydrate.toString())
                     Log.d("TestSum energyKCal = ", it.energyKCal.toString())
