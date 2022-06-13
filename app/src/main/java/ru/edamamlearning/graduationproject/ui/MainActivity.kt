@@ -14,7 +14,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.onEach
 import ru.edamamlearning.graduationproject.R
 import ru.edamamlearning.graduationproject.core.DaggerActivity
 import ru.edamamlearning.graduationproject.core.NetworkObserver
@@ -82,7 +87,7 @@ class MainActivity : DaggerActivity(R.layout.activity_main), InfoFragment.OnInfo
             when (destination.id) {
                 R.id.searchFragment -> showBottomNav()
                 R.id.favoritesFragment -> showBottomNav()
-                R.id.dairyFragment -> showBottomNav()
+                R.id.diaryFragment -> showBottomNav()
             }
         }
     }
