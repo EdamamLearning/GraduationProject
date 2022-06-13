@@ -1,6 +1,7 @@
 package ru.edamamlearning.graduationproject.ui.diary
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -48,7 +49,8 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
     }
 
     private fun initCalendar() {
-        binding.calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
+        binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            viewModel.refreshSumNutrients()
             viewModel.getByDate("$year-$month-$dayOfMonth")
         }
     }
@@ -62,6 +64,21 @@ class DiaryFragment : BaseFragment(R.layout.fragment_diary) {
                 .distinctUntilChanged()
                 .collectLatest {
                     adapter.submitList(it)
+                }
+        }
+        lifecycleScope.launchWhenStarted {
+            viewModel.sumNutrients
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .distinctUntilChanged()
+                .collectLatest {
+                    /**
+                     *  Данные брать для экрана
+                     */
+                    Log.d("TestSum carbohydrate = ", it.carbohydrate.toString())
+                    Log.d("TestSum energyKCal = ", it.energyKCal.toString())
+                    Log.d("TestSum fat = ", it.fat.toString())
+                    Log.d("TestSum fiber = ", it.fiber.toString())
+                    Log.d("TestSum protein = ", it.protein.toString())
                 }
         }
     }
