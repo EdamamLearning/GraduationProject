@@ -38,4 +38,5 @@
     <string name="error">Something went wrong. We are already working on fixing the bugs</string>
     <string name="network_is_not_available">No internet connection</string>
     <string name="error_dialog_positive_button_ok">Ок</string>
+    <string name="search_pokemon">Search eat</string>
 </resources>
